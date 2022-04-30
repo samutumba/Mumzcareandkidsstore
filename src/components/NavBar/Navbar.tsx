@@ -1,25 +1,31 @@
 import Image from "next/image";
 import {BsBag} from "react-icons/bs"
-import { Container, ToolTip } from "../";
+import { Container, ToolTip } from "..";
+import { Toggle } from "./../Toogle/Toggle";
+import { UseCartData } from "./../../hooks/StoreProvider";
 
 export const NavBar = () => {
+  const cart = UseCartData();
+  
   return (
     <Container>
       <div className="navbar ">
         <div className="flex-1">
-            <ToolTip cname="tooltip-bottom" tip="Tap to navigate home" >
-                <a className="btn btn-ghost text-green normal-case text-xl">
-                    Mumzcare
-                </a>
-            </ToolTip>
-          
+          <ToolTip cname="tooltip-bottom" tip="Tap to navigate home">
+            <a className="btn btn-ghost text-green normal-case text-xl">
+              Mumzcare
+            </a>
+          </ToolTip>
         </div>
         <div className="flex-none">
+          <Toggle />
           <div className="dropdown dropdown-end mr-2 -mb-2">
             <label tabIndex={0} className="btn btn-ghost btn-circle">
               <div className="indicator text-2xl">
                 <BsBag />
-                <span className="badge badge-sm indicator-item">8</span>
+                <span className="badge animate-pulse badge-sm indicator-item">
+                  {cart.quantity}
+                </span>
               </div>
             </label>
             <div
@@ -27,7 +33,7 @@ export const NavBar = () => {
               className="mt-3 card card-compact dropdown-content w-52 bg-base-100 shadow"
             >
               <div className="card-body">
-                <span className="font-bold text-lg">8 Items</span>
+                <span className="font-bold text-lg">{cart.quantity} Items</span>
                 <span className="text-info">Subtotal: $999</span>
                 <div className="card-actions">
                   <button className="btn btn-primary btn-block">
