@@ -16,7 +16,7 @@ type ProviderProps = {
 };
 
 const cartState = atom({
-    key: "cartState",
+    key: "cart",
     default: [],
 });
 
@@ -27,7 +27,7 @@ const userState = atom({
 
 
 const productState = selector({
-    key: "productState",
+    key: "product",
     get: async () => {
         try {
             const res = await axios("https://fakestoreapi.com/products");

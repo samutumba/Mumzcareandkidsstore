@@ -17,11 +17,7 @@ const About: NextPage = () => {
      <Footer />
    </div>
  );
- };
-
-About.getInitialProps = async ({ req }) => {
-  const userAgent = req ? req.headers["user-agent"] : navigator.userAgent;
-  return { userAgent };
+ 
 };
 
 export default About
