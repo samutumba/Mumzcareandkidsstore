@@ -6,13 +6,11 @@ module.exports = {
    ],
   theme: {
     extend: {},
-
     fontFamily: {
       title: ['Raleway', 'sans-serif'],
       titleHeavy: ['Quicksand'],
       p: ['Cabin']
     },
-
     colors: {
       'green': '#7ecc63',
       'base': "#dadcda",

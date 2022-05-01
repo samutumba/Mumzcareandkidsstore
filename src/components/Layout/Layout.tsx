@@ -1,6 +1,4 @@
 import { useTheme } from "../../hooks";
-import { UseProductData } from "../../hooks/StoreProvider";
-import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 
 interface ILayoutProps {
@@ -16,7 +14,7 @@ export const Layout: React.FC<ILayoutProps> = ({
 
   /**getProductsData().then(
       function(value){setProducts(value);},
-      function(error){toast.error("Failed to load products!")}
+      function(error){")}
   )**/
   //setProducts(getProductsData())
 
@@ -25,6 +23,8 @@ export const Layout: React.FC<ILayoutProps> = ({
   } else {
     var classN = "light";
   }
+
+  toast.error("Failed to load products")
   return (
     <>
       <div className={classN}>
@@ -35,10 +35,5 @@ export const Layout: React.FC<ILayoutProps> = ({
   );
 };
 
-function getProductsData() {
-  //const data = await axios.get("http://localhost:3000/api/products");
-  const data = [{name: "Something"}]
-  return data;
-}
 
 

@@ -17,9 +17,10 @@ type Data = {
   id: string
 }
 
-export const ProductItemPage: NextPage<IProductItemPageProps> = ({ id }) => {
+const ProductItemPage: NextPage<IProductItemPageProps> = ({ id }) => {
     const items = UseProductData();
 
     return <div className=""></div>;
 };
 
+export default ProductItemPage

@@ -3,7 +3,7 @@ import { Footer, Meta, NavBar } from "../components";
 
 const About: NextPage = () => {
  return (
-   <div className="font-title bg-slate-200 text-md text-white">
+   <div className="font-title bg-slate-200 dark:bg-black text-md text-white">
      <Meta
        title="About: Mumz Care and Kid's Store"
        keywords={["About", "MumzCare", "Babies", "Mother's Clothing", "Babies Clothing", "Flavia Katamba"]}

@@ -23,8 +23,8 @@ export const NavBar = () => {
             <label tabIndex={0} className="btn btn-ghost btn-circle">
               <div className="indicator text-2xl">
                 <BsBag />
-                <span className="badge animate-pulse badge-sm indicator-item">
-                  {cart.quantity}
+                <span className="badge  badge-sm indicator-item">
+                  5
                 </span>
               </div>
             </label>
@@ -33,7 +33,7 @@ export const NavBar = () => {
               className="mt-3 card card-compact dropdown-content w-52 bg-base-100 shadow"
             >
               <div className="card-body">
-                <span className="font-bold text-lg">{cart.quantity} Items</span>
+                <span className="font-bold text-lg">5 Items</span>
                 <span className="text-info">Subtotal: $999</span>
                 <div className="card-actions">
                   <button className="btn btn-primary btn-block">
