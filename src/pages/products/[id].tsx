@@ -7,7 +7,7 @@ import {
   useRecoilState,
   useRecoilValue,
 } from "recoil";
-import { UseProductData } from "../../hooks/StoreProvider";
+import { UseProductValue } from "../../hooks/StoreProvider";
 
 interface IProductItemPageProps {
     id : string
@@ -18,7 +18,7 @@ type Data = {
 }
 
 const ProductItemPage: NextPage<IProductItemPageProps> = ({ id }) => {
-    const items = UseProductData();
+    const items = UseProductValue();
 
     return <div className=""></div>;
 };

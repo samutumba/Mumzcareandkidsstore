@@ -8,7 +8,6 @@ import {
   selector,
 } from "recoil";
 import { VscLoading } from "react-icons/vsc"
-
 import React , { useEffect } from "react";
 import axios from "axios";
 
@@ -16,33 +15,31 @@ type ProviderProps = {
   children: React.ReactNode;
 };
 
-    const cartState = atom({
-        key: "cartState",
-        default: [],
-    });
+const cartState = atom({
+    key: "cartState",
+    default: [],
+});
+
+const userState = atom({
+    key: "user",
+    default: { id: 111 , name: "Unknown" },
+});
 
 
-
-    const userState = atom({
-        key: "user",
-        default: { id: 111 , name: "Unknown" },
-    });
-
-    
-    const productState = selector({
-        key: "productState",
-        get: async () => {
-            try {
-                const res = await axios(
-                  "https://mumzcareandkidsstore.com/api/product"
-                );
-                return res.data || [];
-            } catch (error) {
-                console.log(`Error ${error}`);
-                return [];
-            }
-        },
-    });
+const productState = selector({
+    key: "productState",
+    get: async () => {
+        try {
+            const res = await axios(
+                "https://mumzcareandkidsstore.com/api/product"
+            );
+            return res.data || [];
+        } catch (error) {
+            console.log(`Error ${error}`);
+            return [];
+        }
+    },
+});
 
   export const SetCartData = () => useSetRecoilState(cartState);
   export const UseCartData = () => useRecoilValue(cartState);
