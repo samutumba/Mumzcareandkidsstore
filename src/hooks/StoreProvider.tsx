@@ -30,9 +30,7 @@ const productState = selector({
     key: "productState",
     get: async () => {
         try {
-            const res = await axios(
-                "https://mumzcareandkidsstore.com/api/product"
-            );
+            const res = await axios("https://fakestoreapi.com/products");
             return res.data || [];
         } catch (error) {
             console.log(`Error ${error}`);
