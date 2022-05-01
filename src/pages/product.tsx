@@ -1,16 +1,6 @@
-import { NextPage } from "next";
-import { UseProductValue } from "../hooks/StoreProvider";
+import { NextPage } from "next"
 
-interface IProductItemPageProps {
-    id : string
-}
-
-type Data = {
-  id: string
-}
-
-const ProductItemPage: NextPage<IProductItemPageProps> = ({ id }) => {
-    const items = UseProductValue();
+const ProductItemPage: NextPage = () => {
 
     return <div className=""></div>;
 };
