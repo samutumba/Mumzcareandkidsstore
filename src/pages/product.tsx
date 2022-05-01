@@ -1,5 +1,5 @@
-import { NextPage, GetServerSideProps } from "next";
-import { UseProductValue } from "../../hooks/StoreProvider";
+import { NextPage } from "next";
+import { UseProductValue } from "../hooks/StoreProvider";
 
 interface IProductItemPageProps {
     id : string
