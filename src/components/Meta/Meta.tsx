@@ -27,6 +27,10 @@ export const Meta: FC<IMetaProps> = ({title, description, keywords, robot, socia
             property="og:image"
             content="https://example.com/images/cool-page.jpg"
           />
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link rel="preconnect" href="https://fonts.gstatic.com" />
+          <link href="https://fonts.googleapis.com/css2?family=Cabin&family=Quicksand&family=Raleway:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet"/> 
+
           <link rel="icon" href="/favicon.ico" />
           <meta
             name="viewport"

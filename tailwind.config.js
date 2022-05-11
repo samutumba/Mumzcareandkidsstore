@@ -9,7 +9,7 @@ module.exports = {
     fontFamily: {
       title: ['Raleway', 'sans-serif'],
       titleHeavy: ['Quicksand'],
-      p: ['Cabin']
+      p: ['Cabin', 'sans-serif']
     },
     colors: {
       'green': '#7ecc63',

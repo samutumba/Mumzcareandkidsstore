@@ -17,14 +17,30 @@ type ProviderProps = {
 
 const cartState = atom({
     key: "cart",
-    default: [],
+    default: {
+        items: [],
+        amount: 250000
+    },
 });
 
-const userState = atom({
+ 
+/**const userState = atom({
     key: "user",
     default: { id: 111 , name: "Unknown" },
-});
+});**/
 
+const userState = selector({
+  key: "user",
+  get: async () => {
+    try {
+      const res = await axios("https://fakestoreapi.com/users/4");
+      return res.data || {};
+    } catch (error) {
+      console.log(`Error ${error}`);
+      return [];
+    }
+  },
+});
 
 const productState = selector({
     key: "product",
@@ -39,10 +55,10 @@ const productState = selector({
     },
 });
 
-  export const SetCartData = () => useSetRecoilState(cartState);
-  export const UseCartData = () => useRecoilValue(cartState);
-  export const SetUserData = () => useSetRecoilState(userState);
-  export const UseUserData = () => useRecoilValue(userState);
+  export const SetCartValue = () => useSetRecoilState(cartState);
+  export const UseCartValue = () => useRecoilValue(cartState);
+  //export const SetUserData = () => useSetRecoilState(userState);
+  export const UseUserValue = () => useRecoilValue(userState);
   export const UseProductValue = () => useRecoilValue(productState);
 
 export const StoreProvider: React.FC<ProviderProps> = ({ children }) => {

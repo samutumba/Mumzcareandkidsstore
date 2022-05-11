@@ -14,8 +14,6 @@ export const ToolTip: FC<IToolTipProps> = ({ children, tip, direction, cname }) 
         default:
             direction = undefined
     }
-        
-    
 
     let tooltipSide = (direction ? `tooltip-${direction}` : "")
   

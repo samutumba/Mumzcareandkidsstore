@@ -18,10 +18,9 @@ const Settings: NextPage = () => {
         socialDesc="E-Commerce platform dedicated to providing the Ugandan market with produces for mother's, babies and the odd father."
         description="E-Commerce platform dedicated to providing the Ugandan market with produces for mother's, babies and the odd father."
       />
-      <NavBar />
 
       <h1 className="text-3xl font-bold underline">About US!</h1>
-      <Footer />
+     
     </div>
   );
 };

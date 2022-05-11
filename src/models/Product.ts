@@ -1,6 +1,27 @@
-import mongoose from "mongoose";
+import mongoose, { Document, model, Model, Schema }  from "mongoose";
+import Review from "./Review";
 
-const ProductSchema = new mongoose.Schema({
+export interface IProduct extends Document {
+    _id?: string,
+    createdAt?: string,
+    title: string,
+    description: string,
+    images: string[],
+    detail:{
+        type: string[],
+        price: number[],
+    },
+    quantity: {
+        available: number,
+        ordered: number,
+        sold: number,
+    },
+    keywords: string[],
+    departments: string[],
+    reviews?: any
+}
+
+const ProductSchema = new Schema({
     title:{
         type: String,
         required: true,
@@ -9,7 +30,7 @@ const ProductSchema = new mongoose.Schema({
     description:{
         type: String,
         required: true,
-        maxlength: 1000,
+        maxlength: 7000,
     },
     images:{
         type: [String],
@@ -35,21 +56,26 @@ const ProductSchema = new mongoose.Schema({
         ordered: {
             type: Number,
             required: true,
+            default: 0
         },
         sold: {
             type: Number,
             required: true,
+            default: 0
         },
     },
     keywords: {
         type: [String],
         required: true,
     },
-    departments : {
+    departments: {
         type: [String],
         required: true
+    },
+    reviews: {
+        type: [Object]
     }
     
 }, {timestamps: true});
 
-export default mongoose.models.Product || mongoose.model("Product", ProductSchema)
+export const Product: Model<IProduct> = mongoose.models.products || model("products", ProductSchema, "products")

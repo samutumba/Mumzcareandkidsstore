@@ -1,6 +1,6 @@
-import mongoose from 'mongoose'
+import mongoose, { connect , ConnectOptions} from 'mongoose'
 
-const MONGODB_URI : string = process.env.MONGODB_URL || ""
+const MONGODB_URI = process.env.MONGODB_URL || ''
 
 if (!MONGODB_URI) {
     throw new Error(
@@ -25,13 +25,13 @@ async function dbConnect() {
     }
 
     if (!cached.promise) {
-        const opts = {
-            bufferCommands: false,
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
+        const opts: ConnectOptions = {
+            bufferCommands: true,
+            autoIndex: true,
+            autoCreate: true
         }
 
-        cached.promise = mongoose.connect(MONGODB_URI, opts).then((mongoose) => {return mongoose});
+        cached.promise = connect(MONGODB_URI, opts).then((mongoose) => {return mongoose});
     }
     cached.conn = await cached.promise
     return cached.conn

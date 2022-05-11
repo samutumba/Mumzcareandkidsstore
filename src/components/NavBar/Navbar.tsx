@@ -1,21 +1,22 @@
 import Image from "next/image";
 import {BsBag} from "react-icons/bs"
-import { Container, ToolTip } from "..";
+import { Container, Modal, ToolTip } from "..";
 import { Toggle } from "./../Toogle/Toggle";
-import { UseCartData } from "./../../hooks/StoreProvider";
+import { UseCartValue } from "./../../hooks/StoreProvider";
+import Link  from "next/link";
 
 export const NavBar = () => {
-  const cart = UseCartData();
+  const cart = UseCartValue();
   
   return (
     <Container>
-      <div className="navbar ">
+      <div className="navbar bg-transparent">
         <div className="flex-1">
-          <ToolTip cname="tooltip-bottom" tip="Tap to navigate home">
-            <a className="btn btn-ghost text-green normal-case text-xl">
-              Mumzcare
-            </a>
-          </ToolTip>
+          <Link href="/" passHref>
+              <div className="btn btn-ghost text-green normal-case text-xl">
+                  Mumzcare
+              </div>
+          </Link>
         </div>
         <div className="flex-none">
           <Toggle />
@@ -23,9 +24,7 @@ export const NavBar = () => {
             <label tabIndex={0} className="btn btn-ghost btn-circle">
               <div className="indicator text-2xl">
                 <BsBag />
-                <span className="badge  badge-sm indicator-item">
-                  5
-                </span>
+                <span className="badge  badge-sm indicator-item">5</span>
               </div>
             </label>
             <div
@@ -37,7 +36,7 @@ export const NavBar = () => {
                 <span className="text-info">Subtotal: $999</span>
                 <div className="card-actions">
                   <button className="btn btn-primary btn-block">
-                    View cart
+                    <Link href="/cart">View cart</Link>
                   </button>
                 </div>
               </div>
@@ -57,19 +56,29 @@ export const NavBar = () => {
               className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
               <li>
-                <a className="justify-between">Profile</a>
+                <Link href="/profile">
+                  <a>Profile</a>
+                </Link>
               </li>
               <li>
-                <a className="justify-between">Orders</a>
+                <Link href="/order">
+                  <a>Orders</a>
+                </Link>
               </li>
               <li>
-                <a> Wishlist </a>
+                <Link href="/wishlist">
+                  <a> Wishlist </a>
+                </Link>
               </li>
               <li>
-                <a>Settings</a>
+                <Link href="/settings">
+                  <a>Settings</a>
+                </Link>
               </li>
               <li>
-                <a>Logout</a>
+                <label htmlFor="modal-logout">
+                  <a>Logout</a>
+                </label>
               </li>
             </ul>
           </div>

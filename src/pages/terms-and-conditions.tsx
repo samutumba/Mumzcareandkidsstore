@@ -22,10 +22,7 @@ const TermsAndConditions: NextPage = () => {
         socialDesc="Explore the terms and conditions that guides our service to you the customer."
         description="Explore the terms and conditions that guides our service to you the customer"
       />
-      <NavBar />
-
       <h1 className="text-3xl font-bold underline">Terms and Conditions</h1>
-      <Footer />
     </div>
   );
 };
