@@ -46,7 +46,7 @@ const productState = selector({
     key: "product",
     get: async () => {
         try {
-            const res = await axios("https://fakestoreapi.com/products");
+            const res = await axios("http://localhost:3000/api/product");
             return res.data || [];
         } catch (error) {
             console.log(`Error ${error}`);
