@@ -8,7 +8,7 @@ import {
   GetStaticPropsContext,
 } from "next";
 import { ParsedUrlQuery } from "querystring";
-
+/*
 interface Params extends ParsedUrlQuery {
   id: string;
 }
@@ -46,6 +46,7 @@ export const getStaticProps: GetStaticProps = async (
   };
 };
 
+*/
 interface IDetailsPage {
   product: ProductType;
 }
