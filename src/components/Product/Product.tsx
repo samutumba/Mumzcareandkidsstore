@@ -11,7 +11,7 @@ interface IProductPreviewProps {
 export const ProductPreview: React.FC<IProductPreviewProps> = ({product}) => {
     return (
         <div className="card w-96 bg-base-100 shadow-xl">
-          <Link href={`/product/${product.id}`}></Link>
+          <Link href={`/product/${product._id}`}></Link>
           <figure>
             <Image
               src={product.image}

@@ -7,9 +7,12 @@ import {
   useRecoilState,
   selector,
 } from "recoil";
+import { atom as jotaiAtom } from "jotai";
 import { VscLoading } from "react-icons/vsc"
 import React , { useEffect } from "react";
 import axios from "axios";
+import { IUserType } from "./../types/UserType";
+import { ICartType } from "./../types/CartType";
 
 type ProviderProps = {
   children: React.ReactNode;
@@ -23,7 +26,9 @@ const cartState = atom({
     },
 });
 
- 
+export const userAtom = jotaiAtom<IUserType>({ signedIn: false });
+export const cartAtom = jotaiAtom<ICartType>({ items:[] , total: 0})
+
 /**const userState = atom({
     key: "user",
     default: { id: 111 , name: "Unknown" },
