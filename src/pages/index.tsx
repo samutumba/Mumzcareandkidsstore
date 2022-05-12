@@ -5,7 +5,7 @@ import { Footer, Meta, NavBar } from "../components";
 import { UseProductValue } from "./../hooks/StoreProvider";
 
 const Home: NextPage = () => {
-     const products = UseProductValue()
+     //const products = UseProductValue()
 
   return (
     <div className="font-title bg-slate-200 dark:bg-darkGreen text-md text-white">
