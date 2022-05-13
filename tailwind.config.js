@@ -17,7 +17,9 @@ module.exports = {
       'darkBase': "#333433",
       'darkGreen': "#1f550c",
       'gold': "d6ae10",
-
+      'facebook-blue': "#1877F2",
+      'white': "#FFFFFF",
+      'black': "#000000"
     },
   },
   plugins: [require("daisyui")],
