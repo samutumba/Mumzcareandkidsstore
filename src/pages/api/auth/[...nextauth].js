@@ -2,8 +2,9 @@ import NextAuth from "next-auth"
 import GoogleProvider from "next-auth/providers/google";
 import {
     MongoDBAdapter
-} from "@next-auth/mongodb-adapter"
-import dbConnect from "./../../../utils/dbConnect";
+} from "@next-auth/mongodb-adapter";
+import clientPromise from "./../../../utils/mongodb";
+
 
 export default NextAuth({
     // Configure one or more authentication providers
@@ -15,7 +16,7 @@ export default NextAuth({
         // ...add more providers here
     ],
     secret: process.env.JWT_SECRET,
-    adapter: MongoDBAdapter(dbConnect),
+    adapter: MongoDBAdapter(clientPromise),
     pages: {
         signIn: "/sign-in",
     },

@@ -15,6 +15,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "src/utils/global.d.ts", "**/*.ts", "**/*.tsx", "**/**/*.tsx",  "**/**/*.ts", "src/components/AddProduct/AddProduct.tsx"],
+  "include": ["next-env.d.ts", "src/utils/global.d.ts", "**/*.ts", "**/*.tsx", "**/**/*.tsx",  "**/**/*.ts", "src/components/AddProduct/AddProduct.tsx", "src/utils/mongodb.js"],
   "exclude": ["node_modules"]
 }
