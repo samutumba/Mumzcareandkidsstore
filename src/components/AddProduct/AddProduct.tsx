@@ -115,15 +115,17 @@ enum IFatherCategory {
   Literature = "Literature",
 }
 
+interface IDetailInput{
+    segment: string;
+    price: number;
+}
+
 interface IProductFormInput {
    brand: string,
     title: string;
     description: string;
     images: any[];
-    detail: [{
-        segment: string;
-        price: number;
-    }];
+    detail: IDetailInput[];
     quantity: {
         available: number;
     };
