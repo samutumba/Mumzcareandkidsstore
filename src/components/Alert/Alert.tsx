@@ -26,7 +26,7 @@ export const Alert: FC<IAlertProps> = ({children, type }) => {
         break;
       case AlertType.Error:
         Icon = <BsExclamationDiamond />
-        classname += "alert-error"
+        classname += "alert-error bg-error text-white"
         break;
       case AlertType.Success:
         Icon = <BsCheckCircle />;
@@ -42,7 +42,7 @@ export const Alert: FC<IAlertProps> = ({children, type }) => {
 
     return (
       <>
-        <div className="alert shadow-lg">
+        <div className={classname}>
           <div>
             { Icon }
             { children }

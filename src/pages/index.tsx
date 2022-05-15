@@ -8,7 +8,7 @@ const Home: NextPage = () => {
      //const products = UseProductValue()
 
   return (
-    <div className="font-title bg-slate-200 dark:bg-darkGreen text-md text-white">
+    <div className="font-title bg-slate-200 dark:bg-darkGreen text-md ">
         <Meta />
         <h1 className="text-3xl font-bold underline">Home Page</h1>
        {/* {products.map((product, key) => 

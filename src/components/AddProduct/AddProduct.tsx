@@ -3,10 +3,12 @@ import Select from "react-select";
 import { ToolTip } from "../ToolTip";
 import { MdInfoOutline, MdClose } from "react-icons/md";
 import { useEffect, useState, useRef } from "react";
-import {useDropzone} from 'react-dropzone';
+import { useDropzone} from 'react-dropzone';
 import Image from "next/image";
 import {BsCartPlusFill} from "react-icons/bs"
+import { RiDeleteBin6Line, RiAddCircleLine, RiRestartLine} from "react-icons/ri"
 import CreatableSelect from 'react-select/creatable';
+import { Alert, AlertType } from "../Alert";
 
 enum ICategory {
     BabiesAndKids = "Babies and Kids",
@@ -113,13 +115,30 @@ enum IFatherCategory {
   Literature = "Literature",
 }
 
+interface IProductFormInput {
+   brand: string,
+    title: string;
+    description: string;
+    images: any[];
+    detail: [{
+        segment: string;
+        price: number;
+    }];
+    quantity: {
+        available: number;
+    };
+    keywords: string[];
+    category: string;
+    subCategory: string;
+}
+
 interface IProductInput {
     brand: string,
     title: string;
     description: string;
     images: string[];
     detail: [{
-        type: string;
+        segment: string;
         price: number;
     }];
     quantity: {
@@ -131,8 +150,6 @@ interface IProductInput {
     category: string;
     subCategory: string;
 }
-
-var details: IDetail[] = new Array();
 
 const babyOptions = new Array();
 const motherOptions = new Array();
@@ -183,18 +200,39 @@ interface IOptionsType {
 type valueType = IOptionsType | undefined | string
 
 export const AddProduct: React.FC = () => {
-  const { register, handleSubmit, control, watch, setValue, getValues } = useForm<IProductInput>({ mode: "onBlur" });
-  const onSubmit: SubmitHandler<IProductInput> = (data) => alert("Something");
+  const { register, handleSubmit, control, watch, formState: { errors }, setValue, reset, getValues } = useForm<IProductFormInput>({
+    mode: "onBlur",
+    defaultValues: {
+      detail: [{ segment: "Default", price: 50000 }]
+    }
+  });
+  const { fields, append, remove } = useFieldArray(
+    {
+      control, // control props comes from useForm (optional: if you are using FormContext)
+      name: "detail", // unique name for your Field Array
+    }
+  );
   const [subcategory, setSubCategory] = useState(options)
-  const {acceptedFiles, getRootProps, getInputProps} = useDropzone();
+  const {acceptedFiles, getRootProps, getInputProps} = useDropzone( {
+    accept: {
+      'image/*': []
+    }
+  });
   
   const files = acceptedFiles.map((file, index) => (
     <li key={index}>
-     {index+1}: {file.name} - {file.size} bytes
+     {index+1}:{} {file.name} - {file.size} bytes
     </li>
   ));
-  
+
+
   let category = watch("category");
+
+  function onSubmit(data: any) 
+  {
+        // display form data on success
+        console.log('SUCCESS!! :-)\n\n' + JSON.stringify(data, null, 4));
+  }
 
   useEffect(()=>{
 
@@ -214,13 +252,9 @@ export const AddProduct: React.FC = () => {
   }, [watch, category])
 
   console.log(getValues("keywords"));
-  //Default values for a new product
-  //setValue("quantity.ordered", 0);
-  //setValue("quantity.sold", 0);
-
   return (
     <>
-      <div className="w-4/5 mx-auto bg-base p-3 rounded-lg">
+      <div className="w-4/5 mx-auto bg-base text-black p-3 rounded-lg">
         <form onSubmit={handleSubmit(onSubmit)}>
           <h1 className="font-bold text-4xl text-center font-title m-5">
             <BsCartPlusFill className="inline-block -mt-3 mr-4" />
@@ -241,10 +275,10 @@ export const AddProduct: React.FC = () => {
                   <div
                     {...getRootProps({
                       className:
-                        "dropzone h-28 border-2  border-dashed rounded-lg",
+                        " h-28 border-2  border-dashed rounded-lg",
                     })}
                   >
-                    <input {...getInputProps()} />
+                    <input {...getInputProps()} {...register("images")} accept="images/*" />
                     <p className="text-center align-middle font-normal">
                       Drag and drop some images here, or click to select image
                       files
@@ -259,11 +293,19 @@ export const AddProduct: React.FC = () => {
             </div>
             <div>
               <label className="font-bold">
+                {errors.brand?.type === "required" && (
+                  <Alert type={AlertType.Error}>Brand is required</Alert>
+                )}
+                {errors.brand?.type === "maxLength" && (
+                  <Alert type={AlertType.Error}>
+                    Brand cannot be more than 20 characters
+                  </Alert>
+                )}
                 Brand:
                 <input
                   type="text"
                   placeholder="Brand"
-                  {...register("brand")}
+                  {...register("brand", { required: true, maxLength: 20 })}
                   className="input w-full "
                 />
               </label>
@@ -358,7 +400,6 @@ export const AddProduct: React.FC = () => {
                 </label>
               )}
             </div>
-            <div></div>
             <div className="flex flex-row flex-wrap">
               <label className=" font-bold w-1/2 px-3">
                 Available:
@@ -372,12 +413,12 @@ export const AddProduct: React.FC = () => {
                   id="quantity.available"
                   type="number"
                   placeholder="Type here"
-                  className="input w-full h-10 font-normal max-w-xs"
+                  className="input w-full h-10 font-normal "
                   {...register("quantity.available")}
                 />
               </label>
               <label className="font-bold w-1/2 px-3">
-                Keywords: 
+                Keywords:
                 <Controller
                   control={control}
                   name={`keywords`}
@@ -385,67 +426,87 @@ export const AddProduct: React.FC = () => {
                   render={({ field: { onChange, onBlur, value } }) => (
                     <CreatableSelect
                       instanceId="keywords"
-                      value={keywordsOptions.filter((c) => value.includes(c.value))}
-                      onChange={(val) => onChange(val.map((c) => c.value))}
+                      value={keywordsOptions.filter((c) =>
+                        value.includes(c.value)
+                      )}
                       onBlur={onBlur}
                       className="font-normal rounded-lg"
                       placeholder="Give some keywords"
                       isMulti
                       options={keywordsOptions}
+                      onChange={(val) => onChange(val.map((c) => c.value))}
                     />
                   )}
                 />
               </label>
             </div>
+            <div>
+              <label className="font-bold w-full px-3">
+                Pricing:
+                <ul className="flex flex-row  flex-wrap">
+                  {fields.map((detail, index) => (
+                    <li key={index} className="flex flex-row flex-wrap w-full">
+                      <label className="font-bold w-5/12 px-3">
+                        Type:
+                        <input
+                          {...register(`detail.${index}.segment`)}
+                          name={`detail[${index}].segment`}
+                          defaultValue={`${detail.segment}`}
+                          className="input w-full "
+                        />
+                      </label>
+                      <label className="font-bold w-5/12 px-3">
+                        Price: (in Ugandan Shillings (shs))
+                        <input
+                          {...register(`detail.${index}.price`)}
+                          type="number"
+                          defaultValue={`${detail.price}`}
+                          className="input w-full p-2 "
+                        />
+                      </label>
+                      <button
+                        type="button"
+                        className="text-3xl hover:text-4xl w-2/12"
+                        onClick={() => remove(index)}
+                      >
+                        <RiDeleteBin6Line />
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+                <div className="m-auto flex flex-row gap-3 w-10/12">
+                  <button
+                    className="w-full rounded-md text-white p-2 bg-primary m-4"
+                    type="button"
+                    onClick={() => {
+                      append({ segment: "Default", price: 50000 });
+                    }}
+                  >
+                    <RiAddCircleLine /> Add Price Point
+                  </button>
+                  <button
+                    className="w-full rounded-md text-white p-2 bg-primary m-4"
+                    type="button"
+                    onClick={() =>
+                      reset({
+                        detail: [{ segment: "Default", price: 50000 }],
+                      })
+                    }
+                  >
+                    <RiRestartLine /> Reset Prices
+                  </button>
+                </div>
+              </label>
+            </div>
+            <button
+              type="submit"
+              className="w-full bg-secondary hover:p-4 text-white p-3 text-2xl rounded-lg"
+            >
+              SUBMIT
+            </button>
           </div>
         </form>
       </div>
     </>
   );
 };
-
-
-interface IDetail{
-    type: string,
-    price: number
-}
-
-const Details: React.FC =()=> {
-    const [ourDetails, setOurDetails] = useState(details)
-
-
-    return (
-      <>
-        {ourDetails.map((detail, i) => (
-          <Detail detail={detail} key={i} index={i} />
-        ))}
-      </>
-    );
-
-}
-
-interface IIndividualDetail {
-    detail: IDetail,
-    index: number
-}
-
-const Detail: React.FC<IIndividualDetail> = ({ detail, index }) => {
-
-  function deleteDetails() {
-    details.splice(index, 1);
-  }
-
-  return (
-    <>
-      <div className="border-1" key={index}>
-        <div className="flex flex-col flex-wrap">
-          <h5> Type: {detail.type}</h5>
-          <h5> Price: shs.{detail.price}</h5>
-        </div>
-        <button onClick={deleteDetails}>
-          <MdClose />
-        </button>
-      </div>
-    </>
-  );
-}

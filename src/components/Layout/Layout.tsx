@@ -1,6 +1,7 @@
 import { useTheme } from "../../hooks";
 import toast, { Toaster } from "react-hot-toast";
 import { Modal, NavBar, Footer } from "..";
+import { signOut } from "next-auth/react";
 
 interface ILayoutProps {
   children: React.ReactNode;
@@ -33,14 +34,14 @@ export const Layout: React.FC<ILayoutProps> = ({
 const LayoutItems = () => {
     return (
       <>
-        <Modal width={""} name={"logout"}>
+        <Modal name={"logout"}>
           <div className="flex flex-col">
             <div className="font-bold text-2xl">
               Are you sure you want to log out?
             </div>
             <div className="flex justify-evenly mt-8">
               <label className="rounded-lg bg-error py-3 w-1/5 text-center text-base-100">
-                <button>Yes</button>
+                <button onClick={() => signOut()}>Yes</button>
               </label>
               <label
                 htmlFor="modal-logout"

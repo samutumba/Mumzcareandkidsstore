@@ -9,7 +9,11 @@ const nextConfig = {
     GOOGLE_CLIENT_SECRET: "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",
     JWT_SECRET: "9c3755a137f53725290d4541cc240a96",
     FACEBOOK_CLIENT_ID: "526143029128085",
-    FACEBOOK_CLIENT_SECRET: "e9252d59311ac452861a3983cc071bff"
+    FACEBOOK_CLIENT_SECRET: "e9252d59311ac452861a3983cc071bff",
+    NEXTAUTH_URL: "https://mumzcareandkidsstore.com/"
+  },
+  images: {
+    domains: ["lh3.googleusercontent.com", "https://res.cloudinary.com"]
   }
 }
 

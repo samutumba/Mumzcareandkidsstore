@@ -4,9 +4,11 @@ import { Container, Modal, ToolTip } from "..";
 import { Toggle } from "./../Toogle/Toggle";
 import { UseCartValue } from "./../../hooks/StoreProvider";
 import Link  from "next/link";
+import { useSession } from "next-auth/react";
 
 export const NavBar = () => {
   const cart = UseCartValue();
+ 
   
   return (
     <Container>
@@ -42,48 +44,69 @@ export const NavBar = () => {
               </div>
             </div>
           </div>
-          <div className="dropdown dropdown-end">
-            <label
-              tabIndex={0}
-              className="btn btn-ghost bg-indigo-900 btn-circle avatar placeholder"
-            >
-              <div className="bg-neutral-focus text-neutral-content rounded-full w-24">
-                <span className="text-xl">SM</span>
-              </div>
-            </label>
-            <ul
-              tabIndex={0}
-              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
-            >
-              <li>
-                <Link href="/profile">
-                  <a>Profile</a>
-                </Link>
-              </li>
-              <li>
-                <Link href="/order">
-                  <a>Orders</a>
-                </Link>
-              </li>
-              <li>
-                <Link href="/wishlist">
-                  <a> Wishlist </a>
-                </Link>
-              </li>
-              <li>
-                <Link href="/settings">
-                  <a>Settings</a>
-                </Link>
-              </li>
-              <li>
-                <label htmlFor="modal-logout">
-                  <a>Logout</a>
-                </label>
-              </li>
-            </ul>
-          </div>
+         <SignIn />
         </div>
       </div>
     </Container>
   );
 };
+
+const SignIn = () => {
+  const { data: session } = useSession();
+
+  if (session){
+    const image: string = 
+      session.user?.image ||
+      "https://res.cloudinary.com/mumzcareandkidsstore/image/upload/v1652474453/default/avatar_mz22fg.png";
+
+     return (
+    <div className="dropdown dropdown-end">
+      <label
+        tabIndex={0}
+        className="btn btn-ghost bg-indigo-900 btn-circle avatar placeholder"
+      >
+        <div className="bg-neutral-focus text-neutral-content rounded-full w-24">
+          <Image className="rounded-full" src={image} layout="fill" alt={session.user?.name?.charAt(0)}/>
+        </div>
+      </label>
+      <ul
+        tabIndex={0}
+        className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+      >
+        <li>
+          <Link href="/profile">
+            <a>Profile</a>
+          </Link>
+        </li>
+        <li>
+          <Link href="/order">
+            <a>Orders</a>
+          </Link>
+        </li>
+        <li>
+          <Link href="/wishlist">
+            <a> Wishlist </a>
+          </Link>
+        </li>
+        <li>
+          <Link href="/settings">
+            <a>Settings</a>
+          </Link>
+        </li>
+        <li>
+          <label htmlFor="modal-logout">
+            <a>Logout</a>
+          </label>
+        </li>
+      </ul>
+    </div>);
+  }
+  
+  return (
+    <>
+      <Link href="/sign-in" passHref>
+        <button className="bg-primary py-1 px-4 rounded-md text-white font-bold hover:py-2 hover:px-5">Sign In</button>
+      </Link>
+    </>
+  );
+} 
