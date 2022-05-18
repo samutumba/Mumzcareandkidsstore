@@ -10,7 +10,12 @@ const nextConfig = {
     JWT_SECRET: "9c3755a137f53725290d4541cc240a96",
     FACEBOOK_CLIENT_ID: "521190436091719",
     FACEBOOK_CLIENT_SECRET: "7c6660e9cfdb4ce8a85533d0809da195",
-    NEXTAUTH_URL: "https://mumzcareandkidsstore.com/"
+    NEXTAUTH_URL: "https://mumzcareandkidsstore.com/",
+    EMAIL_SERVER_USER: "mumzcareandkidsstore@gmail.com",
+    EMAIL_SERVER_PASSWORD: "xsmtpsib-a959e2a5ddbf86f1c7bfd55948758a5a2f753ac3187218e72f5161cffc0e687b-Ah7DRVCFG3Bq4knT",
+    EMAIL_SERVER_HOST: "smtp-relay.sendinblue.com",
+    EMAIL_SERVER_PORT: "587",
+    EMAIL_FROM: "mumzcareandkidsstore@gmail.com"
   },
   images: {
     domains: ["lh3.googleusercontent.com", "https://res.cloudinary.com", "https://platform-lookaside.fbsbx.com"]
