@@ -15,9 +15,7 @@ export const NavBar = () => {
       <div className="navbar bg-transparent">
         <div className="flex-1">
           <Link href="/" passHref>
-              <div className="btn btn-ghost text-green normal-case text-xl">
-                  Mumzcare
-              </div>
+              <Image src="/Final-Logo.png" alt="Home logo" width={140} className="hover:bg-base-300 hover:rounded-lg" height={70}/>
           </Link>
         </div>
         <div className="flex-none">

@@ -8,8 +8,8 @@ const nextConfig = {
     GOOGLE_CLIENT_ID: "523487877571-thsnvkrlk5pnvonp5sptsh850id898uc.apps.googleusercontent.com",
     GOOGLE_CLIENT_SECRET: "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",
     JWT_SECRET: "9c3755a137f53725290d4541cc240a96",
-    FACEBOOK_CLIENT_ID: "526143029128085",
-    FACEBOOK_CLIENT_SECRET: "e9252d59311ac452861a3983cc071bff",
+    FACEBOOK_CLIENT_ID: "521190436091719",
+    FACEBOOK_CLIENT_SECRET: "7c6660e9cfdb4ce8a85533d0809da195",
     NEXTAUTH_URL: "https://mumzcareandkidsstore.com/"
   },
   images: {

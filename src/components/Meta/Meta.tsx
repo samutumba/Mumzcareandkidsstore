@@ -3,14 +3,12 @@ import Head from "next/head";
 
 interface IMetaProps {
     title?: string,
-    socialTitle?: string,
-    socialDesc?: string,
     description?: string,
     keywords?: string[],
     robot?: boolean
 }
 
-export const Meta: FC<IMetaProps> = ({title, description, keywords, robot, socialTitle, socialDesc}) => {
+export const Meta: FC<IMetaProps> = ({title, description, keywords, robot}) => {
     let key:string = '';
     if (keywords != undefined){
         key+= keywords.join(",");
@@ -20,19 +18,10 @@ export const Meta: FC<IMetaProps> = ({title, description, keywords, robot, socia
       <>
         <Head>
           <title>{title}</title>
-          <meta charSet="UTF-8"></meta>
-          <meta property="og:title" content={socialTitle} />
-          <meta property="og:description" content={socialDesc} />
-          <meta
-            property="og:image"
-            content="https://example.com/images/cool-page.jpg"
-          />
-         
-          <link rel="icon" href="/favicon.ico" />
-          <meta
-            name="viewport"
-            content="width=device-width,initial-scale=1.0"
-          ></meta>
+          
+          <meta property="og:title" content={title} />
+          <meta property="og:description" content={description} />
+          
           <meta name="description" content={description}></meta>
           <meta
             name="robots"
@@ -45,10 +34,8 @@ export const Meta: FC<IMetaProps> = ({title, description, keywords, robot, socia
 }
 
 Meta.defaultProps = {
-  title: "Mumzcare",
+  title: "Mumz Care and Kids Store",
   description: "Mumzcare",
   keywords: ["baby", "mother", "pregnancy", "maternal"],
   robot: true,
-  socialDesc: "",
-  socialTitle: "Mumzcare",
 };

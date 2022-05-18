@@ -14,8 +14,7 @@ const Settings: NextPage = () => {
           "Babies Clothing",
           "Flavia Katamba",
         ]}
-        socialTitle="About: Mumz Care and Kid's Store"
-        socialDesc="E-Commerce platform dedicated to providing the Ugandan market with produces for mother's, babies and the odd father."
+       
         description="E-Commerce platform dedicated to providing the Ugandan market with produces for mother's, babies and the odd father."
       />
 

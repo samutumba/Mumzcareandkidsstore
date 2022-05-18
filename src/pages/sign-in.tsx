@@ -9,9 +9,7 @@ const SignIn: NextPage = () => {
   return (
     <div className="font-title bg-slate-200 text-md text-white">
       <Meta
-        title="Wishlist: Mumz Care and Kid's Store"
-        socialTitle="Wishlist: Mumz Care and Kid's Store"
-        socialDesc="E-Commerce platform dedicated to providing the Ugandan market with produces for mother's, babies and the odd father."
+        title="Sign In: Mumz Care and Kid's Store"
         description="E-Commerce platform dedicated to providing the Ugandan market with produces for mother's, babies and the odd father."
       />
 

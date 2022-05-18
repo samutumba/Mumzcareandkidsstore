@@ -7,7 +7,6 @@ const NotFound: NextPage =()=> {
       <div className="not-found">
           <Meta 
             title="404 - Not Found"
-            socialTitle="Page Not Found - Mumzcare"
             robot={false}
           />
         <div className="hero min-h-screen bg-base-200">

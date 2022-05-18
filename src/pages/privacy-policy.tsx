@@ -13,8 +13,7 @@ const PrivacyPolicy: NextPage = () => {
           "Mother's Clothing",
           "Babies Clothing",
         ]}
-        socialTitle="Privacy Policy: Mumz Care and Kid's Store"
-        socialDesc="Explore the policy that guides our service to you the customer."
+        
         description="Explore the policy that guides our service to you the customer"
       />
       <Container>   

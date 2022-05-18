@@ -5,7 +5,7 @@ const TermsAndConditions: NextPage = () => {
   return (
     <div className="font-title bg-slate-200 text-md text-white">
       <Meta
-        title="Terms and Conditions: Mumz Care and Kid's Store"
+        title="Terms of Service: Mumz Care and Kid's Store"
         keywords={[
             "terms",
             "conditions",
@@ -18,11 +18,9 @@ const TermsAndConditions: NextPage = () => {
           "Uganda",
           "Kampala"
         ]}
-        socialTitle="Terms and Conditions: Mumz Care and Kid's Store"
-        socialDesc="Explore the terms and conditions that guides our service to you the customer."
         description="Explore the terms and conditions that guides our service to you the customer"
       />
-      <h1 className="text-3xl font-bold underline">Terms and Conditions</h1>
+      <h1 className="text-3xl font-bold underline">Terms of Service</h1>
     </div>
   );
 };
