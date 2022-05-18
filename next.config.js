@@ -13,7 +13,7 @@ const nextConfig = {
     NEXTAUTH_URL: "https://mumzcareandkidsstore.com/"
   },
   images: {
-    domains: ["lh3.googleusercontent.com", "https://res.cloudinary.com"]
+    domains: ["lh3.googleusercontent.com", "https://res.cloudinary.com", "https://platform-lookaside.fbsbx.com"]
   }
 }
 
