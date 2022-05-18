@@ -11,11 +11,7 @@ const Home: NextPage = () => {
     <div className="font-title bg-slate-200 dark:bg-darkGreen text-md ">
         <Meta />
         <h1 className="text-3xl font-bold underline">Home Page</h1>
-       {/* {products.map((product, key) => 
-          <h2 key={key} id={`${product.id}`}>
-            Title: {product.title} \n
-          </h2>
-       )}*/}
+        
     </div>
   );
 

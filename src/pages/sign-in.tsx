@@ -4,8 +4,13 @@ import { getProviders, signIn } from "next-auth/react";
 import {FcGoogle} from "react-icons/fc"
 import {BsFacebook} from "react-icons/bs"
 import Link from 'next/link'
+import { useForm } from 'react-hook-form';
 
 const SignIn: NextPage = () => {
+  const { register, handleSubmit,  formState: { errors } } = useForm({
+    mode: "onBlur"
+  });
+
   return (
     <div className="font-title bg-slate-200 text-md text-white">
       <Meta
@@ -37,18 +42,31 @@ const SignIn: NextPage = () => {
             </button>
           </div>
           <div className="divider text-black">Or sign in with e-mail</div>
-            <div className=" text-black mx-5">        
+            <form onSubmit={handleSubmit(d => signIn("email", { email: d.email }))}>
+              <div className=" text-black mx-5">        
                 <input
-                type="text"
+                type="email"
                 placeholder="Your Email..."
-                className="input block h-9 w-full"
+                 {...register("email",
+                { required: true, 
+                 pattern: /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/ 
+                })}
+                className={errors.email ? "input block h-9 w-full text-error border-2 border-error" : "input block h-9 w-full"}
                 />
+                {errors.email?.type === 'required' && <p className="text-xs text-center font-bold text-error">You must provide an email</p>}
+                {errors.email?.type === 'pattern' && <p className="text-xs text-center font-bold text-error">You must provide a valid email address</p>}
             </div>
             <div className="mx-5 mb-6">
                 <div className="form-control">
+                    
                     <label className="label cursor-pointer">
-                    <input type="checkbox" className="checkbox" />
-                    <span className="ml-4 label-text text-xs">
+                    <input 
+                      type="checkbox" 
+                      {...register("agreed", { required: true })}
+                      className={errors.agreed ? "checkbox border-2 border-error" : "checkbox"}
+                    />
+                    
+                    <span className="ml-4 label-text text-xs ">
                         By ticking, you are confirming that you have read, understood and agree to the 
                         <Link href="/terms-of-service" passHref>
                             <span className="underline text-info"> terms of service</span>
@@ -61,7 +79,10 @@ const SignIn: NextPage = () => {
                         </Link>.
                     </span> 
                     </label>
+                    {errors.agreed?.type === 'required' && <p className="text-xs text-center font-bold text-error">You must agree in order to sign in</p>}
+                    
                 </div>
+                {errors.agreed && <p>{errors.agreed.message}</p>}
                 <button
                 className="bg-white text-black hover:border text-md font-p w-full p-1 rounded-md"
                 type="submit"
@@ -69,6 +90,9 @@ const SignIn: NextPage = () => {
                 Sign In
                 </button>
             </div>
+
+            </form>
+            
         </div>
       </div>
       

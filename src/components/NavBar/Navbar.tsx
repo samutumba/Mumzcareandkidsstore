@@ -63,8 +63,8 @@ const SignIn = () => {
         tabIndex={0}
         className="btn btn-ghost bg-indigo-900 btn-circle avatar placeholder"
       >
-        <div className="bg-neutral-focus text-neutral-content rounded-full w-24">
-          <Image className="rounded-full" src={image} layout="fill" alt={session.user?.name?.charAt(0)}/>
+        <div className="bg-neutral-focus text-neutral-content rounded-md w-24">
+          <Image className="rounded-md" src={image} layout="fill" alt={session.user?.name?.charAt(0)}/>
         </div>
       </label>
       <ul
