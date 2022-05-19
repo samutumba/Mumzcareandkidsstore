@@ -12,10 +12,10 @@ const nextConfig = {
     FACEBOOK_CLIENT_SECRET: "7c6660e9cfdb4ce8a85533d0809da195",
     NEXTAUTH_URL: "https://mumzcareandkidsstore.com/",
     EMAIL_SERVER: "smtp.sendgrid.net",
-    EMAIL_SERVER_USER: "apikey",
+    EMAIL_SERVER_USER: "nextauth",
     EMAIL_SERVER_PASSWORD: "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",
     EMAIL_SERVER_HOST: "smtp.sendgrid.net",
-    EMAIL_SERVER_PORT: "465",
+    EMAIL_SERVER_PORT: "587",
     EMAIL_FROM: "mumzcareandkidsstore@gmail.com"
   },
   images: {
