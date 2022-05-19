@@ -1,6 +1,5 @@
 import { ProductDetails } from "../../components";
 import { ProductType } from "../../types";
-import { UseProductValue } from "./../../hooks/StoreProvider";
 import {
   GetStaticProps,
   GetStaticPaths,
