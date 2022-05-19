@@ -18,7 +18,8 @@ export default NextAuth({
         FacebookProvider({
             clientId: process.env.FACEBOOK_CLIENT_ID,
             clientSecret: process.env.FACEBOOK_CLIENT_SECRET
-        }), EmailProvider({
+        }), 
+        EmailProvider({
             server: {
                 host: process.env.EMAIL_SERVER_HOST,
                 port: process.env.EMAIL_SERVER_PORT,
@@ -55,7 +56,7 @@ export default NextAuth({
                 })
                 }
         }})
-                
+       
     ],
     secret: process.env.JWT_SECRET,
     adapter: MongoDBAdapter(clientPromise),
