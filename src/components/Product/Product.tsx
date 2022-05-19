@@ -1,6 +1,5 @@
 import { ProductType } from "../../types";
 import Image from "next/image";
-import { UseProductValue } from "../../hooks/StoreProvider";
 import Link from "next/link";
 
 interface IProductPreviewProps {
