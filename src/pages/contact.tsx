@@ -1,9 +1,11 @@
 import { NextPage } from "next";
 import { Footer, Meta, NavBar } from "../components";
+import { Layout } from "./../components";
 
 const Contact: NextPage = () => {
   return (
-    <div className="font-title bg-slate-200 text-md text-white">
+    <Layout>
+      <div className="font-title bg-slate-200 text-md text-white">
       <Meta
         title="Contact: Mumz Care and Kid's Store"
         keywords={[
@@ -21,6 +23,8 @@ const Contact: NextPage = () => {
 
       <h1 className="text-3xl font-bold underline">Contact Us!</h1>
     </div>
+    </Layout>
+    
   );
 };
 

@@ -2,13 +2,11 @@ import Image from "next/image";
 import {BsBag} from "react-icons/bs"
 import { Container, Modal, ToolTip } from "..";
 import { Toggle } from "./../Toogle/Toggle";
-import { UseCartValue } from "./../../hooks/StoreProvider";
 import Link  from "next/link";
 import { useSession } from "next-auth/react";
 
 export const NavBar = () => {
-  const cart = UseCartValue();
- 
+
   
   return (
     <Container>

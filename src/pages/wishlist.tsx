@@ -1,9 +1,11 @@
 import { NextPage } from "next";
 import { Footer, Meta, NavBar } from "../components";
+import { Layout } from "./../components";
 
 const WishList: NextPage = () => {
   return (
-    <div className="font-title bg-slate-200 text-md text-white">
+    <Layout>
+      <div className="font-title bg-slate-200 text-md text-white">
       <Meta
         title="Wishlist: Mumz Care and Kid's Store"
         robot={false}
@@ -11,6 +13,8 @@ const WishList: NextPage = () => {
       />
       <h1 className="text-3xl font-bold underline">Your WishList!</h1>
     </div>
+    </Layout>
+    
   );
 };
 

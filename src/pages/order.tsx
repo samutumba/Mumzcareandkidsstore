@@ -1,5 +1,6 @@
 import { NextPage } from "next";
 import { Footer, Meta, NavBar } from "../components";
+import { Layout } from "./../components";
 
 const Order: NextPage = () => {
   return (

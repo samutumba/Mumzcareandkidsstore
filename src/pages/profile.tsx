@@ -1,13 +1,14 @@
 import { NextPage } from "next";
 import { Footer, Meta, NavBar } from "../components";
-import { UseUserValue } from "../hooks/StoreProvider";
+import { Layout } from "./../components";
 
 const Profile: NextPage = () => {
 
     //const user = UseUserValue()
     //const UserName = user.name.firstname
   return (
-    <div className="font-title bg-slate-200 text-md text-white">
+    <Layout>
+       <div className="font-title bg-slate-200 text-md ">
       <Meta
         title="About: Mumz Care and Kid's Store"
         keywords={[
@@ -23,9 +24,10 @@ const Profile: NextPage = () => {
       />
      
       <h1 className="text-3xl font-bold underline">Profile !</h1>
-      {/*<p>Hi {UserName.charAt(0).toUpperCase()+UserName.slice(1)}</p>
-*/}
+      
     </div>
+    </Layout>
+   
   );
 };
 

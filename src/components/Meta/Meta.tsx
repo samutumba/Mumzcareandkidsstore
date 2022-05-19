@@ -17,11 +17,13 @@ export const Meta: FC<IMetaProps> = ({title, description, keywords, robot}) => {
     return (
       <>
         <Head>
-          <title>{title}</title>
-          
+          <title>{title}</title> 
           <meta property="og:title" content={title} />
           <meta property="og:description" content={description} />
-          
+          <meta
+            name="viewport"
+            content="width=device-width,initial-scale=1.0"
+          ></meta>
           <meta name="description" content={description}></meta>
           <meta
             name="robots"

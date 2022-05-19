@@ -1,8 +1,9 @@
 import { NextPage } from "next";
+import Image from "next/image"
 import { Footer, Meta, NavBar } from "../components";
 import { getProviders, signIn } from "next-auth/react";
-import {FcGoogle} from "react-icons/fc"
-import {BsFacebook} from "react-icons/bs"
+import { FcGoogle } from "react-icons/fc"
+import { BsFacebook } from "react-icons/bs"
 import Link from 'next/link'
 import { useForm } from 'react-hook-form';
 
@@ -12,13 +13,17 @@ const SignIn: NextPage = () => {
   });
 
   return (
-    <div className="font-title bg-slate-200 text-md text-white">
+    <div className="flex font-title bg-slate-200  text-md h-screen  text-white">
       <Meta
         title="Sign In: Mumz Care and Kid's Store"
         description="E-Commerce platform dedicated to providing the Ugandan market with produces for mother's, babies and the odd father."
       />
-
-      <div className="m-auto w-96 border rounded-lg bg-base ">
+      <div className="m-auto self-center bg-base-200 w-96 object-center border border-black rounded-xl ">
+        <div className="flex justify-center">
+          <Link href="/" passHref>
+              <Image src="/Final-Logo.png" alt="Home logo" width={180} className="hover:bg-base-300 hover:rounded-lg" height={90}/>
+          </Link>
+        </div>
         <h1 className="text-3xl mt-4 font-bold text-center text-black">
           Sign In
         </h1>
@@ -42,7 +47,7 @@ const SignIn: NextPage = () => {
             </button>
           </div>
           <div className="divider text-black">Or sign in with e-mail</div>
-            <form onSubmit={handleSubmit(d => signIn("email", { email: d.email }))}>
+            <form onSubmit={handleSubmit(d => signIn("email", { email: d.email, callbackUrl: "/" }))}>
               <div className=" text-black mx-5">        
                 <input
                 type="email"

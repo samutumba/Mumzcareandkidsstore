@@ -1,11 +1,12 @@
 import { NextPage } from "next";
 import { Footer, Meta, NavBar } from "../components";
-import { UseUserValue } from "../hooks/StoreProvider";
+import { Layout } from "./../components";
 
 const CheckOut: NextPage = () => {
 
   return (
-    <div className="font-title bg-slate-200 text-md text-white">
+    <Layout>
+      <div className="font-title bg-slate-200 text-md text-white">
       <Meta
         title="About: Mumz Care and Kid's Store"
         keywords={[
@@ -23,6 +24,9 @@ const CheckOut: NextPage = () => {
       <h1 className="text-3xl font-bold underline">Check Out !</h1>
 
     </div>
+
+    </Layout>
+    
   );
 };
 
