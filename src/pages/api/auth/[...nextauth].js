@@ -54,6 +54,7 @@ export default NextAuth({
                         email
                     })
                 })
+                console.log(server)
                 }
         }})
        
