@@ -1,16 +1,28 @@
 import { NextPage } from "next";
 import Image from "next/image"
 import { Footer, Meta, NavBar } from "../components";
-import { getProviders, signIn } from "next-auth/react";
+import { getProviders, signIn, useSession } from "next-auth/react";
 import { FcGoogle } from "react-icons/fc"
 import { BsFacebook } from "react-icons/bs"
 import Link from 'next/link'
 import { useForm } from 'react-hook-form';
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 const SignIn: NextPage = () => {
   const { register, handleSubmit,  formState: { errors } } = useForm({
     mode: "onBlur"
   });
+
+    const { data: session, status } = useSession()
+    
+    const router = useRouter()
+    useEffect(() => {
+        if (session) {
+            router.push("/")
+        }
+    });
+     
 
   return (
     <div className="flex font-title bg-slate-200  text-md h-screen  text-white">

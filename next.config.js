@@ -13,10 +13,10 @@ const nextConfig = {
     NEXTAUTH_URL: "https://mumzcareandkidsstore.com/",
     EMAIL_SERVER: "smtp.gmail.com",
     EMAIL_SERVER_USER: "mumzcareandkidsstore@gmail.com",
-    EMAIL_SERVER_PASSWORD: "admin@mumz",
+    EMAIL_SERVER_PASSWORD: "iafexpyqsykleaox",
     EMAIL_SERVER_HOST: "smtp.gmail.com",
     EMAIL_SERVER_PORT: "587",
-    EMAIL_FROM: "mumzcareandkidsstore@gmail.com"
+    EMAIL_FROM: "MumzCare Team <mumzcareandkidsstore@gmail.com>"
   },
   images: {
     domains: ["lh3.googleusercontent.com", "res.cloudinary.com", "platform-lookaside.fbsbx.com"]

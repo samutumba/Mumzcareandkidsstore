@@ -26,43 +26,45 @@ export default NextAuth({
                 auth: {
                     user: process.env.EMAIL_SERVER_USER,
                     pass: process.env.EMAIL_SERVER_PASSWORD
-                },
-                from: process.env.EMAIL_FROM,
+                }
+            },
+            from: process.env.EMAIL_FROM,
             async sendVerificationRequest({
-                identifier: email,
-                url,
-                provider: {
-                    server,
-                    from
-                }
+            identifier: email,
+            url,
+            provider: {
+                server,
+                from
+            }
             }) {
-                const {
+            const {
+                host
+            } = new URL(url)
+            const transport = nodemailer.createTransport(server)
+            await transport.sendMail({
+                to: email,
+                from,
+                subject: `Sign in to Mumz Car and Kids Store`,
+                text: text({
+                    url,
                     host
-                } = new URL(url)
-                const transport = nodemailer.createTransport(server)
-                await transport.sendMail({
-                    to: email,
-                    from,
-                    subject: `Login to Mumz Care and Kids Store`,
-                    text: text({
-                        url,
-                        host
-                    }),
-                    html: html({
-                        url,
-                        host,
-                        email
-                    })
-                })
-                console.log(server)
-                }
-        }})
-       
-    ],
+                }),
+                html: html({
+                    url,
+                    host,
+                    email
+                }),
+            })
+        }
+            }),
+],
     secret: process.env.JWT_SECRET,
     adapter: MongoDBAdapter(clientPromise),
     pages: {
         signIn: "/sign-in",
+        error: '/auth/error',
+        verifyRequest: '/auth/verifyRequest',
+        newUser: '/auth/newUser'
     },
     session: {
         strategy: "jwt",
@@ -70,6 +72,43 @@ export default NextAuth({
     },
     debug: true,
 })
+
+const customVerificationRequest = ({
+    identifier: email,
+    url,
+    token,
+    baseUrl,
+    provider
+}) => {
+    return new Promise((resolve, reject) => {
+        const {
+            server,
+            from
+        } = provider;
+        const site = baseUrl.replace(/^https?:\/\//, "");
+        nodemailer.createTransport(server).sendMail({
+            to: email,
+            from,
+            subject: `Sign in to ${site}`,
+            text: text({
+                url,
+                site,
+                email
+            }),
+            html: html({
+                url,
+                site,
+                email
+            }),
+        }, (error) => {
+            if (error) {
+                logger.error("SEND_VERIFICATION_EMAIL_ERROR", email, error);
+                return reject(new Error("SEND_VERIFICATION_EMAIL_ERROR", error));
+            }
+            return resolve();
+        });
+    });
+};
 
 function html({
     url,
@@ -79,12 +118,43 @@ function html({
     const escapedEmail = `${email.replace(/\./g, '&#8203;.')}`
     // Your email content
     return `
-      <body>
-        <h1>Welcome to Mumz Care and Kids Store!</h1>
-        <h3>You requested a login form ${escapedEmail}</h3>
-        <p>
-          <a href="${url}">Login</a>
-      </body>
+        <head>
+          <link rel = "preconnect" href = "https://fonts.gstatic.com" / >
+          <link rel = "preconnect" href = "https://fonts.googleapis.com" / >
+          <link href = "https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500&family=Raleway:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel = "stylesheet" / >
+          <script src = "https://cdn.tailwindcss.com"> </script> 
+        </head> 
+          <body style = "background: #fdfffd;" >
+          <div class = "flex flex-col" style="margin-auto" >
+          <div class = "m-auto" >
+          <div class = "flex flex-col text-center" >
+          <a class = "self-center" href = "https://mumzcareandkidsstore.com/" >
+            <img src = "https://mumzcareandkidsstore.com/Final-logo.png"
+            style = "width: 220px; height: fit-content"
+            alt = "logo">
+          </a> <p
+                class = "my-2 font-bold"
+                style = "padding: 10px 0px 0px 0px; font-size: 30px; font-family: Raleway, Arial, sans-serif; color: #333433;" >
+                    Welcome to Mumz Care and Kids Store!
+          </p> <p
+            class = "my-1"
+            style = "padding: 10px 0px 0px 0px; font-size: 18px; font-family: Quicksand, Arial, sans-serif; color: #333433;" >
+                In order to sign in click the link below
+          </p> 
+          <button class = "w-44 hover:w-48 hover:p-1 self-center my-5 rounded-lg"
+            style = " background: #d80945;">
+            <a href = "${url}"
+                target = "_blank"
+                style = "color: #fdfffd; font-size: 18px; font-family: Quicksand, Arial, sans-serif; text-decoration: none; padding: 10px 20px; display: inline-block; font-weight: bold;" >
+            Sign In </a> 
+          </button> 
+          <p style = "padding: 0px 0px 10px 0px; font-size: 15px; line-height: 22px; font-family: Quicksand, Arial, sans-serif;" >
+            If you did not request this email you can safely ignore it. 
+          </p> 
+          </div> 
+          </div> 
+          </div> 
+        </body>
   `
 }
 
