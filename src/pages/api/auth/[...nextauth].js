@@ -118,14 +118,14 @@ function html({
     const escapedEmail = `${email.replace(/\./g, '&#8203;.')}`
     // Your email content
     return `
-        <head>
-          <link rel = "preconnect" href = "https://fonts.gstatic.com" / >
-          <link rel = "preconnect" href = "https://fonts.googleapis.com" / >
-          <link href = "https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500&family=Raleway:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel = "stylesheet" / >      
         </head> 
           <body style = "background: #fdfffd;" >
-           <script src = "https://cdn.tailwindcss.com"></script>
-          <div class = "flex flex-col" style="margin-auto" >
+           <head>
+               <link rel = "preconnect" href = "https://fonts.gstatic.com" />
+               <link rel = "preconnect" href = "https://fonts.googleapis.com" />
+               <link href = "https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500&family=Raleway:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel = "stylesheet" />
+                <script src = "https://cdn.tailwindcss.com"></script>
+          <div class = "flex flex-col" style="margin: auto;" >
           <div class = "m-auto" >
           <div class = "flex flex-col text-center" >
           <a class = "self-center" href = "https://mumzcareandkidsstore.com/" >
@@ -141,7 +141,6 @@ function html({
             style = "padding: 10px 0px 0px 0px; font-size: 18px; font-family: Quicksand, Arial, sans-serif; color: #333433;" >
                 In order to sign in click the link below 
           </p> 
-          < /p>
           <button class = "w-44 hover:w-48 hover:p-1 self-center my-5 rounded-lg"
             style = " background: #d80945;">
             <a href = "${url}"
@@ -149,8 +148,7 @@ function html({
                 style = "color: #fdfffd; font-size: 18px; font-family: Quicksand, Arial, sans-serif; text-decoration: none; padding: 10px 20px; display: inline-block; font-weight: bold;" >
             Sign In </a> 
           </button> 
-           < p
-           style = "padding: 10px 0px 0px 0px; font-size: 18px; font-family: Quicksand, Arial, sans-serif; color: #333433;" >
+           <p style = "padding: 10px 0px 0px 0px; font-size: 18px; font-family: Quicksand, Arial, sans-serif; color: #333433;" >
                Remember you can only use this link once
            if you need another one visit the <a class="underline" href = "https://mumzcareandkidsstore.com/sign-in">sign in page </a></p>
           <p style = "padding: 0px 0px 10px 0px; font-size: 15px; line-height: 22px; font-family: Quicksand, Arial, sans-serif;" >

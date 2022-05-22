@@ -9,9 +9,9 @@ const verifyRequest: NextPage = () => {
             <div className="flex flex-col md:flex-row h-full flex-wrap">
                 <div className="flex items-center text-center p-6 font-title w-full md:w-1/2 h-1/2 md:h-full">
                     <div>
-                            <h2 className="font-black text-5xl">You are almost There!!</h2><br/>
-                            <p className="font-bold text-xl font-p">Check the email you entered for a link to sign in</p>
-                            <p className="text-md font-p">The link lasts 24 hours so dont be long</p>
+                        <h2 className="font-black text-3xl md:text-5xl">You are Almost There!!</h2>
+                        <p className="font-bold text-xl font-p">Check the email you entered for a link to sign in</p>
+                        <p className="text-md font-p">The link lasts 24 hours so dont be long</p>
                     </div>
                 </div>
                 <div className="flex items-center w-full md:w-1/2 h-1/2 md:h-full p-6">
