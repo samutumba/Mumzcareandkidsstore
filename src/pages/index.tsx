@@ -1,7 +1,8 @@
 import type {
   NextPage
 } from "next";
-import { Footer, Meta, NavBar } from "../components";
+import { Footer, Hero, Meta, NavBar, Section } from "../components";
+import { ExploreSection } from "../components/Explore";
 import { Layout } from "./../components";
 
 const Home: NextPage = () => {
@@ -11,9 +12,12 @@ const Home: NextPage = () => {
     <Layout>
        <div className="font-title bg-slate-200 dark:bg-darkGreen text-md ">
         <Meta />
-        <h1 className="text-3xl font-bold underline">Home Page</h1>
-        
-    </div>
+        <Hero />
+        <Section title="">
+          <ExploreSection title="" link="" image="" />
+        </Section>
+        Home
+        </div>
 
     </Layout>
    

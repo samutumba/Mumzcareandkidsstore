@@ -20,4 +20,5 @@ export async function getServerSideProps(ctx: GetSessionParams | undefined) {
   };
 }
 
+
 export default MyApp

@@ -1,10 +1,12 @@
 import { NextPage } from "next";
-import { Footer, Meta, NavBar, Container } from "../components";
+import { BiCookie } from "react-icons/bi"
+import { MdPrivacyTip, MdOutlineSell } from "react-icons/md"
+import { Footer, Meta, NavBar, Container, Layout } from "../components";
 
 const PrivacyPolicy: NextPage = () => {
   return (
-    <div className="font-title bg-slate-200 mx-9 m-auto text-white">
-      <Meta
+      <Layout>
+        <Meta
         title="Privacy Policy: Mumz Care and Kid's Store"
         keywords={[
           "Privacy Policy",
@@ -16,8 +18,17 @@ const PrivacyPolicy: NextPage = () => {
         
         description="Explore the policy that guides our service to you the customer"
       />
-      <Container>   
-      <h1 className="text-5xl font-title font-extrabold my-7">Privacy Policy</h1>
+      <div className="flex flex-col md:flex-row p-4">
+        <div className="w-full p-6 text-xl">
+          <h2 className="mb-3 text-2xl">Legal Documents: </h2>
+          <ul>
+            <li><MdPrivacyTip /> Privacy Policy</li>
+            <li><MdOutlineSell /> Terms of Service</li>
+            <li><BiCookie/> Cookie Policy</li>
+          </ul>
+        </div>
+        <div>
+          <h1 className="text-5xl font-title font-extrabold my-7">Privacy Policy</h1>
       <div className="text-md font-p mx-auto ">
           <p className="mb-5">Your privacy is important to us. It is Mumz Care And Kids Store&#39;s policy to respect your privacy and comply with any applicable law and regulation regarding any personal information we may collect about you, including across our website, <a href="https://mumzcareandkidsstore.com/">https://mumzcareandkidsstore.com/</a>, and other sites we own and operate. </p>
           <p className="mb-5">Personal information is any information about you which can be used to identify you. This includes information about you as a person (such as name, address, and date of birth), your devices, payment details, and even information about how you use a website or online service. </p>
@@ -115,8 +126,9 @@ const PrivacyPolicy: NextPage = () => {
           <p>Contact Page<br />
           https://mumzcareandkidsstore.com/contact </p>
       </div>
-      </Container>
-    </div>
+        </div>
+      </div>
+      </Layout>
   );
 };
 export default PrivacyPolicy;

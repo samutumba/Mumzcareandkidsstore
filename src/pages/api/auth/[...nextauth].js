@@ -44,7 +44,7 @@ export default NextAuth({
             await transport.sendMail({
                 to: email,
                 from,
-                subject: `Sign in to Mumz Car and Kids Store`,
+                subject: `Sign in to Mumz Care and Kids Store`,
                 text: text({
                     url,
                     host
@@ -57,7 +57,7 @@ export default NextAuth({
             })
         }
             }),
-],
+    ],
     secret: process.env.JWT_SECRET,
     adapter: MongoDBAdapter(clientPromise),
     pages: {
@@ -72,43 +72,6 @@ export default NextAuth({
     },
     debug: true,
 })
-
-const customVerificationRequest = ({
-    identifier: email,
-    url,
-    token,
-    baseUrl,
-    provider
-}) => {
-    return new Promise((resolve, reject) => {
-        const {
-            server,
-            from
-        } = provider;
-        const site = baseUrl.replace(/^https?:\/\//, "");
-        nodemailer.createTransport(server).sendMail({
-            to: email,
-            from,
-            subject: `Sign in to ${site}`,
-            text: text({
-                url,
-                site,
-                email
-            }),
-            html: html({
-                url,
-                site,
-                email
-            }),
-        }, (error) => {
-            if (error) {
-                logger.error("SEND_VERIFICATION_EMAIL_ERROR", email, error);
-                return reject(new Error("SEND_VERIFICATION_EMAIL_ERROR", error));
-            }
-            return resolve();
-        });
-    });
-};
 
 function html({
     url,

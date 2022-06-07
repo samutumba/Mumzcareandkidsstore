@@ -12,6 +12,7 @@ export const NavBar = () => {
   const { data: session, status } = useSession()
 
   return (<>
+  
   <div className="flex flex-col md:flex-row items-center justify-evenly w-full h-auto md:h-10 bg-gum">
     <div>
       <div className="bg-white p-1 rounded-xl" >
@@ -35,18 +36,17 @@ export const NavBar = () => {
       
     </div>
   </div>
- 
-    <Container>
-       <div className="flex flex-col md:flex-row items-center justify-between">
-        <Link href="/search" passHref><span className="hover:font-bold">BABIES &amp; KIDS</span></Link>
-        <Link href="/search" passHref><span className="hover:font-bold">MOTHERHOOD</span></Link>
-        <Link href="/" passHref>
-          <Image src="/Final-Logo.png" alt="Home logo" width={180} className="hover:bg-base-300 hover:rounded-lg" height={90}/>
-        </Link>
-        <Link href="/search" passHref><span className="hover:font-bold">FATHERHOOD</span></Link>
-        <Link href="/search" passHref><span className="hover:font-bold">APPAREL</span></Link>
-       </div>
-    </Container>
+  <Container>
+      <div className="flex flex-col md:flex-row items-center justify-between">
+      <Link href="/search" passHref><span className="hover:font-bold">BABIES &amp; KIDS</span></Link>
+      <Link href="/search" passHref><span className="hover:font-bold">MOTHERHOOD</span></Link>
+      <Link href="/" passHref>
+        <Image src="/Final-Logo.png" alt="Home logo" width={180} className="hover:bg-base-300 hover:rounded-lg" height={90}/>
+      </Link>
+      <Link href="/search" passHref><span className="hover:font-bold">FATHERHOOD</span></Link>
+      <Link href="/search" passHref><span className="hover:font-bold">APPAREL</span></Link>
+      </div>
+  </Container>
   </>
     
   );

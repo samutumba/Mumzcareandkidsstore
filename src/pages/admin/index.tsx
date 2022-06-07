@@ -1,14 +1,20 @@
 import type { NextPage } from "next";
-import { AddProduct, Meta } from "../../components";
+import { AddProduct, AdminLayout, Meta } from "../../components";
+import { BreadCrumb } from "../../components/Breadcrumb";
 
 const Admin: NextPage = () => {
 
   return (
-    <div className="font-title bg-slate-200 dark:bg-darkGreen text-md text-white">
-      <Meta />
-      <h1 className="text-3xl font-bold underline">Admin</h1>
-      <AddProduct />
-    </div>
+      <AdminLayout>
+         <Meta robot={false} />
+         <BreadCrumb items={[
+           {
+            link: "/admin/",
+            name: "Admin"
+           }
+         ]}/>
+         <AddProduct />
+      </AdminLayout>
   );
 };
 

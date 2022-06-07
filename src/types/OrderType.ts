@@ -1,3 +1,4 @@
+import { OrderStatusType } from "./enums/OrderStatus";
 import { ProductType } from "./ProductType";
 
 export interface IOrderType {
@@ -15,10 +16,3 @@ export enum IMode {
     PickUp = "Pick Up"
 }
 
-export enum OrderStatusType {
-    Ordered = "Ordered",
-    Approved = "Been Approved",
-    Preparation = "Being Prepared",
-    Delivery = "On The Way",
-    Delivered = "Delivered"
-}

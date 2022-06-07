@@ -16,7 +16,9 @@ const nextConfig = {
     EMAIL_SERVER_PASSWORD: "iafexpyqsykleaox",
     EMAIL_SERVER_HOST: "smtp.gmail.com",
     EMAIL_SERVER_PORT: "587",
-    EMAIL_FROM: "MumzCare Team <mumzcareandkidsstore@gmail.com>"
+    SECRET: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJOYW1lIjoiTXVtekNhcmVhbmRLaWRzU3RvcmUifQ.cmM-6qtSPrNx5IA1kCdJ3Z-f5xOkRoNcEANzOFNvyyk",
+    EMAIL_FROM: "MumzCare Team <mumzcareandkidsstore@gmail.com>",
+    SENDGRID_API_KEY: "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"
   },
   images: {
     domains: ["lh3.googleusercontent.com", "res.cloudinary.com", "platform-lookaside.fbsbx.com"]

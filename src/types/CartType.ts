@@ -1,6 +1,8 @@
-import { ProductType } from "./ProductType";
+import { SelectedProductType, SelectedApparelType } from "./";
 
-export interface ICartType {
-    items: ProductType[],
+export type ICartItemType = SelectedProductType | SelectedApparelType
+
+export type ICartType = {
+    items: ICartItemType[],
     total: number
 }
