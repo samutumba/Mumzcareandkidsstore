@@ -7,13 +7,15 @@ const Admin: NextPage = () => {
   return (
       <AdminLayout>
          <Meta robot={false} />
-         <BreadCrumb items={[
-           {
-            link: "/admin/",
-            name: "Admin"
-           }
-         ]}/>
-         <AddProduct />
+         
+         <div className="md:pt-4">
+           <BreadCrumb items={[
+              {
+                link: "/admin/",
+                name: "Admin"
+              }
+            ]}/>
+         </div>
       </AdminLayout>
   );
 };

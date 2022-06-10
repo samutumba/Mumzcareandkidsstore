@@ -6,11 +6,16 @@ import {
 } from "@next-auth/mongodb-adapter";
 import clientPromise from "./../../../utils/mongodb";
 import EmailProvider from "next-auth/providers/email";
+import AppleProvider from "next-auth/providers/apple";
 import nodemailer from "nodemailer"
 
 export default NextAuth({
     // Configure one or more authentication providers
     providers: [
+        AppleProvider({
+            clientId: process.env.APPLE_ID,
+            clientSecret: process.env.APPLE_SECRET
+        }),
         GoogleProvider({
             clientId: process.env.GOOGLE_CLIENT_ID,
             clientSecret: process.env.GOOGLE_CLIENT_SECRET
@@ -71,6 +76,16 @@ export default NextAuth({
         maxAge: 7776000000
     },
     debug: true,
+    callbacks: {
+        async session({
+            session,
+            token,
+            user
+        }) {
+            session.user._id = user.id;
+            return session;
+        },
+    },
 })
 
 function html({

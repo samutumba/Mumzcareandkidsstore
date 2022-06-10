@@ -1,16 +1,18 @@
-import mongoose, { Document, model, Model, Schema }  from "mongoose";
+import mongoose, { Document, model, Model, Schema } from "mongoose";
 import Review from "./Review";
 
-export interface IProduct extends Document {
+export interface IApparel extends Document {
     _id?: string,
     createdAt?: string,
     title: string,
     description: string,
     images: string[],
-    detail:{
-        type: string[],
+    detail: {
+        age: string[],
+        size: string[],
         price: number[],
     },
+    colors: string[],
     quantity: {
         available: number,
         ordered: number,
@@ -22,32 +24,32 @@ export interface IProduct extends Document {
     enabled: boolean
 }
 
-const ProductSchema = new Schema({
-    title:{
+const ApparelSchema = new Schema({
+    title: {
         type: String,
         required: true,
         maxlength: 100,
     },
-    description:{
+    description: {
         type: String,
         required: true,
         maxlength: 7000,
     },
-    images:{
+    images: {
         type: [String],
         required: true
     },
     detail:
-        {
-            type: {
-                type: [String],
-                required: true,
-            },
-            price: {
-                type: [Number],
-                required: true,
-            }
+    {
+        type: {
+            type: [String],
+            required: true,
+        },
+        price: {
+            type: [Number],
+            required: true,
         }
+    }
     ,
     quantity: {
         available: {
@@ -80,7 +82,7 @@ const ProductSchema = new Schema({
         type: Boolean,
         default: true
     }
-    
-}, {timestamps: true});
 
-export const Product: Model<IProduct> = mongoose.models.products || model("products", ProductSchema, "products")
+}, { timestamps: true });
+
+export const Apparel: Model<IApparel> = mongoose.models.apparels || model("apparels", ApparelSchema, "apparels")

@@ -3,16 +3,14 @@ import { AdminRoles } from "../types";
 
 const AdminSchema = new mongoose.Schema({
 
-    fname: {
-        type: String
-    },
-    lname: {
+    name: {
         type: String,
         required: true
     },
     email: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     phone: {
         type: Number,

@@ -1,6 +1,6 @@
 
 import toast, { Toaster } from "react-hot-toast";
-import { Modal, NavBar, Footer } from "..";
+import { Modal, NavBar, Footer, AddEmployee } from "..";
 import { signOut } from "next-auth/react";
 import { VscDashboard } from "react-icons/vsc"
 import { BsPersonCircle, BsBag } from "react-icons/bs"
@@ -8,6 +8,7 @@ import { FaMotorcycle, FaSearch }from "react-icons/fa"
 import { BiPackage, BiHelpCircle } from "react-icons/bi"
 import { GrUserWorker } from "react-icons/gr"
 import { GiHamburgerMenu } from "react-icons/gi"
+import { MdPointOfSale } from "react-icons/md"
 import Link from "next/link";
 import Image from "next/image"
 
@@ -20,14 +21,14 @@ export const AdminLayout: React.FC<ILayoutProps> = ({
 }) => {
   return(
     <>
+    <AdminLayoutItems />
     <div className="drawer drawer-mobile font-title bg-slate-200 text-md text-black">
     <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
     <div className="drawer-content flex flex-row flex-wrap justify-center">
         <div className="w-full p-2">
-          
           <label htmlFor="my-drawer-2" className="drawer-button lg:hidden"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-6 h-6 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path></svg></label>
         </div>
-        <div className="w-full">{children}</div>
+        <div className="w-full h-full">{children}</div>
         {/**Page Content  */}
         
     </div>
@@ -41,15 +42,31 @@ export const AdminLayout: React.FC<ILayoutProps> = ({
                 <Image src="/Final-Logo.png" alt="Home logo" layout="fill" className="hover:bg-base hover:rounded-lg"/>
               </div>     
             </Link>
-            <li><a><VscDashboard/> Dashboard</a></li>
-            <li><a><BsPersonCircle/> Customers</a></li>
-            <li><a><BsBag />Products</a></li>
-            <li><a><BiPackage/> Orders</a></li>
-            <li><a><FaMotorcycle/> Deliveries</a></li>
-            <li><a><GrUserWorker />Employees</a></li>
-            <li><a><BiHelpCircle/> Help</a></li>
+            <Link href="/admin" passHref>
+              <li><a><VscDashboard/> Dashboard</a></li>
+            </Link>
+            <Link href="/admin/customers" passHref>
+               <li><a><BsPersonCircle/> Customers</a></li>
+            </Link>
+            <Link href="/admin/products" passHref>
+              <li><a><BsBag />Products</a></li>
+            </Link>
+            <Link href="/admin/orders" passHref>
+              <li><a><BiPackage/> Orders</a></li>
+            </Link>
+            <Link href="/admin/deliveries" passHref>
+              <li><a><FaMotorcycle/> Deliveries</a></li>
+            </Link>
+            <Link href="/admin/employees" passHref>
+              <li><a><GrUserWorker />Employees</a></li>
+            </Link>
+            <Link href="/admin/sales" passHref>
+              <li><a><MdPointOfSale />Make a Sale</a></li>
+            </Link>
+             <Link href="/admin/help" passHref>
+               <li><a><BiHelpCircle/> Help</a></li>
+            </Link>
         </ul>
-
     </div>
 </div>
     </>
@@ -61,9 +78,9 @@ export const Layout: React.FC<ILayoutProps> = ({
 }) => {
 
   return (
-    <>
-      <LayoutItems />
+    <> 
       <div className="drawer">
+        <LayoutItems />
         <input id="my-drawer-3" type="checkbox" className="drawer-toggle" /> 
         <div className="drawer-content flex flex-col">
           <div className="w-full navbar bg-base-100">
@@ -77,7 +94,7 @@ export const Layout: React.FC<ILayoutProps> = ({
                 <Image src="/Final-Logo.png" alt="Home logo" width={140} className="hover:bg-base-300 hover:rounded-lg" height={70}/>
               </Link>
             </div>
-            <div className="flex-none hidden lg:block w-full">
+            <div className="flex-none hidden lg:block lg:mt-auto w-full">
               <NavBar />
             </div>
           </div>
@@ -131,6 +148,18 @@ const LayoutItems = () => {
 const AdminLayoutItems = () => {
   return(
     <>
+      <Modal name={"addEmployee"} >
+          <div className="font-p w-full flex flex-col">
+           <span className="text-3xl font-extrabold text-center w-full">Add New Employee</span> 
+          <AddEmployee />
+                <label
+                  htmlFor="modal-addEmployee"
+                  className="rounded-lg bg-night w-full py-3 text-center bg-close text-base-300"
+                >
+                  <button>Close</button>
+                </label>
+          </div>
+        </Modal>
 
      <Toaster position="top-right" reverseOrder={false} />
     </>

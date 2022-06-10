@@ -18,7 +18,9 @@ const nextConfig = {
     EMAIL_SERVER_PORT: "587",
     SECRET: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJOYW1lIjoiTXVtekNhcmVhbmRLaWRzU3RvcmUifQ.cmM-6qtSPrNx5IA1kCdJ3Z-f5xOkRoNcEANzOFNvyyk",
     EMAIL_FROM: "MumzCare Team <mumzcareandkidsstore@gmail.com>",
-    SENDGRID_API_KEY: "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"
+    SENDGRID_API_KEY: "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",
+    APPLE_ID: "mumzcareandkidsstore@gmail.com",
+    APPLE_SECRET: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE2NTQ2OTYxOTgsImV4cCI6MTkwNzE1Njg2NywiYXVkIjoiaHR0cHM6Ly9hcHBsZWlkLmFwcGxlLmNvbSIsInN1YiI6Imh0dHBzOi8vbXVtemNhcmVhbmRraWRzc3RvcmUuY29tLyJ9.PnDhbtjEF6_uN-McqetsRSZoK-6igqVtmqRpT2WTiCg",
   },
   images: {
     domains: ["lh3.googleusercontent.com", "res.cloudinary.com", "platform-lookaside.fbsbx.com"]

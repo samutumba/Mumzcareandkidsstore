@@ -2,8 +2,8 @@ import { NextPage } from "next";
 import Image from "next/image"
 import { Footer, Meta, NavBar } from "../components";
 import { getProviders, signIn, useSession } from "next-auth/react";
-import { FcGoogle } from "react-icons/fc"
-import { BsFacebook } from "react-icons/bs"
+import { FcGoogle} from "react-icons/fc"
+import { BsFacebook, BsApple } from "react-icons/bs"
 import Link from 'next/link'
 import { useForm } from 'react-hook-form';
 import { useRouter } from "next/router";
@@ -62,6 +62,7 @@ const SignIn: NextPage = () => {
             </button>
           </div>
       </div>
+      
        <div className="divider text-black">Or sign in with e-mail</div>
 					
       <form onSubmit={handleSubmit(d => signIn("email", { email: d.email, callbackUrl: "/" }))}>

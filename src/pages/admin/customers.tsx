@@ -1,15 +1,14 @@
 import type { NextPage } from "next";
-import { AddProduct, AdminLayout, Meta } from "../../components";
-import { BreadCrumb } from "../../components/Breadcrumb";
+import { AdminLayout, Meta, BreadCrumb } from "../../components";
 
-const Products: NextPage = () => {
+const Customers: NextPage = () => {
 
   return (
       <AdminLayout>
          <Meta robot={false} />
          <BreadCrumb items={[{
-             link: "/admin/products",
-             name: "Products"
+             link: "/admin/customers",
+             name: "Customers"
          },
            {
             link: "/admin/",
@@ -17,8 +16,9 @@ const Products: NextPage = () => {
            },
 
          ]}/>
+         
       </AdminLayout>
   );
 };
 
-export default Products;
+export default Customers;

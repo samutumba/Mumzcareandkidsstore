@@ -1,19 +1,16 @@
 import mongoose from "mongoose";
+import { OrderStatusType } from "../types/enums/OrderStatus";
 
 const OrderSchema = new mongoose.Schema({
     user : {
         id : {
             type: String,
             required: true,
-        }, 
-        name : {
-            type: String,
-            required: true,
-        }, 
-        email : {
-            type: String,
-            required: true,
-        }
+        },   
+    },
+    items: {
+        type: [Object],
+        required: true
     },
     paid: {
         type: Number,
@@ -32,11 +29,11 @@ const OrderSchema = new mongoose.Schema({
         }
     },
     status: {
-        type: Number,
-        default: 0
+        type: String,
+        default: OrderStatusType.Ordered
     }, 
     method: {
-        type: [String],
+        type: String,
         required: true,
     },
     

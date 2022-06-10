@@ -3,11 +3,14 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import dbConnect from "./../../../utils/dbConnect";
 import {Product} from "../../../models/Product";
 import { IProduct } from "./../../../models/Product";
+import { runCorsMiddleware } from '../../../middleware';
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  await runCorsMiddleware(req, res);
+  
   const {method} = req;
   
   if(method === "GET"){
@@ -29,7 +32,6 @@ export default async function handler(
     }catch(error){
       res.status(400).json({ success:false, error:error})
     }
-
   }
   
 }

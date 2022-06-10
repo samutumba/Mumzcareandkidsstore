@@ -4,7 +4,7 @@ import { AdminRoles, IAdminUserType } from "../types";
 import { decodeJWT } from "../utils/jwt";
 
 export function isAdmin() {
-    const authToken = Cookies.get('adminUser')
+    const authToken = Cookies.get('admin')
 
     if (authToken == undefined){
         return false;
