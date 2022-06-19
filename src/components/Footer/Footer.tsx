@@ -3,7 +3,7 @@ import { BsFacebook, BsInstagram, BsYoutube } from "react-icons/bs";
 
 export const Footer = () => {
     return (
-      <footer className="footer  font-title footer-center p-10 rounded">
+      <footer className=" footer bg-gum block font-title footer-center p-10 rounded">
         <div className="grid grid-flow-col gap-4">
           <Link href="/">Home</Link>
           <Link href="/about">About</Link>

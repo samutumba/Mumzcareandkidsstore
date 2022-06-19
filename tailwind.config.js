@@ -24,7 +24,8 @@ module.exports = {
       'cryingBaby': "url('https://res.cloudinary.com/mumzcareandkidsstore/image/upload/v1653113041/media/pexels-william-fortunato-6393247_kiygnd.jpg')",
       'playingBaby': "url('https://res.cloudinary.com/mumzcareandkidsstore/image/upload/v1653113041/media/pexels-william-fortunato-6392804_j5ql1i.jpg')",
       'posingBaby': "url('https://res.cloudinary.com/mumzcareandkidsstore/image/upload/v1653113041/media/kiana-bosman-GvleXr4tIPk-unsplash_pxxj8j.jpg')",
-    }, 
+      'momAndBaby': 'url("https://res.cloudinary.com/mumzcareandkidsstore/image/upload/v1655605449/media/Mom_me_zyzmba.jpg")'  
+      }, 
     fontFamily: {
       title: ['Raleway', 'sans-serif'],
       p: ['Quicksand', 'sans-serif']

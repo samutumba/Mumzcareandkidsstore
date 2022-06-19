@@ -23,7 +23,7 @@ const nextConfig = {
     APPLE_SECRET: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE2NTQ2OTYxOTgsImV4cCI6MTkwNzE1Njg2NywiYXVkIjoiaHR0cHM6Ly9hcHBsZWlkLmFwcGxlLmNvbSIsInN1YiI6Imh0dHBzOi8vbXVtemNhcmVhbmRraWRzc3RvcmUuY29tLyJ9.PnDhbtjEF6_uN-McqetsRSZoK-6igqVtmqRpT2WTiCg",
   },
   images: {
-    domains: ["lh3.googleusercontent.com", "res.cloudinary.com", "platform-lookaside.fbsbx.com"]
+    domains: ["www.mumzcareandkidsstore.com","lh3.googleusercontent.com", "res.cloudinary.com", "platform-lookaside.fbsbx.com"]
   }
 }
 

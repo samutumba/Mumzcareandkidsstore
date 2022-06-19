@@ -6,18 +6,21 @@ import { ExploreSection } from "../components/Explore";
 import { Layout } from "./../components";
 
 const Home: NextPage = () => {
-     //const products = UseProductValue()
 
   return (
     <Layout>
        <div className="font-title bg-slate-200 dark:bg-darkGreen text-md ">
         <Meta />
-        <Hero />
-        <Section title="">
-          <ExploreSection title="" link="" image="" />
-        </Section>
+        <Hero image="https://res.cloudinary.com/mumzcareandkidsstore/image/upload/v1655605449/media/Mom_me_zyzmba.jpg" message="For My Little One and Me" />
+        <div className="block">
+          <Section title="Explore">
+            <ExploreSection title="" link="" image="" />
+          </Section>
+        </div>
+       
         Home
         </div>
+       
 
     </Layout>
    

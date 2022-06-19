@@ -13,7 +13,7 @@ export const NavBar = () => {
 
   return (<>
   
-  <div className="flex flex-col md:flex-row items-center justify-evenly w-full h-auto md:h-10 bg-gum">
+  <div className="flex flex-col md:flex-row items-center justify-evenly w-full h-auto md:h-auto bg-gum">
     <div>
       <div className="bg-white p-1 rounded-xl" >
         <FaSearch className="mb-1 text-base mr-2" />
@@ -21,7 +21,7 @@ export const NavBar = () => {
       </div>
     </div>
     <div className="font-bold font-title text-center">
-      WELCOME {session?.user?.name}
+      WELCOME {session?.user?.name}!!
     </div>
     <div className="flex flex-row items-center"> 
       <div>
@@ -37,13 +37,13 @@ export const NavBar = () => {
     </div>
   </div>
   <Container>
-      <div className="flex flex-col md:flex-row items-center justify-evenly">
+      <div className="h-full flex flex-col md:flex-row items-center justify-evenly font-semibold">
       <Link href="/search" passHref><span className="hover:font-bold">BABIES &amp; KIDS</span></Link>
-      <Link href="/search" passHref><span className="hover:font-bold">MOTHERHOOD</span></Link>
+      <Link href="/search" passHref><span className="hover:font-bold">YOUTH</span></Link>
       <Link href="/" passHref>
-        <Image src="/Final-Logo.png" alt="Home logo" width={180} className="hover:bg-base-300 hover:rounded-lg" height={90}/>
+        <Image src="https://www.mumzcareandkidsstore.com/Final-logo.png" alt="https://www.mumzcareandkidsstore.com/Final-logo.png" width={180} className="hover:bg-base-300 hover:rounded-lg" height={90}/>
       </Link>
-      <Link href="/search" passHref><span className="hover:font-bold">FATHERHOOD</span></Link>
+      <Link href="/search" passHref><span className="hover:font-bold">MOTHERHOOD</span></Link>
       <Link href="/search" passHref><span className="hover:font-bold">APPAREL</span></Link>
       </div>
   </Container>
