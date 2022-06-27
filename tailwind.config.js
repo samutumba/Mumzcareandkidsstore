@@ -18,7 +18,8 @@ module.exports = {
       'gum': "#f6d7dd",
       'facebook-blue': "#1877F2",
       'white': "#FFFFFF",
-      'black': "#000000"
+      'black': "#000000",
+      'whatsapp-green': "#25D366"
     },
     backgroundImage: {
       'cryingBaby': "url('https://res.cloudinary.com/mumzcareandkidsstore/image/upload/v1653113041/media/pexels-william-fortunato-6393247_kiygnd.jpg')",
