@@ -14,7 +14,7 @@ const Home: NextPage = () => {
         <Hero image="https://res.cloudinary.com/mumzcareandkidsstore/image/upload/v1655605449/media/Mom_me_zyzmba.jpg" message="For My Little One and Me" />
         <div className="block">
           <Section title="Explore">
-            <ExploreSection title="" link="" image="" />
+            <ExploreSection title="BABY" link="/" image="/favicon-white.png" />
           </Section>
         </div>
        
