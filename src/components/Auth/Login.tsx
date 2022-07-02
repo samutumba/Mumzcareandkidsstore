@@ -2,13 +2,14 @@ import { FC, useState } from "react"
 import dynamic from "next/dynamic";
 import toast from "react-hot-toast";
 const ReactCodeInput = dynamic(import('react-code-input'))
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
+import axios from "axios";
 
 const schema = yup.object({
     username: yup.string().required(),
-    passcode: yup.number("Must be number").positive("Must be a number").integer("Must be a number").min(100000, "Must be six digits").max(999999, "Must be six digits").required("You must enter the latest code sent to you"),
+    passcode: yup.number().positive("Must be a number").integer("Must be a number").min(100000, "Must be six digits").max(999999, "Must be six digits").required("You must enter the latest code sent to you"),
   }).required();
 
 interface IProps {
@@ -18,16 +19,16 @@ interface IProps {
 
 export const LoginForm: FC<IProps> =({username, enabled})=>{
     const [passcode, setPasscode] = useState('')
-    const { register, handleSubmit, watch, formState: { errors } } = useForm({
+    const { register, handleSubmit, control, watch, formState: { errors } } = useForm({
         resolver: yupResolver(schema)
     });
-    async function onSubmit (data){
+    async function onSubmit (data: any){
         await axios.post(`${process.env.API_ENDPOINT}/auth/login`,{
             username: data.username,
             password: data.passcode
         })
           .then(function (response) {
-            toast.success(ressponse.data.message)
+            toast.success(response.data.message)
           })
           .catch(function (error) {
             toast.error(error.message)
@@ -62,12 +63,17 @@ export const LoginForm: FC<IProps> =({username, enabled})=>{
                 <form onSubmit={handleSubmit(onSubmit)} className="text-center">
                     <input className="hidden" {...register("username")} value={username} disabled hidden/> 
                             Enter the code sent to:<br/> {username}<br/>
-                            <ReactCodeInput 
-                                 type='tel'
-                                 fields={6}
-                                 {...register("passcode")}
-                                 inputMode={"numeric"}     
-                            />  
+                            <Controller
+        name="passcode"
+        control={control}
+        render={({ field }) =>
+        <ReactCodeInput 
+        type='tel'
+        fields={6}
+        {...field}
+        inputMode={"numeric"}     
+   />} />
+                              
                             <br/>
                             <span>
                                 Allow up to 1 minute before requeting a new code
