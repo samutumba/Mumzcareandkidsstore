@@ -2,6 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   env: {
+    API_ENDPOINT: "https://api.mumzcareandkidsstore.com",
     MONGODB_URL: "mongodb+srv://root:DqFD6rQbsdmuKVTZ@mumzcareandkidsstore.jdvlm.mongodb.net/MumzCareandKidsStore?retryWrites=true&w=majority",
     LOCAL_EMAIL: "Mumzcareandkidsstore@gmail.com",
     EMAIL_PWD: "admin@mumz",

@@ -1,7 +1,6 @@
 
 import toast, { Toaster } from "react-hot-toast";
 import { Modal, NavBar, Footer, AddEmployee } from "..";
-import { signOut } from "next-auth/react";
 import { VscDashboard } from "react-icons/vsc"
 import { BsPersonCircle, BsBag, BsHeart } from "react-icons/bs"
 import { FaMotorcycle, FaSearch }from "react-icons/fa"
@@ -152,7 +151,7 @@ const LayoutItems = () => {
             </div>
             <div className="flex justify-evenly mt-8">
               <label className="rounded-lg bg-error py-3 w-1/5 text-center text-base-100">
-                <button onClick={() => signOut()}>Yes</button>
+                <button>Yes</button>
               </label>
               <label
                 htmlFor="modal-logout"

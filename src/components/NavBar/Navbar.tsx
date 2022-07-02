@@ -3,13 +3,11 @@ import {BsBag} from "react-icons/bs"
 import { Container, Modal, ToolTip } from "..";
 import { Toggle } from "./../Toogle/Toggle";
 import Link  from "next/link";
-import { useSession } from "next-auth/react";
 import { RiShoppingBagLine } from "react-icons/ri";
 import {FaRegHeart,FaRegUserCircle, FaSearch} from "react-icons/fa"
 
 
 export const NavBar = () => {
-  const { data: session, status } = useSession()
 
   return (<>
   
@@ -21,7 +19,7 @@ export const NavBar = () => {
       </div>
     </div>
     <div className="font-bold font-title text-center">
-      WELCOME {session?.user?.name}!!
+      WELCOME!!
     </div>
     <div className="flex flex-row items-center"> 
       <div>
@@ -31,9 +29,17 @@ export const NavBar = () => {
         <RiShoppingBagLine className="mr-5 hover:text-2xl text-xl mb-1"/>
       </div>  
       <div>
-        {status === "authenticated" ? <label htmlFor="modal-logout"><span className="text-rose hover:p-1 hover:font-bold cursor-pointer font-semibold"> SIGN OUT </span></label>: <Link href="/sign-in" passHref><span className="text-rose hover:font-bold cursor-pointer font-semibold">SIGN IN</span></Link> }
+        <label htmlFor="modal-logout" hidden>
+          <span className="text-rose hover:p-1 hover:font-bold cursor-pointer font-semibold"> 
+            SIGN OUT 
+          </span>
+        </label>
+        <Link href="/sign-in" passHref>
+          <span className="text-rose hover:font-bold cursor-pointer font-semibold">
+            SIGN IN
+          </span>
+        </Link>
       </div>
-      
     </div>
   </div>
   <Container>

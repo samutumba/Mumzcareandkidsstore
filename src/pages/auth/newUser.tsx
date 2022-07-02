@@ -1,5 +1,4 @@
 import { NextPage } from "next"
-import { useSession } from "next-auth/react"
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from 'next/router'
@@ -10,29 +9,17 @@ import { GoReport } from "react-icons/go";
 
 const NewUser: NextPage = () => {
 
-    const { data: session, status } = useSession()
     let myName = ""
-    if(session?.user?.name){
-        myName=session.user.name
-    }else if(session?.user?.email){
-        myName=session?.user?.email
-    }
     
     const router = useRouter()
-    useEffect(() => {
-        if (!session) {
-            router.push("/sign-in")
-        }
-    });
-     
-
+    
     return <div className="flex bg-base h-screen">
         <div className="m-auto w-4/5 shadow-lg rounded-xl bg-white h-fit md:h-4/5 max-w-2xl">
             <div className="flex w-full flex-row h-full flex-wrap">
                 <div className="flex items-center text-center p-6 font-title w-full md:w-1/2 h-fit md:h-full">
                     <div className="w-full">
                         <h1 className="text-5xl font-bold md:text-left text-rose">Welcome <br/>
-                            <span className="text-3xl ">{myName}!!</span>
+                            <span className="text-3xl ">!!</span>
                         </h1>
                         <p className="font-bold text-xl md:text-left font-p">We&#39;ve been waiting for you</p>
                         <p className="text-md font-p text-lg md:text-left">Happy shopping</p>

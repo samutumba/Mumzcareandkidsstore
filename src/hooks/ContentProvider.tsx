@@ -1,6 +1,5 @@
 import { IconContext } from "react-icons";
 import { StoreProvider } from "./StoreProvider";
-import { SessionProvider } from "next-auth/react";
 import { QueryClient, QueryClientProvider } from 'react-query'
 import React, { FC } from "react";
 import { ThemeProvider, useTheme } from 'next-themes'
@@ -10,12 +9,10 @@ const queryClient = new QueryClient()
 
 type ProviderProps = {
   children: React.ReactNode | any;
-  session: any
 };
 
 export const ContentProvider: React.FC<ProviderProps> = ({
-  children,
-  session
+  children
 }) => {
   
  
@@ -23,19 +20,11 @@ export const ContentProvider: React.FC<ProviderProps> = ({
     <StoreProvider>
       <ThemeProvider>
         <Theme>
-          <SessionProvider
-              session={session} 
-              // Re-fetch session every 5 minutes
-              refetchInterval={5 * 60}
-              // Re-fetches session when window is focused
-              refetchOnWindowFocus={true}
-            >
-              <IconContext.Provider value={{ className: "inline-block -mr-1" }}>       
-                  <QueryClientProvider client={queryClient}> 
-                    {children}
-                  </QueryClientProvider>
-              </IconContext.Provider>  
-            </SessionProvider>
+          <IconContext.Provider value={{ className: "inline-block -mr-1" }}>       
+              <QueryClientProvider client={queryClient}> 
+                {children}
+              </QueryClientProvider>
+          </IconContext.Provider>  
         </Theme>
       </ThemeProvider>  
     </StoreProvider>
@@ -50,7 +39,7 @@ const Theme: FC<IThemeProvider> = ({children}) => {
   const { theme, setTheme } = useTheme()
 
   return(
-  <div className={theme} >
+  <div className={theme||"light"} >
     {children}
   </div>)
 
