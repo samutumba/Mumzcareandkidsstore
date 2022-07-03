@@ -11,17 +11,17 @@ export const NavBar = () => {
 
   return (<>
   
-  <div className="flex flex-col md:flex-row items-center justify-evenly w-full h-auto md:h-auto bg-gum">
-    <div>
+  <div className="flex flex-col md:flex-row items-center justify-around py-2 w-full h-auto md:h-auto bg-gum">
+    <div className="w-3/12">
       <div className="bg-white p-1 rounded-xl" >
         <FaSearch className="mb-1 text-base mr-2" />
         <input type="text" placeholder="Search..." className="focus:border-none w-md" />
       </div>
     </div>
-    <div className="font-bold font-title text-center">
+    <div className="font-bold w-3/12 font-title text-center">
       WELCOME!!
     </div>
-    <div className="flex flex-row items-center"> 
+    <div className="flex flex-row w-3/12 items-center"> 
       <div>
         <Toggle />
         <FaRegUserCircle className="mr-2 hover:text-2xl text-xl mb-1"/>
@@ -43,7 +43,7 @@ export const NavBar = () => {
     </div>
   </div>
   <Container>
-      <div className="h-full flex flex-col md:flex-row items-center justify-evenly font-semibold">
+      <div className="h-full flex flex-col md:flex-row items-center justify-between font-semibold">
       <Link href="/search" passHref><span className="hover:font-bold">BABIES &amp; KIDS</span></Link>
       <Link href="/search" passHref><span className="hover:font-bold">YOUTH</span></Link>
       <Link href="/" passHref>

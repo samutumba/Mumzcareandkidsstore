@@ -86,7 +86,7 @@ export const Layout: React.FC<ILayoutProps> = ({
           <div className="w-full navbar bg-base-100">
             <div className="flex-none w-full lg:hidden">
               <div className="w-full text-2xl text-semibold">
-                <div className="bg-gum content-center text-center grid grid-flow-cols place-content-between grid-cols-3 gap-2">
+                <div className="bg-gum content-center text-center grid grid-flow-cols place-content-between grid-cols-3">
                   <div className="flex flex-row h-full my-auto justify-start ">
                     <label htmlFor="my-drawer-3" className="btn btn-square btn-ghost text-2xl">
                       <GiHamburgerMenu />
@@ -117,7 +117,7 @@ export const Layout: React.FC<ILayoutProps> = ({
             <div className="flex-1 px-2 mx-2 block lg:hidden">
              
             </div>
-            <div className="flex-none hidden lg:block lg:mt-auto w-full">
+            <div className="flex-none hidden lg:block w-full">
               <NavBar />
             </div>
           </div>
