@@ -1,4 +1,3 @@
-import { Toaster } from "react-hot-toast";
 import { NavBar, Footer } from "../";
 import { BsBag, BsHeart } from "react-icons/bs"
 import { FaSearch }from "react-icons/fa"

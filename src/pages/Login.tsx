@@ -1,7 +1,7 @@
-import toast from "react-hot-toast";
-import { useQuery } from "../hooks";
-import { useNavigate } from 'react-router-dom';
-import { verifyJWT } from "../utils/jwt";
+// import toast from "react-hot-toast";
+// import { useQuery } from "../hooks";
+// import { useNavigate } from 'react-router-dom';
+// import { verifyJWT } from "../utils/jwt";
 
 export const LoginPage = () => {
 //    { let userData: any

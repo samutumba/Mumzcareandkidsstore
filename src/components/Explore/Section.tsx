@@ -1,9 +1,9 @@
 import React, { FC } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-
+ 
 // import required modules
-import { FreeMode, Pagination, Navigation} from "swiper";
+import { FreeMode, Navigation} from "swiper";
 import { IExploreSection } from "../../types";
 import { ExploreSection } from "./ExploreSection";
 import { SectionTitle } from "..";
