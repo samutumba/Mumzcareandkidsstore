@@ -40,7 +40,7 @@ export const Layout: React.FC<ILayoutProps> = ({
                 </div>
                 <div className="flex justify-center pt-1">
                   <a href="/">
-                    <img src="https://www.mumzcareandkidsstore.com/Final-logo.png" alt="Home logo" width={180} className=" mx-auto cursor-pointer" height={90}/>
+                    <img src="https://res.cloudinary.com/mumzcareandkidsstore/image/upload/v1656131820/media/Final-logo_hjbrbz.png" alt="Home logo" width={180} className=" mx-auto cursor-pointer" height={90}/>
                   </a>
                 </div>               
               </div>

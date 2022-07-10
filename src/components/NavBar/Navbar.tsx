@@ -43,7 +43,7 @@ export const NavBar = () => {
       <div><BabiesAndKids /></div>
       <a href="/search" ><span className="hover:font-bold">YOUTH</span></a>
       <a href="/" >
-        <img src="https://www.mumzcareandkidsstore.com/Final-logo.png" alt="https://www.mumzcareandkidsstore.com/Final-logo.png" width={180} className="hover:bg-base-300 hover:rounded-lg" height={90}/>
+        <img src="https://res.cloudinary.com/mumzcareandkidsstore/image/upload/v1656131820/media/Final-logo_hjbrbz.png" alt="https://admin.mumzcareandkidsstore.com/Final-logo.png" width={180} className="hover:bg-base-300 hover:rounded-lg" height={90}/>
       </a>
       <a href="/search" ><span className="hover:font-bold">MOTHERHOOD</span></a>
       <a href="/search" ><span className="hover:font-bold">APPAREL</span></a>
