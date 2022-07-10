@@ -1,7 +1,7 @@
 //import { Toggle } from "./../Toogle/Toggle";
 import { RiShoppingBagLine } from "react-icons/ri";
 import {FaRegHeart,FaRegUserCircle, FaSearch} from "react-icons/fa"
-import { BabiesAndKids } from "./";
+import { BabiesAndKids } from "../";
 
 export const NavBar = () => {
 
