@@ -1,4 +1,3 @@
-import Link from "next/link"
 import { FC } from "react"
 
 interface ISectionType {
@@ -13,13 +12,13 @@ export const ExploreSection: FC<ISectionType> = ({
     link
 }) => {
     return (
-        <Link href={link} passHref>
-            <div className="flex w-20 h-10 bg-center " style={{backgroundImage: image }}>
-
-                <div className="self-end mb-3 mx-auto text-center bottom-2  ">
+        <a href={link} className="px-2 w-full flex">
+            <div className="relative w-[13rem] h-[13rem] mx-auto">
+                <img src={image} alt={title} className="h-full rounded-lg object-cover w-full"/>
+                <div className="absolute bg-white rounded-full mx-auto mb-3 w-full text-center bottom-2  ">
                     {title}
                 </div>
             </div>
-        </Link>
+        </a>
     )
 }

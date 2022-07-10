@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import React, {FC} from 'react'
 
 type page = {
@@ -10,7 +9,7 @@ interface IBreadCrumb {
     items: page[] 
 }
 
-export const BreadCrumb: React.FC<IBreadCrumb> = ({items}) => {
+export const BreadCrumb: FC<IBreadCrumb> = ({items}) => {
     switch (items.length) {
         case 1: 
             return (<div className='text-4xl w-full font-extrabold'>
@@ -18,7 +17,6 @@ export const BreadCrumb: React.FC<IBreadCrumb> = ({items}) => {
                     return page.name
                 })}
             </div>);
-            break;
         default: 
             const currentPage: page = items.at(0) || {link: "/", name: "Home"};
             const otherPages = items.slice(1)
@@ -40,7 +38,7 @@ const Crumbs: React.FC<IBreadCrumb> =  ({items}) => {
         {
             items.map((page, index)=>{
                 return (<li key={index}>
-                    <a>{page.name}</a>
+                    <a href={page.link}>{page.name}</a>
                 </li>)
             })
         }

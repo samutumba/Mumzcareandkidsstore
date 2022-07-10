@@ -1,3 +1,6 @@
+export * from "./Email"
+export * from "./Facebook"
+export * from "./Google"
 export * from "./Login"
 export * from "./OTPRequest"
-export * from "./Register"
+export * from "./Whatsapp"

@@ -1,3 +1,0 @@
-export const HomeImageURL: string = "https://res.cloudinary.com/mumzcareandkidsstore/image/upload/v1656131820/media/Final-logo_hjbrbz.png"
-export const HomeIconURL: string = "https://res.cloudinary.com/mumzcareandkidsstore/image/upload/v1656131820/media/favicon_pfz3eu.ico"
-export const HomeIconWhiteURL: string = "https://res.cloudinary.com/mumzcareandkidsstore/image/upload/v1656131820/media/favicon-white_mhw4ma.png"

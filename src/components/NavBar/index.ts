@@ -1,2 +1,2 @@
-import { NavBar } from "./Navbar";
-export { NavBar }
+export * from "./NavBar"
+export * from "./NavItem"

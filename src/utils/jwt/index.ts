@@ -1,13 +1,13 @@
-import * as JWT from "jsonwebtoken"
+import jwt from "jsonwebtoken"
 const jsonSecret = process.env.SECRET || ""
 
 export function signJWT(payload: any) {
-    return JWT.sign(payload, jsonSecret)
+    return jwt.sign(payload, jsonSecret)
 }
 
 export function verifyJWT(token: string){
     var output:{success: boolean, payload: any} = {success: false, payload: ""};
-    JWT.verify(token, jsonSecret, function(err, decoded){
+    jwt.verify(token, jsonSecret, function(err:any, decoded: any){
         if (err){
             output = {
                 success: false,
@@ -23,5 +23,5 @@ export function verifyJWT(token: string){
 }
 
 export function decodeJWT(token: any){
-    return JWT.decode(token)
+    return jwt.decode(token)
 }
