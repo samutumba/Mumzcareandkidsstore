@@ -1,6 +1,6 @@
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment, useState } from 'react'
-import {BsWhatsapp} from "react-icons/bs"
+import { Icon } from '@iconify/react';
 import 'react-phone-number-input/style.css'
 import { useForm } from "react-hook-form"
 import PhoneInputWithCountry from "react-phone-number-input/react-hook-form"
@@ -28,10 +28,10 @@ export const WhatsAppSignIn = () => {
         <div className="bg-[#25D366] hover:bg-[#075E54] flex max-w-sm justify-center items-center border-2 border-base hover:border-black py-2 px-3 rounded-2xl mb-4">
             <div className="mx-5">
                 <button 
-                    className=" text-white text-md font-bold font-p w-full p-1 rounded-md"
+                    className=" text-white text-md flex flex-row font-bold font-p w-full p-1 rounded-md"
                     onClick={openWhatsAppModal}
                 >
-                <BsWhatsapp className="mr-4 text-xl mb-1 inline" />
+                <Icon icon="akar-icons:whatsapp-fill" inline={true} className="mr-3 text-xl mt-0.5"/>
                 Sign in with Whatsapp
                 </button>
             </div>
@@ -67,6 +67,7 @@ export const WhatsAppSignIn = () => {
                       as="h3"
                       className="text-2xl text-center font-medium leading-6 text-gray-900"
                     >
+                      <Icon icon="akar-icons:whatsapp-fill" inline={true} />
                       Sign In with WhatsApp Number
                     </Dialog.Title>
                     <div className="mt-2">

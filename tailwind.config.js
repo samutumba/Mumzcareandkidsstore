@@ -5,6 +5,7 @@ module.exports = {
         "./src/pages/*.{js,ts,jsx,tsx}",
        "./src/components/**/*.{js,ts,jsx,tsx}",
        "./src/*.{js,ts,jsx,tsx}",
+       'node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}'
      ],
     theme: {
       fontSize: {
@@ -55,7 +56,8 @@ module.exports = {
        themes: false,
      },
      plugins: [
-       require('daisyui')
+        require('daisyui'),
+        require('flowbite/plugin')
      ],
   }
   

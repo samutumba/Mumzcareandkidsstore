@@ -13,20 +13,26 @@ import "swiper/css/navigation";
 // eslint-disable-next-line
 import "swiper/css/bundle";
 import { Toaster } from 'react-hot-toast';
+import { CookieBanner } from './components';
+import { LoadingPage } from './pages';
 
 const queryClient = new QueryClient()
 
 function App() {
+
+
+
   return (
-    <div className="App h-full min-h-screen overflow-visible">
+    <div className="App">
+      <React.Suspense fallback={<div><LoadingPage /></div>}>
       <Toaster position="top-right" reverseOrder={false} />
-      <React.Suspense fallback={<div>...Loading</div>}>
         <QueryClientProvider client={queryClient}>
           <RecoilRoot>
             <Router />
           </RecoilRoot>
         </QueryClientProvider>
       </React.Suspense>
+      <CookieBanner />
     </div>
   );
 }

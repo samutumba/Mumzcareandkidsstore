@@ -5,3 +5,5 @@ export * from "./Explore";
 export * from "./Product";
 export * from "./Title";
 export * from "./Navigation";
+export * from "./Cookie";
+export * from "./Loading";
