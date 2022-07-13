@@ -10,3 +10,8 @@ export const cartState = atom<ICart>({
     key: 'cartState', // unique ID (with respect to other atoms/selectors)
     default: [], 
 })
+
+export const filterState = atom<ICart>({
+  key: 'filterState', // unique ID (with respect to other atoms/selectors)
+  default: [], 
+})

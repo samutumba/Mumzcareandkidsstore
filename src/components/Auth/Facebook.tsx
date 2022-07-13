@@ -1,23 +1,10 @@
-import axios from "axios"
-import toast from "react-hot-toast"
 import { BsFacebook } from "react-icons/bs"
 
 export const FacebookButton = () => {
 
-    async function faceBookSignIn(){
-      let timer: NodeJS.Timeout | null = null
-      const fbAuthLink = "https://api.mumzcareandkidsstore.com/auth/facebook";
-      const newWindow = window.open(
-        fbAuthLink,
-        "_blank",
-        "width=500,height=600"
-      )
-
-      // if(newWindow){
-        
-      //   }, 500)
-      //}
-    }
+  const faceBookSignIn = () => {
+    window.open("https://api.mumzcareandkidsstore.com/auth/facebook", '_self')
+  }
 
     return(<>
         <div className="flex max-w-sm justify-center hover:bg-[#0b4ca8] items-center border-2 bg-facebook-blue border-base hover:border-black py-2 px-3 rounded-2xl mb-4">
