@@ -39,9 +39,7 @@ function App() {
       <React.Suspense fallback={<LoadingPage />}>
       <Toaster position="top-right" reverseOrder={false} />
         <QueryClientProvider client={queryClient}>
-          <RecoilRoot>
             <Router />
-          </RecoilRoot>
         </QueryClientProvider>
         <CookieBanner />
       </React.Suspense>
