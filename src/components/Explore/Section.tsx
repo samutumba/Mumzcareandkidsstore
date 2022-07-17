@@ -1,12 +1,7 @@
 import React, { FC } from "react";
-// Import Swiper React components
-import { Swiper, SwiperSlide } from "swiper/react";
- 
-// import required modules
-import { FreeMode, Navigation} from "swiper";
 import { IExploreSection } from "../../types";
 import { ExploreSection } from "./ExploreSection";
-import { SectionTitle } from "..";
+import { ExploreTitle } from "..";
 
 interface ISectionType {
     title: string,
@@ -15,23 +10,15 @@ interface ISectionType {
 
 export const Section: FC<ISectionType> = ({title, content}) => {
   return (
-    <div className="h-fit my-6">
-      <SectionTitle title={title}/>
-      <Swiper
-        slidesPerView={window.innerWidth <= 768 ? 2 : 3}
-        spaceBetween={6}
-        loop={true}
-        freeMode={true}
-        navigation={true}
-        modules={[FreeMode, Navigation]}
-        className="mySwiper my-2"
-      >
-        {content.map((cont, index) => 
-            <SwiperSlide key={index}>
-                <ExploreSection {...cont}/>
-            </SwiperSlide>
-        )}
-      </Swiper>
+    <div className="h-fit my-6 w-full"> 
+      <ExploreTitle title={title}/>
+        <div className="flex flex-col w-full gap-3 md:flex-row flex-wrap justify-center">
+          {content.map((cont, index) => 
+            <React.Fragment key={index}>
+              <ExploreSection {...cont}/>
+            </React.Fragment>   
+          )}
+        </div>
     </div>
   );
 }

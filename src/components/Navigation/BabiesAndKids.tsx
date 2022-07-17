@@ -1,21 +1,22 @@
+import { useLocation } from "react-router-dom"
+import { Popover, Transition } from '@headlessui/react'
+import { useState } from 'react'
+
 export const BabiesAndKids = () => {
-    return (
+  const location = useLocation()  
+  
+  const isPage = location.pathname === "/category/babies-and-kids"
  
-     <div className="dropdown">
-       <label tabIndex={0} className="uppercase">Babies &amp; KIDS</label>
-       <div tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-full mx-8">
-       <div className="grid grid-flow-col grid-cols-3 gap-4">
-             <a href="/">Baby Food and Formula</a>
-             <a href="/">Baby Safety & Gadgets</a>
-             <a href="/">MealTime</a>
-             <a href="/">Bath Time</a>
-             <a href="/">Potty Time</a>
-             <a href="/">Nursery</a>
-             <a href="/">Health Care</a>
-             <a href="/">Oral Care</a>
-             <a href="/">On the Go</a>
-           </div>
-       </div>
- </div>
-     )
+  return (
+    <Popover className="relative">
+        <Popover.Button className={isPage ? "uppercase text-rose outline-none" : "uppercase outline-none"}>
+          BABIES &amp; KIDS
+        </Popover.Button>
+
+      <Popover.Panel className="absolute z-10">
+        <div className="w-[50rem] m-5 h-[20rem] bg-white rounded-lg">
+            
+        </div>
+      </Popover.Panel>
+    </Popover>)
  }

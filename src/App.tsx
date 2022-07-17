@@ -25,7 +25,7 @@ function App() {
 
   useEffect(() => {
 
-    axios.get(`${process.env.API_ENDPOINT}/auth/login/user`)
+    axios.get(`${process.env.API_ENDPOINT}/auth/login/user`, { withCredentials: true })
       .then(res => {
         setUser(res.data.user)
         toast.success(res.data.message)} 
@@ -37,6 +37,7 @@ function App() {
   },[])
   return (
       <React.Suspense fallback={<LoadingPage />}>
+        <div>{user?.name}</div>
       <Toaster position="top-right" reverseOrder={false} />
         <QueryClientProvider client={queryClient}>
             <Router />

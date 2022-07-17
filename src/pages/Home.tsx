@@ -6,7 +6,7 @@ export const Home = () => {
     return (<>
         <Layout>
             <Hero
-                images={["https://res.cloudinary.com/mumzcareandkidsstore/image/upload/v1657438683/media/Header-image_yobshr.jpg"]}
+                images={["/images/Mom_me.jpg"]}
             />
             <Section title="EXPLORE" content={HomeExploreContent}/>
             <ExploreProducts products={TestBabyShowerContent} title="FOR HER BABY SHOWER"/> 

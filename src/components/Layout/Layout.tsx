@@ -1,4 +1,4 @@
-import { NavBar, Footer } from "../";
+import { NavBar, Footer, Sidebar } from "../";
 import { BsBag, BsHeart } from "react-icons/bs"
 import { FaSearch }from "react-icons/fa"
 import { GiHamburgerMenu } from "react-icons/gi"
@@ -14,9 +14,9 @@ export const Layout: React.FC<ILayoutProps> = ({
 
   return (
     <> 
-      <div className="drawer">
+      <div className="fixed drawer">
         <input id="my-drawer-3" type="checkbox" className="drawer-toggle" /> 
-        <div className="drawer-content h-full flex flex-col">
+        <div className="drawer-content h-full w-full flex flex-col">
           <div className="w-full block bg-base-100">
             <div className="flex-none block h-full w-full lg:hidden">
               <div className="w-full text-2xl text-semibold">
@@ -35,7 +35,6 @@ export const Layout: React.FC<ILayoutProps> = ({
                     <BsHeart  className="my-auto" />
                     <BsBag  className="my-auto" />
                   </div>
-
                 </div>
                 <div className="flex justify-center pt-1">
                   <a href="/">
@@ -57,18 +56,9 @@ export const Layout: React.FC<ILayoutProps> = ({
         </div> 
         <div className="drawer-side">
           <label htmlFor="my-drawer-3" className="drawer-overlay"></label> 
-          <ul className="menu p-4 overflow-y-auto w-80 bg-base-100">
-          <li><a href="/"> <div className="bg-white p-1 rounded-xl" >
-              <FaSearch className="mb-1 text-base mr-2" />
-              <input type="text" placeholder="Search..." className="focus:border-none w-md" />
-            </div></a></li>
-            <li><a href="/">Profile</a></li>
-            <li><a href="/">Profile</a></li>
-            <li><a href="/">Profile</a></li>
-            <li><a href="/">Profile</a></li>
-            <li><a href="/">Profile</a></li>
-            <li><a href="/">Profile</a></li>
-          </ul> 
+          <div className="menu overflow-y-auto w-80 bg-base-100">
+            <Sidebar />
+          </div> 
         </div>
       </div>
     </>

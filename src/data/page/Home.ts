@@ -16,11 +16,6 @@ export const HomeExploreContent: IExploreSection[] = [
         link: "/",
         image: "https://res.cloudinary.com/mumzcareandkidsstore/image/upload/v1655605454/media/pexels-vanessa-loring-5082630_rcpml4.jpg"
     },
-    {
-        title: "APPAREL",
-        link: "/",
-        image: "https://res.cloudinary.com/mumzcareandkidsstore/image/upload/v1655605450/media/motherhood_vrt0l4.jpg"
-    }
 ]
 
 interface IExploreProducts {
