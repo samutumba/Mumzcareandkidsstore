@@ -24,7 +24,6 @@ function App() {
   const [user, setUser] = useRecoilState(userState)
 
   useEffect(() => {
-
     axios.get(`${process.env.API_ENDPOINT}/auth/login/user`, { withCredentials: true })
       .then(res => {
         setUser(res.data.user)

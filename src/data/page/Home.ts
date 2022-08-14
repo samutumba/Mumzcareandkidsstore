@@ -1,20 +1,23 @@
 import { IExploreSection } from "../../types";
+import babyCamera from "../../assets/images/baby-camera.jpg"
+import maternity from "../../assets/images/maternity.jpg"
+import fAndFormula from "../../assets/images/food-&-formula.jpg"
 
 export const HomeExploreContent: IExploreSection[] = [
     {
         title: "BABY SAFETY & GADGETS",
         link: "/",
-        image: "https://res.cloudinary.com/mumzcareandkidsstore/image/upload/v1655605446/media/baby-camera_gunegw.jpg"
+        image: babyCamera
     },
     {
         title: "MATERNITY",
         link: "/",
-        image: "https://res.cloudinary.com/mumzcareandkidsstore/image/upload/v1655605447/media/maternity_s3ula0.jpg"
+        image: maternity
     },
     {
         title: "BABY FOOD & FORMULA",
         link: "/",
-        image: "https://res.cloudinary.com/mumzcareandkidsstore/image/upload/v1655605454/media/pexels-vanessa-loring-5082630_rcpml4.jpg"
+        image: fAndFormula
     },
 ]
 

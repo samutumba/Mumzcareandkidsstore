@@ -1,14 +1,13 @@
 //import { Toggle } from "./../Toogle/Toggle";
 import { RiShoppingBagLine } from "react-icons/ri";
-import {FaRegHeart,FaRegUserCircle, FaSearch} from "react-icons/fa"
-import { BabiesAndKids } from "..";
-import { TextInput } from "flowbite-react";
+import { FaRegHeart , FaRegUserCircle } from "react-icons/fa"
 import { useLocation } from "react-router-dom";
+import logo from "../../assets/images/Final-logo.png"
 
 export const NavBar = () => {
 
   return (<div className="block h-fit">
-    <div className="flex w-full flex-col py-1 rounded-lg h-auto md:h-auto bg-gum">
+    <div className="flex w-full flex-col py-1 h-auto md:h-auto bg-sea">
       <div className="mx-auto w-10/12 md:flex-row flex items-center justify-around ">
       <div className="w-3/12">
         <div className="relative">
@@ -18,7 +17,7 @@ export const NavBar = () => {
           <input 
             type="search" 
             id="search" 
-            className="block p-2 pl-10 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-rose focus:border-rose" 
+            className="block p-2 pl-10 w-full text-sm text-gray-900 bg-white rounded-2xl border  border-gray-300 focus:ring-rose focus:border-rose" 
             placeholder="Search" 
           />
         </div>
@@ -33,7 +32,7 @@ export const NavBar = () => {
           <FaRegHeart className="mr-2 hover:text-2xl text-xl mb-1" />
           <RiShoppingBagLine className="mr-5 hover:text-2xl text-xl mb-1"/>
         </div>  
-        <div>
+        <div className="fone-semibold">
           <label htmlFor="modal-logout" hidden>
             <span className="text-rose hover:p-1 hover:font-bold cursor-pointer font-semibold"> 
               SIGN OUT 
@@ -48,22 +47,24 @@ export const NavBar = () => {
       </div>
       </div>
     </div>
-    <div className=" mx-auto w-10/12 flex flex-col md:flex-row items-center justify-between font-semibold ">
-      <NavLink href="/category/babies-and-kids">
-        BABIES &amp; KIDS
-      </NavLink>
-      <NavLink href="/category/youth">
-        Youth
-      </NavLink>
+    <div className=" mx-auto w-10/12 flex flex-col items-center justify-center font-semibold ">
       <a href="/" >
-        <img src="https://res.cloudinary.com/mumzcareandkidsstore/image/upload/v1656131820/media/Final-logo_hjbrbz.png" alt="https://admin.mumzcareandkidsstore.com/Final-logo.png" width={180} className="hover:bg-base-300 hover:rounded-lg" height={90}/>
+        <img src={logo} alt="Home Logo" width={180} className="hover:bg-base-300 hover:rounded-lg" height={90}/>
       </a>
-      <NavLink href="/category/motherhood">
-        Motherhood
-      </NavLink>
-      <NavLink href="/category/apparel">
-        Apparel
-      </NavLink>
+      <span className="flex flex-row justify-between mt-5 mx-auto w-8/12 mb-5">
+        <NavLink href="/category/babies-and-kids">
+          BABIES &amp; KIDS
+        </NavLink>
+        <NavLink href="/category/motherhood">
+          Motherhood
+        </NavLink>
+         <NavLink href="/category/apparel">
+          Apparel
+        </NavLink>
+        <NavLink href="/category/youth">
+          Youth
+        </NavLink>
+      </span>
     </div>
   </div>
     

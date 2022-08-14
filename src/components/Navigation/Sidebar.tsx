@@ -1,9 +1,10 @@
 import { Icon } from "@iconify/react";
 import { FC } from "react"
 
+
 export const Sidebar = () => {
     return(<div className="relative font-title flex flex-col w-full h-full">
-        <div className="w-full h-fit font-semibold py-3 bg-gum text-center uppercase">
+        <div className="w-full h-fit font-semibold py-3 bg-sea text-center uppercase">
             Welcome!!
         </div>
         <div className="mt-9 w-full font-semibold  text-md divide divide-black flex flex-col gap-3">

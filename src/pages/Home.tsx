@@ -5,11 +5,9 @@ import { HomeExploreContent, TestBabyShowerContent } from "../data"
 export const Home = () => {
     return (<>
         <Layout>
-            <Hero
-                images={["/images/Mom_me.jpg"]}
-            />
+            <Hero />
             <Section title="EXPLORE" content={HomeExploreContent}/>
-            <ExploreProducts products={TestBabyShowerContent} title="FOR HER BABY SHOWER"/> 
+            {/* <ExploreProducts products={TestBabyShowerContent} title="FOR HER BABY SHOWER"/>  */}
         </Layout>
     </>)
 }

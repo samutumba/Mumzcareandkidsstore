@@ -3,7 +3,6 @@ export interface IProduct {
     brand: string,
     title: string,
     gender?: string,
-    family: string,
     description: string,
     image: string[],
     category: string,

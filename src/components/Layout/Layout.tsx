@@ -3,6 +3,7 @@ import { BsBag, BsHeart } from "react-icons/bs"
 import { FaSearch }from "react-icons/fa"
 import { GiHamburgerMenu } from "react-icons/gi"
 import { CgProfile } from "react-icons/cg"
+import logo from "../../assets/images/Final-logo.png"
 
 interface ILayoutProps {
   children: React.ReactNode;
@@ -20,7 +21,7 @@ export const Layout: React.FC<ILayoutProps> = ({
           <div className="w-full block bg-base-100">
             <div className="flex-none block h-full w-full lg:hidden">
               <div className="w-full text-2xl text-semibold">
-                <div className="bg-gum content-center text-center grid grid-flow-cols place-content-between grid-cols-3">
+                <div className="bg-sea content-center text-center grid grid-flow-cols place-content-between grid-cols-3">
                   <div className="flex flex-row h-full my-auto justify-start ">
                     <label htmlFor="my-drawer-3" className="btn btn-square btn-ghost text-2xl">
                       <GiHamburgerMenu />
@@ -38,7 +39,7 @@ export const Layout: React.FC<ILayoutProps> = ({
                 </div>
                 <div className="flex justify-center pt-1">
                   <a href="/">
-                    <img src="https://res.cloudinary.com/mumzcareandkidsstore/image/upload/v1656131820/media/Final-logo_hjbrbz.png" alt="Home logo" width={180} className=" mx-auto cursor-pointer" height={90}/>
+                    <img src={logo} alt="Home logo" width={180} className=" mx-auto cursor-pointer" height={90}/>
                   </a>
                 </div>               
               </div>

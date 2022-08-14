@@ -7,3 +7,4 @@ export * from "./Title";
 export * from "./Navigation";
 export * from "./Cookie";
 export * from "./Loading";
+export * from "./Search";

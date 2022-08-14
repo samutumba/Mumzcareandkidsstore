@@ -2,59 +2,37 @@
 // import required modules
 import { Pagination, Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { IProduct } from "../../types";
 
 
 interface IHeroProps {
-    images: string[],
-    title?: string
+    products?: IProduct[]
 }
 
 
-export const Hero: React.FC<IHeroProps> = ({ images, title }) => {
+export const Hero: React.FC<IHeroProps> = ({ products }) => {
    
-    if(images.length == 1){
-        return (
-            <div className="block">
-                <div
-                    className={`relative h-[24rem] md:h-[30rem] w-full`}>
-                    <img 
-                        src="/images/Puzzle-piece.png" 
-                        alt="" 
-                        className="absolute inset-x-0 z-1 top-0 w-full object-fill h-[4rem] md:h-[8rem]" 
-                    />
-                    <img 
-                        src={images[0]} 
-                        alt={`Slide`} 
-                        className="h-full w-full object-cover"
-                    />
-                </div>
-            </div>
-        )
-    }
+    
     return (
-        <div
-            className={`block h-fit w-full`}>
-            <Swiper
-                slidesPerView={1}
-                spaceBetween={30}
-                loop={true}
-                pagination={{
-                clickable: true,
-                }}
-                navigation={true}
-                modules={[Pagination, Navigation]}
-                className="mySwiper"
-            >
-                {images.map((image, i) => 
-                    <SwiperSlide key={i}>
-                        <img 
-                        src={image} 
-                        alt={`Slide ${i}`} 
-                        className="block object-cover"
-                        />
-                    </SwiperSlide>
-                    )}
-            </Swiper>
+        <div className="block h-fit font-p text-center mt-2 min-h-96 w-full bg-gum">
+            <span className=" flex flex-col md:flex-row  gap-4 py-8 items-center justify-evenly">
+                <div className="w-72">
+                    <h2 className="leading-tight text-5xl font-title font-bold text-black ">For My Little <br/>
+                        <span className="underline underline-offset-[12px] decoration-ocean decoration-dotted decoration-[5px]">
+                            One and Me
+                        </span>
+                    </h2>
+                   
+                    <p className="text-xl mt-3 w-64 mx-auto">Simplifying you and your baby's needs.</p>
+
+                    <button className="text-white mt-4 py-1 px-4 bg-rose font-semibold uppercase rounded-2xl" >
+                        Shop Now
+                    </button>
+                </div>
+                <div className="w-72">
+                    .
+                </div>
+            </span>
         </div>
     )
 

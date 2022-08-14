@@ -31,6 +31,7 @@ module.exports = {
         'night': "#0a0a0a",
         'gold': "#f7b614",
         'ocean': "#8bcacc",
+        'sea': "#c6e6e6",
         'gum': "#f6d7dd",
         'facebook-blue': "#1877F2",
         'white': "#FFFFFF",
