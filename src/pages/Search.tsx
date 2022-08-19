@@ -9,7 +9,7 @@ export const SearchPage = () => {
         <div className="flex mt-3 flex-col gap-4 lg:mx-16 justify-center md:flex-row">
             <FilterOptions />
             <div className="w-full mx-2">
-                    <SortOptions />
+                <SortOptions />
             </div>
         </div>
     </Layout>)
