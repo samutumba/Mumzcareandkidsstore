@@ -102,7 +102,7 @@ export const MiniProductPreview: FC<IProduct> = (product) => {
             </div>
             ))
     }, [])
-    return (<div className="w-[14rem] rounded-2xl px-2 py-3 flex flex-col gap-1 font-p h-fit text-center my-3">
+    return (<div className="w-[9.5rem] lg:w-[14rem] rounded-2xl px-2 py-3 flex flex-col gap-1 font-p h-fit text-center my-3">
         <div className="w-full bg-white rounded-2xl m-2 p-1 border border-1 border-base">
             {product.images ? 
            <Swiper pagination={{

@@ -5,6 +5,16 @@ import { searchState, sortState } from "../atoms"
 import { Footer, Layout, SearchBar, FilterOptions, SortOptions, ProductPreview } from "../components"
 import { useProductQuery } from "../hooks"
 import { ProductFilter } from "../utils/filter"
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import { Icon } from '@iconify/react';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+
+import Slide from '@mui/material/Slide';
+import { TransitionProps } from '@mui/material/transitions';
 
 export const SearchPage = () => {
     const filter = useRecoilValue(searchState)
@@ -57,10 +67,13 @@ export const SearchPage = () => {
     return (
     <Layout>
         <div className="flex flex-col gap-4 w-full  pt-3 pb-3 shadow-lg">
-            <SearchBar />
+                <SearchBar />
+                <FilterModal />
         </div>
         <div className="flex bg-[#F4F4F4] flex-col gap-4 pt-3 justify-center md:flex-row">
-            <FilterOptions />
+            <div className="hidden lg:w-80 lg:block ">
+                <FilterOptions />
+            </div>
             <div className="w-full mx-2">
                     <SortOptions />
                     <div className="flex justify-center flex-row flex-wrap gap-[1.5rem]">
@@ -87,4 +100,54 @@ export const SearchPage = () => {
             </div>
         </div>
     </Layout>)
+}
+
+const Transition = React.forwardRef(function Transition(
+  props: TransitionProps & {
+    children: React.ReactElement;
+  },
+  ref: React.Ref<unknown>,
+) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
+
+export const FilterModal = () => {
+    const filter = useRecoilValue(searchState)
+     const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+    return (<div className="w-full">
+      <button className="flex lg:hidden w-fit text-center border border-gray-600 mx-auto py-1 px-[7rem] rounded-full" onClick={handleClickOpen}>
+            <Icon icon="bi:filter-left" inline={true} className="text-xl inline"/> Edit Filters {filter.category && "(1)"}
+      </button>
+      <Dialog
+        fullScreen
+        open={open}
+        onClose={handleClose}
+        TransitionComponent={Transition}
+        className="bg-gray-100 h-full min-h-screen"
+        >
+            <div className="relative flex justify-end font-title bg-gray-100 p-3  rounded-t-lg">
+          <IconButton
+              edge="start"
+              color="inherit"
+              onClick={handleClose}
+              aria-label="close"
+            >
+              Close
+            </IconButton>
+            </div>
+            <div className="w-full h-full flex flex-col justify-center">
+                
+                <FilterOptions />
+            </div>  
+      </Dialog>
+    </div>)
 }

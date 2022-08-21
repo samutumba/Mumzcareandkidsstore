@@ -62,22 +62,22 @@ export const WhatsAppSignIn = () => {
                   leaveFrom="opacity-100 scale-100"
                   leaveTo="opacity-0 scale-95"
                 >
-                  <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                  <Dialog.Panel className="w-full max-w-md font-p transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
                     <Dialog.Title
                       as="h3"
                       className="text-2xl text-center font-medium leading-6 text-gray-900"
                     >
                       <Icon icon="akar-icons:whatsapp-fill" inline={true} />
-                      Sign In with WhatsApp Number
+                      Sign In With WhatsApp
                     </Dialog.Title>
                     <div className="mt-2">
                         <form onSubmit={handleSubmit(handleSignIn)}>
                             <label className="flex flex-col text-lg my-4">
                                 <span className="mb-2 text-md">Enter your Number: </span>
-                                <span className=" border-2 border-base p-3 rounded-xl">
+                                <span className="p-2">
                                 <PhoneInputWithCountry
                                     international    
-                                    className="focus:outline-none border-none focus:border-none  outline-none"
+                                    className="focus:outline-none border-none appearance-none focus:border-none ring-none outline-none"
                                     defaultCountry="UG"
                                     name="phoneInputWithCountrySelect"
                                     control={control}
@@ -86,17 +86,17 @@ export const WhatsAppSignIn = () => {
                                  />
                                 </span>
                             </label>
-                            <div className="flex justify-evenly mt-4">
+                            <div className="flex justify-evenly font-semibold font-p mt-4">
                                 <button
                                     type="submit"
-                                    className="inline-flex bg-rose text-white w-48 justify-center rounded-md border border-transparent px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                                    className=" bg-rose text-white text-center hover:bg-white hover:ring-rose hover:text-rose py-2 px-4 w-48 rounded-lg"
                                     onClick={closeWhatsAppModal}
                                 >
                                     Submit
                                 </button>
                                 <button
                                     type="button"
-                                    className="inline-flex justify-center w-48 text-rose rounded-md border-2 border-rose bg-blue-100 px-4 py-2 text-sm font-medium hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                                    className="inline-flex justify-center w-48 text-rose rounded-md border-2 border-rose bg-white px-4 py-2 text-sm  "
                                     onClick={closeWhatsAppModal}
                                 >
                                     Cancel

@@ -13,7 +13,7 @@ import {
 } from "../pages";
 
 export const Router = () => {
-    return(<>
+    return(<div className="font-p">
     <BrowserRouter>
       <Routes>
         <Route path="/">
@@ -34,5 +34,5 @@ export const Router = () => {
         </Route>
       </Routes>
     </BrowserRouter>
-    </>)
+    </div>)
 }

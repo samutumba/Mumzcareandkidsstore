@@ -4,6 +4,7 @@ import { FaSearch }from "react-icons/fa"
 import { GiHamburgerMenu } from "react-icons/gi"
 import { CgProfile } from "react-icons/cg"
 import logo from "../../assets/images/Final-logo.png"
+import { Icon } from "@iconify/react";
 
 interface ILayoutProps {
   children: React.ReactNode;
@@ -22,11 +23,16 @@ export const Layout: React.FC<ILayoutProps> = ({
             <div className="flex-none block h-full w-full lg:hidden">
               <div className="w-full text-2xl text-semibold">
                 <div className="bg-sea content-center text-center grid grid-flow-cols place-content-between grid-cols-3">
-                  <div className="flex flex-row h-full my-auto justify-start ">
+                  <div className="flex flex-row h-full my-auto justify-start items-center">
                     <label htmlFor="my-drawer-3" className="btn btn-square btn-ghost text-2xl">
                       <GiHamburgerMenu />
                     </label>
-                    <FaSearch className="my-auto"/>
+                    <a href="/search" className="m-2 text-xl">
+                      <Icon icon="akar-icons:search" inline={true} />
+                    </a>
+                    <a href="/help" className="m-2 text-xl">
+                      <Icon icon="clarity:help-info-line" inline={true} />
+                    </a>
                   </div>
                   <div className="text-xl text-center my-auto font-semibold font-title">
                     WELCOME !!

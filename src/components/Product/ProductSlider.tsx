@@ -27,23 +27,23 @@ export const ProductCarousel: React.FC<IProductCarousel> = ({ title, filter, sor
   []
  }, [filter, sort, productData])
 
- return (<div className="w-full h-fit my-3 py-3 lg:px-7">
+ return (<div className="w-full h-fit my-3 py-3 px-5 lg:px-7">
   <SectionTitle title={title} />
        <Swiper
         slidesPerView={window.innerWidth <= 896 ? 2 : 5 }
         effect={"fade"}
-        spaceBetween={3}
+        
         navigation={true}
         loop
         pagination={{
           clickable: true,
         }}
         modules={[ Navigation]}
-        className="mySwiper lg:px-2 flex flex-row justify-evenly gap-4 w-full mx-auto"
+        className=" px-4 lg:px-2 flex flex-row justify-center lg:justify-evenly gap-4 w-full "
       >    
          {
              products.map((product, index)=>
-             <SwiperSlide key={index} className="block mx-auto">
+             <SwiperSlide key={index} className="block ">
                  <MiniProductPreview  {...product} />
              </SwiperSlide> )
          }
