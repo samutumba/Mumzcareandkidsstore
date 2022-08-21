@@ -6,17 +6,14 @@ import fAndFormula from "../../assets/images/food-&-formula.jpg"
 export const HomeExploreContent: IExploreSection[] = [
     {
         title: "BABY SAFETY & GADGETS",
-        link: "/",
         image: babyCamera
     },
     {
         title: "MATERNITY",
-        link: "/",
         image: maternity
     },
     {
         title: "BABY FOOD & FORMULA",
-        link: "/",
         image: fAndFormula
     },
 ]

@@ -7,4 +7,5 @@ export function useQuery() {
   
     return React.useMemo(() => new URLSearchParams(search), [search]);
 }
+
   

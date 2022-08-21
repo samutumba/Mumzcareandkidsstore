@@ -1,12 +1,13 @@
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
+import * as types from '../types'
 
 const api = axios.create({
-    baseURL: `${process.env.API_ENDPOINT}/`,
-    withCredentials: true
+    baseURL: `https://api.mumzcareandkidsstore.com/`,
+    withCredentials: false
 })
 
-class API{
+export class API{
     
     static async getLogin(username: string, auth: string){
         try{
@@ -95,6 +96,9 @@ class API{
         }
     }
 
+    static async getProducts() {
+        return api.get("product/all")
+    }
+
 }
 
-module.exports = API

@@ -17,6 +17,9 @@ import { CookieBanner } from './components';
 import { LoadingPage } from './pages';
 import axios from 'axios';
 import { userState } from './atoms';
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
 
 const queryClient = new QueryClient()
 
@@ -24,16 +27,17 @@ function App() {
   const [user, setUser] = useRecoilState(userState)
 
   useEffect(() => {
-    axios.get(`${process.env.API_ENDPOINT}/auth/login/user`, { withCredentials: true })
+    axios.get(`https://api.mumzcareandkidsstore.com/auth/login/user`, { withCredentials: false })
       .then(res => {
         setUser(res.data.user)
         toast.success(res.data.message)} 
       )
       .catch(err => {
-        toast.error(err.response.data.message)}
-      )
+        //toast.error(err.response.data.message)
+      })
 
-  },[])
+  }, [user])
+
   return (
       <React.Suspense fallback={<LoadingPage />}>
         <div>{user?.name}</div>
