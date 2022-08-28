@@ -96,7 +96,7 @@ export const AApparel = [
     "Teens",
     "Men",
     "Maternity",
-    "Woman",
+    "Women",
     "Other"
 ]
 
@@ -137,7 +137,7 @@ export interface IOrderItem {
     color?: string,
     material?: string,
     size?: string,
-    price: number
+    quantity: number
 }
 
 export interface IOrder {

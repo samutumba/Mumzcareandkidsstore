@@ -9,7 +9,9 @@ import {
   LoginPage,
   SignInPage,
   UnknownPage,
-  HelpPage
+  ProductPage,
+  HelpPage,
+  CartPage
 } from "../pages";
 
 export const Router = () => {
@@ -21,7 +23,10 @@ export const Router = () => {
           <Route path="sign-in" element={<SignInPage/>} />
           <Route path="login" element={<LoginPage />} />
           <Route path="register" element={<SignInPage/>} />
-          <Route path="search" element={<SearchPage />} />
+            <Route path="search" element={<SearchPage />} />
+            <Route path="wishlist" element={<SearchPage />} />
+            <Route path="cart" element={<CartPage />} />
+          <Route path="product/:id" element={<ProductPage />} />
           <Route path="help" element={<HelpPage />} />
           <Route path="category" >
             <Route index element={<Navigate replace to="/" />} />

@@ -20,15 +20,15 @@ export const Hero: React.FC<IHeroProps> = ({ products, image, description, title
     
     return (<div>
         <div className="block h-fit font-p text-center mt-2 min-h-96 w-full bg-gum">
-            <span className=" flex flex-col md:flex-row  gap-4 py-8 items-center justify-evenly">
-                <div className="w-72">
+            <span className=" flex flex-col md:flex-row  gap-2 pt-7 items-center justify-evenly">
+                <div className="w-[30rem]">
                     <h2 className="leading-tight text-5xl font-title font-bold text-black ">{title1}<br/>
-                        <span className="underline underline-offset-[12px] decoration-ocean decoration-dotted decoration-[5px]">
+                        <span className="underline underline-offset-[15px] decoration-ocean decoration-dotted decoration-[5px]">
                             {title2}
                         </span>
                     </h2>
                    
-                    <p className="text-xl mt-3 w-64 mx-auto">
+                    <p className="text-xl mt-3 w-96 mx-auto">
                         {description}
                     </p>
 
@@ -36,8 +36,8 @@ export const Hero: React.FC<IHeroProps> = ({ products, image, description, title
                         Shop Now
                     </button>
                 </div>
-                <div className="w-72">
-                    {image && <img src={image} alt=""/>}
+                <div className="w-[30rem] h-fit">
+                    {image && <img src={image} alt="" className="h-[23rem] w-auto mx-auto"/>}
                 </div>
             </span>
         </div>

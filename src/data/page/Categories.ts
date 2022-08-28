@@ -1,5 +1,56 @@
 import { IExploreSection } from "../../types";
 
+export const ApparelExplore: IExploreSection[] = [
+    {
+        title: "Babies & Kids",
+        image: "https://i.ibb.co/GV7jDFG/pexels-amponsah-nii-davidson-2093718.jpg",
+        category:"Apparel",
+        subCategory: "Babies & Kids"
+    },
+    {
+     title: "Boys",
+     image: "https://i.ibb.co/tBcBXRt/pexels-said-kweli-1569174.jpg",
+     category: "Apparel",
+     subCategory: "Boys"
+    },
+    {
+     title: "Girls",
+     image: "https://i.ibb.co/5KpXMCM/pexels-philip-boakye-2995309.jpg",
+     category: "Apparel",
+     subCategory: "Girls"
+    },
+    {
+     title: "Teens",
+     image: "https://i.ibb.co/3BRJ71C/pexels-ron-lach-10484692.jpg",
+     category: "Apparel",
+     subCategory: "Teens"
+    },
+     {
+     title:  "Men",
+     image: "https://i.ibb.co/LJ6NPPv/pexels-cottonbro-3206080.jpg",
+     category:"Apparel",
+     subCategory:  "Men"
+    },
+     {
+     title: "Maternity",
+     image: "https://i.ibb.co/PW0zTr0/pexels-dimakatjo-lepelle-7180535.jpg",
+     category: "Apparel",
+     subCategory: "Maternity"
+    },
+     {
+     title: "Women",
+     image: "https://i.ibb.co/7N85mrt/pexels-aog-pixels-12698497.jpg",
+     category: "Apparel",
+     subCategory: "Women"
+    },
+    {
+     title: "Other",
+     image: "https://i.ibb.co/TKcXHNj/pexels-dina-nasyrova-3808229.jpg",
+     category: "Apparel"
+    },
+
+]
+
 export const MotherHoodExplore: IExploreSection[] = [
     {
         title: "Maternity",

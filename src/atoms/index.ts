@@ -1,22 +1,29 @@
 import { atom } from "recoil";
-import { ICart, ISearch, ISort, IUser } from "../types";
+import { IOrderItem, ISearch, ISort, IUser } from "../types";
+import { recoilPersist } from 'recoil-persist'
+
+const { persistAtom } = recoilPersist()
 
 export const userState = atom<IUser|null>({
     key: 'userState', // unique ID (with respect to other atoms/selectors)
-    default: null, // default value (aka initial value)
+  default: null, // default value (aka initial value)
+    effects_UNSTABLE: [persistAtom],
   });
 
-export const cartState = atom<ICart>({
+export const cartState = atom<IOrderItem[]>({
     key: 'cartState', // unique ID (with respect to other atoms/selectors)
-    default: [], 
+  default: [], 
+    effects_UNSTABLE: [persistAtom],
 })
 
 export const searchState = atom<ISearch>({
   key: "searchState",
-  default: {}
+  default: {},
+  effects_UNSTABLE: [persistAtom],
 })
 
 export const sortState = atom<ISort>({
   key: 'sortState',
-  default: ISort.featured
+  default: ISort.featured,
+  effects_UNSTABLE: [persistAtom],
 })

@@ -20,8 +20,22 @@ import { userState } from './atoms';
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
+import "swiper/css/free-mode";
+import "swiper/css/navigation";
+import "swiper/css/thumbs";
 
-const queryClient = new QueryClient()
+const queryClient = new QueryClient({
+   defaultOptions: {
+    queries: {
+      staleTime: 1000 * 60 * 15,
+      refetchOnWindowFocus: false,
+      refetchOnMount: false,
+      refetchOnReconnect:false,
+      cacheTime: 1000 * 60 * 15,
+      retry: false,
+    },
+  },
+})
 
 function App() {
   const [user, setUser] = useRecoilState(userState)

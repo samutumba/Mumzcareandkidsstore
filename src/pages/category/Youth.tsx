@@ -1,7 +1,8 @@
 import { useNavigate } from "react-router-dom"
 import { useRecoilState } from "recoil"
 import { searchState } from "../../atoms"
-import { Layout, Hero } from "../../components"
+import { Layout, Hero, ProductCarousel } from "../../components"
+import { ISort } from "../../types"
 
 export const YouthPage = () => {
     const navigate = useNavigate()
@@ -12,6 +13,7 @@ export const YouthPage = () => {
                 callback={() => {
                     navigate('/search')
                     setFilter({category: ["Youth"]})
-            }}/>
+            }} />
+          <ProductCarousel title="LATEST" filter={{ category: ["Youth"] }} sort={ISort.newest} />
     </Layout>)
 } 

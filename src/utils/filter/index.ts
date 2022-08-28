@@ -5,6 +5,11 @@ export function ProductFilter(products: IProduct[], filter: ISearch, sort?: ISor
  let filtered: IProduct[] = []
 
  products.forEach((pro) => {
+  if(filter._id && pro._id){
+   if (filter._id !== pro._id) {
+    return;
+   }
+  }
   if (filter.text) {
    const value = filter.text.toLowerCase()
    if (!pro.brand.toLowerCase().includes(value) && !pro.title.toLowerCase().includes(value) && !pro.description.toLowerCase().includes(value) && !pro.category.toLowerCase().includes(value) && !pro.subCategory.toLowerCase().includes(value)) {

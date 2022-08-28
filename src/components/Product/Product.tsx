@@ -1,5 +1,5 @@
-import { FC, useCallback } from "react"
-import { IProduct } from "../../types"
+import { FC, useCallback, useMemo } from "react"
+import { IOrderItem, IProduct } from "../../types"
 import { AiOutlineHeart } from "react-icons/ai"
 
 // import required modules
@@ -9,6 +9,11 @@ import { Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Format } from "../../utils/formatter";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+import { useProductQuery } from "../../hooks";
+import { ProductFilter } from "../../utils/filter";
+import { BsHeart } from "react-icons/bs";
+import { ImBin } from "react-icons/im"
 
 
 export const Product = () => {
@@ -27,8 +32,58 @@ export const PreviewProduct: FC<IExploreProducts> = ({title, image}) => {
     </div>)
 }
 
+export const ProductCartPreview: FC<IOrderItem> = (item) => {
+    const navigate = useNavigate()
+
+    const productData = useProductQuery()
+    const product = useMemo(() => {
+        return productData.data ?
+        ProductFilter(productData.data, {_id: item.productID}).at(0) :
+        undefined
+
+    }, [productData])
+    
+    if(!product){
+        return(<></>)
+    }
+    
+    return (<div className="w-[40rem] justify-center rounded-2xl px-2 py-3 flex flex-row gap-4 font-p h-[15rem] text-center my-3">
+        <div onClick={() => navigate(`/product/${product._id}`)} className="w-1/3 bg-white rounded-2xl m-2 p-3 border border-1 border-base">
+            {product.images ? 
+           <Swiper pagination={{
+                    dynamicBullets: true,
+               clickable: true,
+        }} loop modules={[Pagination]} className="mySwiper my-2 ">
+                {
+                    product.images.map((img, i) => 
+                        <SwiperSlide key={i}>
+                            <img src={img.link} alt="" className="h-40 w-auto mx-auto rounded-lg "/>
+                        </SwiperSlide>
+                    )
+                }
+                </Swiper> :
+                <div className="h-40 w-full my-2">
+                    <img src="/favicon.ico" alt="" className="h-40 w-auto mx-auto rounded-lg "/>
+             </div>
+           }
+        </div>
+        <div className="grid grid-flow-row w-96 h-full place-content-evenly  content-center">
+            <div className="font-semibold text-lg h-12">
+                {product.title} 
+            </div>
+            <div className="grid grid-cols-3 items-center justify-evenly py-2 my-1">
+                <ImBin className="inline"/>  <BsHeart className="inline" /> <span className="text-rose text-lg font-semibold">+{item.quantity}</span>
+            </div>
+            <div className="font-semibold text-sm">
+                {Format.currency(product.basePrice*item.quantity)}
+            </div>
+        </div>
+    </div>)
+}
+
 export const ProductPreview: FC<IProduct> = (product) => {
-    return (<div className="w-[14rem]  rounded-2xl px-2 py-3 flex flex-col gap-1 font-p h-fit text-center my-3">
+    const navigate = useNavigate()
+    return (<button onClick={() => navigate(`/product/${product._id}`)} className="w-[14rem]  rounded-2xl px-2 py-3 flex flex-col gap-1 font-p h-fit text-center my-3">
         <div className="w-full bg-white rounded-2xl m-2 p-3 border border-1 border-base">
             {product.images ? 
            <Swiper pagination={{
@@ -59,7 +114,7 @@ export const ProductPreview: FC<IProduct> = (product) => {
                 ADD TO CART
             </button>
         </div>
-    </div>)
+    </button>)
 }
 
 export const MiniProductPreview: FC<IProduct> = (product) => {
