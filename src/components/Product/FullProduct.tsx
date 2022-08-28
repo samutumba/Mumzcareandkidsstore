@@ -80,7 +80,7 @@ export const FullViewProduct: React.FC<IProduct> = (product) => {
             ),  {
     duration: 6000,
   })
-  }, [cart])
+  }, [cart, quantity])
 
  return (<div className="w-full px-6 lg:mx-3 my-7">
   <h1 className="text-lg font-title  text-gray-400">{product.brand}</h1>

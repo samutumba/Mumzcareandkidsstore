@@ -35,7 +35,7 @@ export const CartPage = () => {
 
     return (<Layout>
         <SectionTitle title="My Cart" />
-        <div className="flex flex-row gap-3 justify-center">
+        <div className="flex flex-col gap-3 justify-center">
             {
                 cart.map((item, i) => 
                     <React.Fragment key={i}>
