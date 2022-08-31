@@ -23,6 +23,7 @@ import "swiper/css/pagination";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
+import { API } from './api/https';
 
 const queryClient = new QueryClient({
    defaultOptions: {
@@ -41,20 +42,18 @@ function App() {
   const [user, setUser] = useRecoilState(userState)
 
   useEffect(() => {
-    axios.get(`https://api.mumzcareandkidsstore.com/auth/login/user`, { withCredentials: false })
-      .then(res => {
+    API.getUser().then(res => {
         setUser(res.data.user)
         toast.success(res.data.message)} 
       )
       .catch(err => {
-        //toast.error(err.response.data.message)
+        toast.error(err.response.data.message)
       })
 
-  }, [user])
+  }, [])
 
   return (
       <React.Suspense fallback={<LoadingPage />}>
-        <div>{user?.name}</div>
       <Toaster position="top-right" reverseOrder={false} />
         <QueryClientProvider client={queryClient}>
             <Router />

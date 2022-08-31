@@ -1,7 +1,16 @@
+import { useNavigate } from "react-router-dom";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { userState } from "../atoms";
 import { SignInForm } from "../components/Auth";
 
 
 export const SignInPage = () => {
+    const navigate = useNavigate()
+    const user = useRecoilValue(userState)
+
+    if (user) {
+        navigate("/")
+    }
         
     return (<>
         <div className="h-screen md:flex">

@@ -56,7 +56,7 @@ export const Layout: React.FC<ILayoutProps> = ({
               <NavBar />
             </div>
           </div>
-          <div className="block">
+          <div className="block w-full">
             {children}
             <Footer />
           </div>

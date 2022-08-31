@@ -3,8 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import * as types from '../types'
 
 const api = axios.create({
-    baseURL: `https://api.mumzcareandkidsstore.com/`,
-    withCredentials: false
+     baseURL: `http://localhost:4000/`,
+    //baseURL: `https://api.mumzcareandkidsstore.com/`,
+    withCredentials: true
 })
 
 export class API{
@@ -23,31 +24,9 @@ export class API{
         }
     }
 
-    static async registerWhatsApp() {
-        try {
-            await api.get("auth/user").then(res => {
-                return {
-                    success: true,
-                    data: res.data
-                }
-            })
-        }catch(err){
-            return {
-                success: false,
-                data: err
-            }
-        }
-    }
-
-
     static async getUser() {
-        try {
-            api.get("auth/user").then(res => {
-                return res.data
-            })
-        }catch(err){
-            return null
-        }
+
+        return   api.get("auth/user")
     }
     
     static async submit() {
@@ -60,40 +39,27 @@ export class API{
         }
     }
     
-    static async login(uName: string, otp: string) {
-        try {
-            await api.post("auth/login", {username: uName, password: otp}).then(res => {
-                return {
-                    success: true,
-                    data: res
-                };
-            })
-        }catch(err){
-            return {
-                success: false,
-                data: err
-            };
-        }
-    }
-    
-    static async registerEmail() {
-        try {
-            api.get("auth/email/register").then(res => {
-                return res.data
-            })
-        }catch(err){
-            return null
-        }
+    static async login(username: string, password: string ) {
+        return api.post('auth/login', {
+            username,
+            password
+        })
     }
 
-    static async registerWhatsappNumber() {
-        try {
-            api.get("auth/email/register").then(res => {
-                return res.data
-            })
-        }catch(err){
-            return null
-        }
+    static async getExists(username: string) {
+        return api.post("auth/exists", {
+            username: username
+        })
+    }
+    
+    static async registerEmail(name: string, username: string, password: string) {
+       
+        return api.post("auth/email/register", { name, username, password } )
+    }
+
+    static async registerWhatsapp(name: string, username: string, password: string) {
+        return api.post("auth/whatsapp/register", { name, username, password })
+        
     }
 
     static async getProducts() {
