@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import * as types from '../types'
 
 const api = axios.create({
-     baseURL: `http://localhost:4000/`,
-    //baseURL: `https://api.mumzcareandkidsstore.com/`,
+    // baseURL: `http://localhost:4000/`,
+    baseURL: `https://api.mumzcareandkidsstore.com/`,
     withCredentials: true
 })
 

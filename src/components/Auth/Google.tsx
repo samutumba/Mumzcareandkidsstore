@@ -3,7 +3,7 @@ import { FcGoogle } from "react-icons/fc"
 export const GoogleButton = () => {
 
     const signIn = () => {
-      window.open("http://localhost:4000/auth/google", '_self')
+      window.open("https://api.mumzcareandkidsstore.com/auth/google", '_self')
     }
     return(<>
         <div className="flex max-w-sm justify-center items-center border-2 border-base hover:border-black py-2 px-3 rounded-2xl mb-4">
