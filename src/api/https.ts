@@ -3,15 +3,15 @@ import { useNavigate } from 'react-router-dom';
 import * as types from '../types'
 
 const api = axios.create({
-    // baseURL: `http://localhost:4000/`,
-    baseURL: `https://api.mumzcareandkidsstore.com/`,
+    baseURL: `http://localhost:4000/`,
+    //baseURL: `https://api.mumzcareandkidsstore.com/`,
     withCredentials: true
 })
 
-export class API{
+export class API {
     
-    static async getLogin(username: string, auth: string){
-        try{
+    static async getLogin(username: string, auth: string) {
+        try {
             const data = {
                 username: username,
                 auth: auth
@@ -19,14 +19,14 @@ export class API{
             await api.post("auth/getLogin", data)
                 .then(res => { return { success: true, data: res.data } })
                 .catch(err => { return { success: false, data: err } })
-        }catch(err){
+        } catch (err) {
             return false;
         }
     }
 
     static async getUser() {
 
-        return   api.get("auth/user")
+        return api.get("auth/user")
     }
     
     static async submit() {
@@ -34,16 +34,20 @@ export class API{
             await api.get("auth/user").then(res => {
                 return res.data
             })
-        }catch(err){
+        } catch (err) {
             return null
         }
     }
     
-    static async login(username: string, password: string ) {
+    static async login(username: string, password: string) {
         return api.post('auth/login', {
             username,
             password
         })
+    }
+
+    static async createInquiry(data: types.INewInquiry) {
+        return api.post('feedback', data)
     }
 
     static async getExists(username: string) {

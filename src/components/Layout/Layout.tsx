@@ -5,6 +5,9 @@ import { GiHamburgerMenu } from "react-icons/gi"
 import { CgProfile } from "react-icons/cg"
 import logo from "../../assets/images/Final-logo.png"
 import { Icon } from "@iconify/react";
+import { RiShoppingBagLine } from "react-icons/ri";
+import { useRecoilValue } from "recoil";
+import { cartState } from "../../atoms";
 
 interface ILayoutProps {
   children: React.ReactNode;
@@ -13,16 +16,17 @@ interface ILayoutProps {
 export const Layout: React.FC<ILayoutProps> = ({
   children,
 }) => {
+  const cart = useRecoilValue(cartState)
 
   return (
     <> 
       <div className="fixed drawer">
         <input id="my-drawer-3" type="checkbox" className="drawer-toggle" /> 
-        <div className="drawer-content h-full w-full flex flex-col">
+        <div className="drawer-content h-full w-full max-w-screen">
           <div className="w-full block bg-base-100">
             <div className="flex-none block h-full w-full lg:hidden">
               <div className="w-full text-2xl text-semibold">
-                <div className="bg-sea content-center text-center grid grid-flow-cols place-content-between grid-cols-3">
+                <div className="bg-sea content-center text-center grid grid-flow-cols place-content-between grid-cols-2">
                   <div className="flex flex-row h-full my-auto justify-start items-center">
                     <label htmlFor="my-drawer-3" className="btn btn-square btn-ghost text-2xl">
                       <GiHamburgerMenu />
@@ -30,17 +34,17 @@ export const Layout: React.FC<ILayoutProps> = ({
                     <a href="/search" className="m-2 text-xl">
                       <Icon icon="akar-icons:search" inline={true} />
                     </a>
-                    <a href="/help" className="m-2 text-xl">
-                      <Icon icon="clarity:help-info-line" inline={true} />
-                    </a>
                   </div>
-                  <div className="text-xl text-center my-auto font-semibold font-title">
-                    WELCOME !!
-                  </div>
-                  <div className="flex flex-row my-auto mr-3 h-full gap-1 justify-end">
+                  
+                  <div className="flex flex-row my-auto mr-3 h-full gap-2 justify-end">
                     <CgProfile className="my-auto" />
                     <BsHeart  className="my-auto" />
-                    <BsBag  className="my-auto" />
+                    <a href="/cart" className="relative my-auto h-10 w-fit">
+                    <RiShoppingBagLine className="-mb-3 " />
+                    {cart.length > 0  && <div className="rounded-full bg-rose justify-center text-white absolute top-0 right-0 w-4 h-4 text-center flex items-center text-xs">
+                      {cart.length}
+                    </div>}
+            </a>
                   </div>
                 </div>
                 <div className="flex justify-center pt-1">

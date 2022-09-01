@@ -7,7 +7,6 @@ const { persistAtom } = recoilPersist()
 export const userState = atom<IUser|null>({
     key: 'userState', // unique ID (with respect to other atoms/selectors)
   default: null, // default value (aka initial value)
-    effects_UNSTABLE: [persistAtom],
   });
 
 export const cartState = atom<IOrderItem[]>({

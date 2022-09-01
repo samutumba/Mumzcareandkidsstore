@@ -11,9 +11,6 @@ export const Sidebar = () => {
             <SidebarItem href="/category/babies-and-kids">
                 Babies &#38; kids
             </SidebarItem>
-            <SidebarItem href="/category/youth">
-                Youth
-            </SidebarItem>
             <SidebarItem href="/category/motherhood">
                 Motherhood
             </SidebarItem>

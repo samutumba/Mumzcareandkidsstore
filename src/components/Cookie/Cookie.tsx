@@ -1,12 +1,18 @@
 import Cookies from 'js-cookie'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Icon } from '@iconify/react';
 import { Modal } from "flowbite-react"
 
 export const CookieBanner = () => {
-    let [isOpen, setIsOpen] = useState(true)
+    let [isOpen, setIsOpen] = useState(false)
 
     const acceptedCookies = Cookies.get('cookiePermission');
+
+    useEffect(() => {
+        if (!acceptedCookies) {
+            setIsOpen(true)
+        }
+    }, [])
 
     function acceptCookies(){
         setIsOpen(false);
