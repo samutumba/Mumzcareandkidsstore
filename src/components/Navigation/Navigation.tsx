@@ -5,11 +5,14 @@ import { useLocation } from "react-router-dom";
 import { Icon } from '@iconify/react';
 import logo from "../../assets/images/Final-logo.png"
 import { Badge } from "flowbite-react";
-import { useRecoilValue } from "recoil";
-import { cartState } from "../../atoms";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { cartDrawerState, cartState, userState } from "../../atoms";
+import { SignInButton } from "../Auth";
 
 export const NavBar = () => {
   const cart = useRecoilValue(cartState)
+  const [cartOpen, setCartOpen] = useRecoilState(cartDrawerState)
+  const user = useRecoilValue(userState)
 
   return (<div className="block h-fit">
     <div className="flex w-full flex-col py-3 h-auto md:h-auto bg-sea">
@@ -18,43 +21,29 @@ export const NavBar = () => {
           <a href="/search" className="my-1">
           <Icon icon="akar-icons:search" inline={true} />
           </a>
-          <a href="/help" className="my-1">
-            <Icon icon="clarity:help-info-line" inline={true} />
-          </a>
       </div>
       <div className="font-bold w-3/12 font-title text-center">
-        WELCOME!!
+        WELCOME {user?.name}!!
       </div>
       <div className="flex flex-row w-3/12 justify-end"> 
-        <div className="flex flex-row items-center">
+        <div className="flex flex-row items-center mr-3">
             { /**<Toggle /> */}
             <span>
               <FaRegUserCircle className="mr-2 hover:text-2xl text-xl mb-1" />
               
             </span>
-             <span>
+             <a href="/wishlist">
               <FaRegHeart className="mr-2 hover:text-2xl text-xl mb-1" />
              
-            </span>
-             <a href="/cart" className="relative mr-5 h-7 w-7">
-              <RiShoppingBagLine className="-mb-1 hover:text-2xl text-xl " />
-              {cart.length > 0  && <div className="rounded-full bg-rose justify-center text-white absolute top-0 right-0 w-4 h-4 text-center flex items-center text-xs">
-                {cart.length}
-              </div>}
             </a>
+            <button onClick={() => setCartOpen(true)}  className="relative my-auto h-10 w-fit">
+              <RiShoppingBagLine className="mr-2 hover:text-2xl text-xl mb-1" />
+              {(user && user?.cart?.length > 0)  && <div className="rounded-full bg-rose justify-center text-white absolute top-0 right-0 w-4 h-4 text-center flex items-center text-xs">
+                {user?.cart?.length}
+              </div>}
+            </button>
         </div>  
-        <div className="fone-semibold">
-          <label htmlFor="modal-logout" hidden>
-            <span className="text-rose hover:p-1 hover:font-bold cursor-pointer font-semibold"> 
-              SIGN OUT 
-            </span>
-          </label>
-          <a href="/sign-in">
-            <span className="text-rose hover:font-bold cursor-pointer font-semibold">
-              SIGN IN
-            </span>
-          </a>
-        </div>
+        <SignInButton />
       </div>
       </div>
     </div>

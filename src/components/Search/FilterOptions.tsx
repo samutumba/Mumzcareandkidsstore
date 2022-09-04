@@ -92,7 +92,7 @@ export const FilterOptions = () => {
     })
   }, [subCategories])
 
- return (<div className="bg-gray-100 font-p h-full w-full rounded-lg">
+ return (<div className=" bg-[#FCFBFB] font-p h-full w-full rounded-lg">
   <h3 className="text-gray-500 ml-6 font-title text-lg font-semibold">
     Filter
    </h3>

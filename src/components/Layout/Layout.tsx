@@ -6,8 +6,9 @@ import { CgProfile } from "react-icons/cg"
 import logo from "../../assets/images/Final-logo.png"
 import { Icon } from "@iconify/react";
 import { RiShoppingBagLine } from "react-icons/ri";
-import { useRecoilValue } from "recoil";
-import { cartState } from "../../atoms";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { cartDrawerState, cartState } from "../../atoms";
+import { CartDrawer } from "../Cart/Drawer";
 
 interface ILayoutProps {
   children: React.ReactNode;
@@ -17,6 +18,7 @@ export const Layout: React.FC<ILayoutProps> = ({
   children,
 }) => {
   const cart = useRecoilValue(cartState)
+  const [cartOpen, setCartOpen] = useRecoilState(cartDrawerState)
 
   return (
     <> 
@@ -38,13 +40,13 @@ export const Layout: React.FC<ILayoutProps> = ({
                   
                   <div className="flex flex-row my-auto mr-3 h-full gap-2 justify-end">
                     <CgProfile className="my-auto" />
-                    <BsHeart  className="my-auto" />
-                    <a href="/cart" className="relative my-auto h-10 w-fit">
+                    <a className="my-auto" href="/wishlist"><BsHeart   /></a>
+                    <button onClick={() => setCartOpen(true)}  className="relative my-auto h-10 w-fit">
                     <RiShoppingBagLine className="-mb-3 " />
                     {cart.length > 0  && <div className="rounded-full bg-rose justify-center text-white absolute top-0 right-0 w-4 h-4 text-center flex items-center text-xs">
                       {cart.length}
                     </div>}
-            </a>
+            </button>
                   </div>
                 </div>
                 <div className="flex justify-center pt-1">
@@ -72,6 +74,7 @@ export const Layout: React.FC<ILayoutProps> = ({
           </div> 
         </div>
       </div>
+      <CartDrawer />
     </>
   );
 };

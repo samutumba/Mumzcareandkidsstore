@@ -1,4 +1,4 @@
-import { ICart, IWishList } from "./cart.type";
+import { IProduct } from "./product.type";
 
 export interface IUser {
     _id?: string
@@ -14,8 +14,27 @@ export interface IUser {
     facebookId?: string,
     address?: string,
     preferredCommunicationMethod: string,
-    wishlist: IWishList,
-    cart: ICart,
+    wishList: ICart[],
+    cart: ICart[],
     policyAccepted: boolean,
     lastAccessed: Date
+}
+
+export interface ICart {
+    _id?: string,
+    product: IProduct,
+    color?: string,
+    material?: string,
+    size?: string,
+    model?: string,
+    quantity: number
+}
+
+export interface INewCart {
+    product?: string,
+    color?: string,
+    material?: string,
+    size?: string,
+    model?: string,
+    quantity: number
 }

@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import * as types from '../types'
 
 const api = axios.create({
-    //baseURL: `http://localhost:4000/`,
-    baseURL: `https://api.mumzcareandkidsstore.com/`,
+    baseURL: `http://localhost:4000/`,
+    //baseURL: `https://api.mumzcareandkidsstore.com/`,
     withCredentials: true
 })
 
@@ -46,6 +46,10 @@ export class API {
         })
     }
 
+     static async logout() {
+        return api.post('auth/logout')
+    }
+
     static async createInquiry(data: types.INewInquiry) {
         return api.post('feedback', data)
     }
@@ -68,6 +72,10 @@ export class API {
 
     static async getProducts() {
         return api.get("product/all")
+    }
+
+     static async updateList(data: { list: "Cart" | "Wishlist", cart: types.INewCart[]  }) {
+        return api.post("user/updateList", data)
     }
 
 }

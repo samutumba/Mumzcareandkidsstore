@@ -1,7 +1,7 @@
 import { Pagination } from "flowbite-react"
 import React, { useCallback, useEffect, useMemo, useState } from "react"
-import { useRecoilValue } from "recoil"
-import { searchState, sortState } from "../atoms"
+import { useRecoilValue, useSetRecoilState } from "recoil"
+import { loadingState, searchState, sortState } from "../atoms"
 import { Footer, Layout, SearchBar, FilterOptions, SortOptions, ProductPreview } from "../components"
 import { useProductQuery } from "../hooks"
 import { ProductFilter } from "../utils/filter"
@@ -19,15 +19,23 @@ import { TransitionProps } from '@mui/material/transitions';
 export const SearchPage = () => {
     const filter = useRecoilValue(searchState)
     const sort = useRecoilValue(sortState)
+     const setLoading = useSetRecoilState(loadingState)
     const productData = useProductQuery()
     const [entryNum, setEntryNum] = useState<number>(24)
     const [page, setPage] = useState<number>(1)
     
 
     const products = useMemo(() => {
-        return productData.data ?
-         ProductFilter(productData.data, filter, sort) :
-        []
+        setLoading(true)
+
+        if (!productData.data) {
+            return []
+        } else {
+            const results = ProductFilter(productData.data, filter, sort)
+            setLoading(false)
+            return results
+        }
+        
     }, [filter, productData, sort])
 
     const pageItems = useMemo(() => {
@@ -54,12 +62,13 @@ export const SearchPage = () => {
     }, [pageItems, page, endItems])
 
     const onPageChange = useCallback((value: number) => {
+        setPage(value)
+        window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
         if (endItems >= products.length || value > page){
             return;
         }
         else {
-            setPage(value)
-            document.getElementById("root")?.scrollTo(0,0)
+            
         }
     }, [page, setPage, endItems])
 
@@ -70,13 +79,13 @@ export const SearchPage = () => {
                 <SearchBar />
                 <FilterModal />
         </div>
-        <div className="flex bg-[#F4F4F4] flex-col gap-4 pt-3 justify-center md:flex-row">
+        <div className="flex bg-[#FCFBFB] flex-col gap-4 pt-3 justify-center md:flex-row">
             <div className="hidden lg:w-80 lg:block ">
                 <FilterOptions />
             </div>
-            <div className="w-full mx-2">
+            <div className="w-full h-full bg-[#FCFBFB] mx-2">
                     <SortOptions />
-                    <div className="flex justify-center flex-row flex-wrap gap-[1.5rem]">
+                    <div className="flex h-full min-h-[20rem] justify-center flex-row flex-wrap gap-1">
                         {products.length === 0 ? <span>
                             No Products Match
                         </span> : 
@@ -84,18 +93,16 @@ export const SearchPage = () => {
                                 <ProductPreview {...pro} />
                             </React.Fragment>)
                         }
-                        
                     </div>
-                    <div className="flex flex-col items-center justify-center text-center">
+                    <div className="flex flex-col mb-7 mt-3 items-center justify-center text-center">
                         <p>Showing {startItems} to {endItems} of {products.length } Items <br /></p>
                         <Pagination
                             currentPage={page}
                             layout="navigation"
                             onPageChange={onPageChange}
                             showIcons={true}
-                            totalPages={products.length % entryNum }
+                            totalPages={Math.ceil(products.length/entryNum) }
                         />
-                        
                     </div>
             </div>
         </div>

@@ -1,5 +1,6 @@
 import { Icon } from "@iconify/react";
 import { FC } from "react"
+import { SignInButton } from "../Auth/Button";
 
 
 export const Sidebar = () => {
@@ -17,9 +18,9 @@ export const Sidebar = () => {
             <SidebarItem href="/category/apparel">
                 Apparel
             </SidebarItem>
-            <SidebarItem href="/sign-in">
-                Sign In
-            </SidebarItem>
+            <div className="border-b py-5 border-darkBase uppercase text-center w-full">
+                <SignInButton />
+            </div>
         </div>
         <div className="mt-11 flex font-medium justify-center gap-2 items-center text-sm font-p flex-row ">
             <a href="/help" className="hover:font-semibold">Help</a>

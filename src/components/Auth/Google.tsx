@@ -14,7 +14,7 @@ export const GoogleButton = () => {
                     onClick={signIn}
                 >
                   <FcGoogle className="mr-4 text-xl mb-1 inline" />
-                  Sign in with Google
+                  Continue with Google
                 </button>
               
             </div>

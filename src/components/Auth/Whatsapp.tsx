@@ -9,6 +9,7 @@ import { RegisterModal } from './Register';
 import { API } from '../../api/https';
 import toast from 'react-hot-toast';
 import { LoginModal } from './SignIn';
+import { Modal } from 'flowbite-react';
 
 export const WhatsAppSignIn = () => {
   const { control,  watch, handleSubmit } = useForm<{
@@ -67,52 +68,32 @@ export const WhatsAppSignIn = () => {
                     onClick={openWhatsAppModal}
                 >
                 <Icon icon="akar-icons:whatsapp-fill" inline={true} className="mr-3 text-xl mt-0.5"/>
-                Sign in with Whatsapp
+                Continue with Whatsapp
                 </button>
             </div>
         </div>
-  
-        <Transition appear show={isOpen} as={Fragment}>
-          <Dialog as="div" className="relative z-10" onClose={closeWhatsAppModal}>
-            <Transition.Child
-              as={Fragment}
-              enter="ease-out duration-300"
-              enterFrom="opacity-0"
-              enterTo="opacity-100"
-              leave="ease-in duration-200"
-              leaveFrom="opacity-100"
-              leaveTo="opacity-0"
-            >
-              <div className="fixed inset-0 bg-black bg-opacity-25" />
-            </Transition.Child>
-  
-            <div className="fixed inset-0 overflow-y-auto">
-              <div className="flex min-h-full items-center justify-center p-4 text-center">
-                <Transition.Child
-                  as={Fragment}
-                  enter="ease-out duration-300"
-                  enterFrom="opacity-0 scale-95"
-                  enterTo="opacity-100 scale-100"
-                  leave="ease-in duration-200"
-                  leaveFrom="opacity-100 scale-100"
-                  leaveTo="opacity-0 scale-95"
-                >
-                  <Dialog.Panel className="w-full max-w-md font-p transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
-                    <Dialog.Title
-                      as="h3"
-                      className="text-2xl text-center flex items-center gap-4 justify-center w-full font-medium leading-6 text-gray-900"
-                    >
-                      <Icon icon="akar-icons:whatsapp-fill" inline={true} />
+        <Modal
+    show={isOpen}
+    size="md"
+    popup={true}
+    onClose={closeWhatsAppModal}
+  >
+    <Modal.Header />
+    <Modal.Body>
+            <div className="text-center">
+              <h3 className="text-xl text-center flex items-center gap-4 justify-center w-full font-medium leading-6 text-gray-900">
+                 <Icon icon="akar-icons:whatsapp-fill" inline={true} />
                       Sign In With WhatsApp
-                    </Dialog.Title>
-                    <div className="mt-2">
+              </h3>
+              <div className="mt-2">
+                
                         <form onSubmit={handleSubmit(handleSignIn)}>
                             <label className="flex flex-col text-lg my-4">
-                                <span className="mb-2 text-md">Enter your Number: </span>
+                               
                                 <span className="p-2">
                                 <PhoneInputWithCountry
                                     international    
-                                    className="focus:outline-none border-none appearance-none focus:border-none ring-none outline-none"
+                                    className="box-border appearance-none border border-gray w-full rounded-lg py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-primary mr-2 font-Poppins custom_style"
                                     defaultCountry="UG"
                                     name="number"
                               control={control}
@@ -121,12 +102,12 @@ export const WhatsAppSignIn = () => {
                                  />
                                 </span>
                             </label>
-                            <div className="flex justify-evenly font-semibold font-p mt-4">
+                            <div className="flex justify-evenly font-semibold font-p gap-2 mt-4">
                                 <button
                                     type="submit"
                                     className=" bg-rose text-white text-center hover:bg-white hover:ring-rose hover:text-rose py-2 px-4 w-48 rounded-lg"
                                 >
-                                    Sign In
+                                    Enter
                                 </button>
                                 <button
                                     type="button"
@@ -139,12 +120,11 @@ export const WhatsAppSignIn = () => {
                         
                         </form>
                     </div>
-                  </Dialog.Panel>
-                </Transition.Child>
-              </div>
-            </div>
-          </Dialog>
-        </Transition>
+      </div>
+    </Modal.Body>
+  </Modal>
+  
+
         
       </>
     )

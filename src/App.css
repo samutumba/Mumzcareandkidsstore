@@ -36,3 +36,13 @@
 .swiper-pagination-bullet-active-prev {
     background-color: white;
 }
+
+.PhoneInputInput {
+    border: none;
+    outline: none  !important;
+    appearance: none  !important;
+}
+.PhoneInputInput--focus{
+    border: none;
+    outline: none  !important;
+}

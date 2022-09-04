@@ -1,5 +1,5 @@
 export interface IProduct {
-    _id?: string,
+    _id: string,
     brand: string,
     title: string,
     gender?: string,

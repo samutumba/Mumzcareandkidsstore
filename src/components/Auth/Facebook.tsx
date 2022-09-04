@@ -14,7 +14,7 @@ export const FacebookButton = () => {
                     onClick={faceBookSignIn}
                 >
                   <BsFacebook className="mr-4 text-xl mb-1 inline" />
-                  Sign in with Facebook
+                  Continue with Facebook
                 </button>
               
             </div>

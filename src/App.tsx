@@ -2,9 +2,10 @@ import React, { useEffect } from 'react';
 import './App.css';
 import { Router } from './routes';
 import {
-  RecoilRoot, useRecoilState
+  RecoilRoot, useRecoilState, useRecoilValue
 } from 'recoil';
-import { QueryClient, QueryClientProvider } from 'react-query'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
 // Import Swiper styles
 import "swiper/css";
@@ -16,7 +17,7 @@ import toast, { Toaster } from 'react-hot-toast';
 import { CookieBanner } from './components';
 import { LoadingPage } from './pages';
 import axios from 'axios';
-import { userState } from './atoms';
+import { fetchUserState, userState } from './atoms';
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
@@ -24,6 +25,9 @@ import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
 import { API } from './api/https';
+import { Loader } from './components/Loading/Loader';
+import "react-phone-number-input/style.css";
+
 
 const queryClient = new QueryClient({
    defaultOptions: {
@@ -40,25 +44,28 @@ const queryClient = new QueryClient({
 
 function App() {
   const [user, setUser] = useRecoilState(userState)
+  const fetchUser = useRecoilValue(fetchUserState) 
 
   useEffect(() => {
     API.getUser().then(res => {
         setUser(res.data.user)
-        toast.success(res.data.message)} 
+        } 
       )
       .catch(err => {
-        toast.error(err.response.data.message)
+       setUser(null)
       })
 
-  }, [])
+  }, [fetchUser])
 
   return (
       <React.Suspense fallback={<LoadingPage />}>
       <Toaster position="top-right" reverseOrder={false} />
         <QueryClientProvider client={queryClient}>
-            <Router />
+        <Router />
+        <ReactQueryDevtools initialIsOpen={false} />
         </QueryClientProvider>
-        <CookieBanner />
+      <CookieBanner />
+      <Loader />
       </React.Suspense>
   );
 }

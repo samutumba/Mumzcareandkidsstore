@@ -8,6 +8,8 @@ import { API } from "../../api/https";
 import * as yup from 'yup';
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { useRecoilState, useSetRecoilState } from "recoil";
+import { authModalState, fetchUserState, loadingState, userState } from "../../atoms";
 
 interface ILogin {
  open: boolean,
@@ -22,25 +24,39 @@ let schema = yup.object().shape({
 
 export const LoginModal: React.FC<ILogin> = (props) => {
  const navigate = useNavigate()
- const [password, setPassword] = useState('')
+  const [password, setPassword] = useState('')
+  const [user, setUser] = useRecoilState(userState)
+  const [signModal, setSignModal] = useRecoilState(authModalState)
+  const [fetchUser, setFetchUser] = useRecoilState(fetchUserState) 
+   const [loading, setLoading] = useRecoilState(loadingState)
  
  const signIn = useCallback(async () => {
+  setLoading(true)
   if (password.length < 6) {
    toast.error("Password must be atleast six characters")
-   return;
+   setLoading(false)
+    return;
   }else if(!await schema
    .isValid({
      password
    })) {
    toast.error("Please enter a valid password")
+   setLoading(false)
    return;
   }
 
   API.login(props.username, password).then(res => {
    //navigate('/')
-   console.log("Done")
-   toast.success("Successfully Signed In!")
+   setLoading(false)
+    toast.success("Successfully Signed In!")
+    props.setIsOpen(false)
+    navigate('/')
+    setSignModal(false)
+    setFetchUser(!fetchUser)
+    
+    
   }).catch(err => {
+    setLoading(false)
    toast.error(err.response.data.message)
   })
  }, [props, password])
@@ -69,7 +85,8 @@ export const LoginModal: React.FC<ILogin> = (props) => {
                    <PhoneInput 
                     
                      international
-                     className="focus:outline-none border-none appearance-none focus:border-none ring-none outline-none"
+                   className="box-border appearance-none border border-gray w-full rounded-lg py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-primary mr-2 font-Poppins custom_style"
+                   disabled
                      defaultCountry="UG"
                      value={props.username}
                      onChange={(value: any) => { }}

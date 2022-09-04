@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { SignInModal } from "../components/Auth";
 import { 
   ApparelPage,
   BabiesAndKidsPage, 
@@ -11,7 +12,9 @@ import {
   UnknownPage,
   ProductPage,
   HelpPage,
-  CartPage
+  CartPage,
+  WishListPage,
+  CheckOutPage
 } from "../pages";
 
 export const Router = () => {
@@ -24,8 +27,8 @@ export const Router = () => {
           <Route path="login" element={<LoginPage />} />
           <Route path="register" element={<SignInPage/>} />
             <Route path="search" element={<SearchPage />} />
-            <Route path="wishlist" element={<SearchPage />} />
-            <Route path="cart" element={<CartPage />} />
+            <Route path="wishlist" element={<WishListPage />} />
+            <Route path="checkout" element={<CheckOutPage />} />
           <Route path="product/:id" element={<ProductPage />} />
           <Route path="help" element={<HelpPage />} />
           <Route path="category" >
@@ -37,7 +40,8 @@ export const Router = () => {
           </Route>
           <Route path="*" element={<UnknownPage />} />
         </Route>
-      </Routes>
+        </Routes>
+         <SignInModal  />
     </BrowserRouter>
     </div>)
 }

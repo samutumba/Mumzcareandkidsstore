@@ -18,11 +18,11 @@ export const ExploreSection: FC<IExploreSection> = (props) => {
             
     }, [])
     return (
-        <button onClick={handleClick} className="mx-auto font-p my-3 md:mx-0 px-2 w-fit flex">
-            <div className="relative w-[12rem] h-[12rem] mx-auto">
-                <img src={props.image} alt={props.title} className="h-full rounded-3xl object-cover w-full"/>
-                <div className="absolute flex px-2 inset-x-auto  mb-3 w-full text-center bottom-2  ">
-                    <span className="bg-white uppercase font-semibold rounded-full p-0.5 w-full">
+        <button onClick={handleClick} className="mx-auto font-p md:mx-0 px-2 w-fit flex">
+            <div className="relative w-[14rem] h-[14rem] mx-auto">
+                <img src={props.image} alt={props.title} className="h-full  object-cover rounded-3xl w-full"/>
+                <div className="absolute flex px-1 inset-x-auto  mb-3 w-full text-center bottom-0.5  ">
+                    <span className="bg-white text-sm uppercase font-semibold rounded-full p-0.5 w-full">
                         {props.title}
                     </span> 
                 </div>

@@ -14,6 +14,8 @@ import { useProductQuery } from "../../hooks";
 import { ProductFilter } from "../../utils/filter";
 import { BsHeart } from "react-icons/bs";
 import { ImBin } from "react-icons/im"
+import { CartUpdate } from "..";
+import { WishListHeart } from "../Cart/WishHeart";
 
 
 export const Product = () => {
@@ -83,8 +85,8 @@ export const ProductCartPreview: FC<IOrderItem> = (item) => {
 
 export const ProductPreview: FC<IProduct> = (product) => {
     const navigate = useNavigate()
-    return (<button onClick={() => navigate(`/product/${product._id}`)} className="w-[14rem]  rounded-2xl px-2 py-3 flex flex-col gap-1 font-p h-fit text-center my-3">
-        <div className="w-full bg-white rounded-2xl m-2 p-3 border border-1 border-base">
+    return (<div className="w-full lg:w-[14rem] mx-auto rounded-2xl px-4 py-3 flex flex-row lg:flex-col gap-1 font-p h-full lg:h-fit text-center my-3">
+        <div onDoubleClick={() => navigate(`/product/${product._id}`)} className="w-6/12 lg:w-full h-full bg-white rounded-2xl m-2 p-1 border border-1 border-base">
             {product.images ? 
            <Swiper pagination={{
                     dynamicBullets: true,
@@ -103,62 +105,27 @@ export const ProductPreview: FC<IProduct> = (product) => {
              </div>
            }
         </div>
-        <div className="font-semibold text-sm h-12">
-            {product.title} <AiOutlineHeart className="text-right inline"/>
+        <div className="flex flex-col mt-2 lg:mt-o h-40 lg:h-full w-1/2 items-center gap-1 lg:w-full flex-wrap">
+           <div onClick={() => navigate(`/product/${product._id}`)} className="font-semibold text-sm  h-14">
+             {product.brand} {product.title} 
         </div>
-        <div className="font-semibold text-lg">
+        <div onClick={() => navigate(`/product/${product._id}`)} className="font-semibold text-lg w-full text-center">
             {Format.currency(product.basePrice)}
         </div>
-        <div className="mt-1">
-            <button className="bg-gum border border-base font-semibold border-1 rounded-full py-1 px-3 text-xs">
-                ADD TO CART
-            </button>
+        <div className="mt-1 ml-0.5 flex flex-row w-full justify-center gap-2">
+            <CartUpdate product={product} view="sm" />
+            <WishListHeart product={product} />
+        </div> 
         </div>
-    </button>)
+        
+    </div>)
 }
 
 export const MiniProductPreview: FC<IProduct> = (product) => {
+     const navigate = useNavigate()
 
-    const addToCart = useCallback(() => {
-        
-            toast.custom((t) => (
-            <div
-                className={`${
-                t.visible ? 'animate-enter' : 'animate-leave'
-                } max-w-sm w-full bg-white shadow-lg rounded-lg pointer-events-auto flex ring-1 ring-black ring-opacity-5`}
-            >
-                <div className="flex-1 w-0 p-2">
-                <div className="flex items-start">
-                    <div className="flex-shrink-0 pt-0.5">
-                    <img
-                        className="h-14 w-14 rounded-lg"
-                        src={product.images?.at(0)?.link}
-                        alt=""
-                    />
-                    </div>
-                    <div className="ml-3 flex-1">
-                    <p className="text-sm font-medium text-gray-900">
-                        {product.title}
-                    </p>
-                    <p className="mt-1 text-sm text-gray-500">
-                        Added to Cart!
-                    </p>
-                    </div>
-                </div>
-                </div>
-                <div className="flex border-l border-gray-200">
-                <button
-                    onClick={() => toast.dismiss(t.id)}
-                    className="w-full border border-transparent rounded-none rounded-r-lg p-4 flex items-center justify-center text-sm font-medium text-rose hover:text-gum focus:outline-none focus:ring-2 focus:ring-rose"
-                >
-                    Dismiss
-                </button>
-                </div>
-            </div>
-            ))
-    }, [])
     return (<div className="w-[9.5rem] lg:w-[14rem] rounded-2xl px-2 py-3 flex flex-col gap-1 font-p h-fit text-center my-3">
-        <div className="w-full bg-white rounded-2xl m-2 p-1 border border-1 border-base">
+        <div onDoubleClick={() => navigate(`/product/${product._id}`)} className="w-full bg-white rounded-2xl m-2 p-1 border border-1 border-base">
             {product.images ? 
            <Swiper pagination={{
             clickable: true,
@@ -177,16 +144,15 @@ export const MiniProductPreview: FC<IProduct> = (product) => {
              </div>
            }
         </div>
-        <div className="font-semibold text-sm h-14">
-            {product.title} <AiOutlineHeart className="text-right inline"/>
+        <div onClick={() => navigate(`/product/${product._id}`)} className="font-semibold text-sm h-14">
+            {product.brand} {product.title}
         </div>
-        <div className="font-semibold text-md">
+        <div onClick={() => navigate(`/product/${product._id}`)} className="font-semibold text-md">
             {Format.currency(product.basePrice)}
         </div>
-        <div className="mt-1">
-            <button onClick={addToCart} className="bg-gum border border-base font-semibold border-1 rounded-full py-1 px-3 text-xs">
-                ADD TO CART
-            </button>
+        <div className="mt-1 flex flex-row justify-center w-full items-center flex-wrap">
+            <CartUpdate product={product} quantity={1} view="sm" />
+             <WishListHeart product={product} />
         </div>
     </div>)
 }
