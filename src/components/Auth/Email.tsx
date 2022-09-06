@@ -84,7 +84,7 @@ export const EmailSignInButton = ()=>{
       <div className="flex justify-evenly gap-4 mt-4">
             <button
                 type="submit"
-                className=" bg-rose text-white text-center hover:bg-white hover:ring-rose hover:text-rose py-2 px-4 w-48 rounded-lg"
+                className=" bg-rose text-white flex items-center text-center hover:bg-white hover:ring-rose hover:text-rose py-2 px-4 w-48 rounded-lg"
                 onClick={handleSignIn}
             >
                 Enter

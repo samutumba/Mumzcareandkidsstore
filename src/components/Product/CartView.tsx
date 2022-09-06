@@ -25,7 +25,7 @@ export const CartView: FC<ICart> = (cart) => {
 
 
   }, [user])
- return (<div  className="w-full rounded-2xl px-2 py-3 flex flex-row items-center gap-1 font-p h-full max-h-[12rem]  text-center my-3">
+ return (<div  className="w-full rounded-2xl px-2 py-3 flex text-md flex-row items-center gap-1 font-p h-full max-h-[12rem]  text-center my-3">
         <div className="w-5/12 bg-white rounded-2xl m-2 p-3 border h-[12rem]  border-1 border-base flex items-center">
             {cart.product.images ? 
     <div>
@@ -39,10 +39,10 @@ export const CartView: FC<ICart> = (cart) => {
            }
   </div>
   <div className="flex flex-col w-7/12 justify-center flex-wrap gap-2">
-    <div onClick={() => navigate(`/product/${cart.product._id}`)} className="font-semibold text-xs lg:text-lg font-title ">
+    <div onClick={() => navigate(`/product/${cart.product._id}`)} className="font-semibold lg:text-lg font-title ">
        { cart.product.brand} {cart.product.title} 
         </div>
-        <div className="font-semibold text-md">
+        <div className="font-semibold ">
             {Format.currency(price)}
      </div>
      <div className="flex flex-row justify-center gap-2 flex-wrap">

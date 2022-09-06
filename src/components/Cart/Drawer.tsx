@@ -26,7 +26,7 @@ export const CartDrawer = () => {
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
  >
-      <div className="w-80 px-4 lg:w-[30rem] h-full flex flex-col overscroll-contain font-p">
+      <div className="w-80 px-4 my-7 lg:w-[30rem] h-full flex flex-col overscroll-contain font-p">
          <SectionTitle title="My Cart" />
          {
              (!user || user.cart.length === 0) && <div className="h-full flex-grow flex flex-col mb-3 items-center">
@@ -40,7 +40,7 @@ export const CartDrawer = () => {
        
    </div>)
          }       
-                 <div className="mx-auto w-full max-w-md rounded-xl mt-5 bg-gray-200 border-1 border-darkBase flex flex-col p-5 font-semibold ">
+                 <div className="mx-auto w-full max-w-md text-sm rounded-xl mt-5 bg-gray-200 border-1 border-darkBase flex flex-col p-5 font-semibold ">
              <table className="mb-7">
                  <tbody>
                 <tr>

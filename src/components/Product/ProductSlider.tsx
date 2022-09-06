@@ -27,11 +27,14 @@ export const ProductCarousel: React.FC<IProductCarousel> = ({ title, filter, sor
   []
  }, [filter, sort, productData])
 
- return (<div className="w-full h-fit my-3 py-3 px-1 lg:px-7">
+ return (<div className="w-full h-fit my-3 px-1 lg:px-6">
   <SectionTitle title={title} />
        <Swiper
         effect={"fade"}
      slidesPerView="auto"
+     spaceBetween={0.5}
+  grabCursor={true}
+     slidesPerGroupAuto
      loopedSlides={25}
         navigation={true}
         loop

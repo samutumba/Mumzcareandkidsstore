@@ -22,7 +22,7 @@ export const GoogleButton = () => {
           <div className="mx-5">
               
                 <button 
-                    className="font-bold bg-base-100 text-black text-md font-p w-full p-1 rounded-md"
+                    className="font-bold bg-base-100 text-black text-md flex items-center font-p w-full p-1 rounded-md"
                     onClick={signIn}
                 >
                   <FcGoogle className="mr-4 text-xl mb-1 inline" />
