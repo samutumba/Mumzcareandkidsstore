@@ -137,7 +137,7 @@ setLoading(false)
    
   }
 
- }, [included, user, product, amount])
+ }, [included, user, product, amount, fetchUser])
     
     useEffect(() => {
     if (user && included) {

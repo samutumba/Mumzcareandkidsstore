@@ -22,7 +22,7 @@ export const Layout: React.FC<ILayoutProps> = ({
 
   return (
     <> 
-      <div className="fixed drawer">
+      <div className="fixed drawer w-full">
         <input id="my-drawer-3" type="checkbox" className="drawer-toggle" /> 
         <div className="drawer-content h-full w-full max-w-screen">
           <div className="w-full block bg-base-100">

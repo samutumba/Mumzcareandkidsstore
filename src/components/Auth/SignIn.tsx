@@ -59,7 +59,7 @@ export const LoginModal: React.FC<ILogin> = (props) => {
     setLoading(false)
    toast.error(err.response.data.message)
   })
- }, [props, password])
+ }, [props, password, fetchUser])
 
  return (<>
   <Modal

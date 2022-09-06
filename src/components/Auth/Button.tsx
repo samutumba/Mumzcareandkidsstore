@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom"
 import { useRecoilState, useSetRecoilState } from "recoil"
 import { SignInForm } from "."
 import { API } from "../../api/https"
-import { authModalState, fetchUserState, loadingState, userState } from "../../atoms"
+import { authModalState, embedState, fetchUserState, loadingState, userState } from "../../atoms"
 
 export const SignInButton = () => {
  const navigate = useNavigate()
@@ -29,7 +29,7 @@ export const SignInButton = () => {
 
   navigate("/")
   
- }, [])
+ }, [fetchUser])
 
 
  if(user){
@@ -52,7 +52,8 @@ export const SignInButton = () => {
 }
 
 export const SignInModal = () => {
- const [open, setOpen] = useRecoilState(authModalState)
+  const [open, setOpen] = useRecoilState(authModalState)
+  const [embed, setEmbed] = useRecoilState(embedState)
  
  return( <Modal
     show={open}
@@ -63,7 +64,7 @@ export const SignInModal = () => {
     <Modal.Header />
   <Modal.Body >
      <div>
-      <SignInForm />
+       <SignInForm />
      </div>
     </Modal.Body>
   </Modal>)

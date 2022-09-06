@@ -46,6 +46,22 @@ export const authModalState = atom({
 })
 
 export const cartDrawerState = atom({
-  key: 'cartDraweState',
+  key: 'cartDrawerState',
   default: false,
+})
+
+export const embedState = atom<{
+  open: boolean,
+  color: string,
+  link: string,
+  title: string,
+  icon?: any
+}>({
+  key: 'embedState',
+  default: {
+  open: false,
+    color: "white",
+  title: "Mumz Care and Kids Store",
+  link: "https://www.youtube.com/",
+  },
 })

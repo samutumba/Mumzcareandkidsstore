@@ -1,20 +1,23 @@
 import { CartView, Footer, SectionTitle } from "../components"
 import PhoneInput from "react-phone-number-input";
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { Icon } from '@iconify/react';
 import { Checkbox, Label } from "flowbite-react";
 import CreatableSelect from 'react-select/creatable';
-import { useRecoilValue, useSetRecoilState } from "recoil";
-import { authModalState, userState } from "../atoms";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+import { authModalState, userState, embedState, loadingState } from "../atoms";
 import { Format } from "../utils/formatter";
 import { Navigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import { API } from "../api/https";
 
 export const CheckOutPage = () => {
  const setAuthModal = useSetRecoilState(authModalState)
  const [number, setNumber] = useState("")
  const [delivered, setDelivered] = useState(false)
   const user = useRecoilValue(userState)
+  const [embed, setEmbed] = useRecoilState(embedState)
+  const setLoading = useSetRecoilState(loadingState)
 
      const subtotal = useMemo(() => {
     let total = 0;
@@ -24,6 +27,28 @@ export const CheckOutPage = () => {
         })
         return total;
      }, [user])
+
+  const completeOrder = useCallback(() => {
+    (user && user?.cart.length > 0) &&
+      setLoading(true)
+      
+    const date = new Date().toUTCString()
+    
+    API.getPaymentLink({
+      tx_ref: `${date}-${user?._id}`,
+      phonenumber: number,
+      amount: subtotal,
+      name: user?.name || "",
+      email: user?.email,
+      redirect_url: "https://www.mumzcareandkidsstore.com"
+    }).then((res) => {
+      const link = res.data.data.link 
+
+      setEmbed({...embed, title: "Pay with Flutterwave", link: link, open: true, icon: <img src="/images/Flutterwave.png" alt="flutterwave logo" className="w-6 h-6" />})
+    }).finally(() => {
+      setLoading(false)
+    })
+  }, [user, embed, number, subtotal])
  
  if (!user) {
   setAuthModal(true)
@@ -32,7 +57,8 @@ export const CheckOutPage = () => {
    duration: 6000
   })
   return(<Navigate to="/" />)
- }
+  }
+  
      
 
 
@@ -146,7 +172,7 @@ export const CheckOutPage = () => {
                      </tr>
                  </tbody>
      </table>
-       <button className="py-2 uppercase rounded-xl mx-auto text-center px-10 bg-gum border-gray border text-rose">
+       <button onClick={completeOrder} className="py-2 uppercase rounded-xl mx-auto text-center px-10 bg-gum border-gray border text-rose">
                 Proceed to payment
             </button>
     </div>
@@ -163,8 +189,10 @@ export const CheckOutPage = () => {
   allowFullScreen
   referrerPolicy="no-referrer-when-downgrade"
   src={`https://www.google.com/maps/embed/v1/place?key=${process.env.REACT_APP_GMAP_SECRET}
-    &q=Mumz+care+and+kids+store/@0.3484148,32.5675735,13.75z/data=!4m5!3m4!1s0x177dbbbea01d07a9:0x42cca437bcbfbc9a!8m2!3d0.3476095!4d32.5824972`}>
-</iframe>
+    &q=Mumz+care+and+kids+store,Kampala,Uganda`}>
+   
+     </iframe>
+     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.744892664102!2d32.58030314951509!3d0.34760949974514493!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177dbbbea01d07a9%3A0x42cca437bcbfbc9a!2sMumz%20care%20and%20kids%20store!5e0!3m2!1sen!2sca!4v1662403884342!5m2!1sen!2sca" className="border-none mx-auto mt-3 h-96 lg:h-[16rem] w-full lg:w-9/12" allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
   </div>
   <Footer />
   </div>

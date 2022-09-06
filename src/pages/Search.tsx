@@ -83,7 +83,7 @@ export const SearchPage = () => {
             <div className="hidden lg:w-80 lg:block ">
                 <FilterOptions />
             </div>
-            <div className="w-full h-full bg-[#FCFBFB] mx-2">
+            <div className="w-full h-full bg-[#FCFBFB] px-2">
                     <SortOptions />
                     <div className="flex h-full min-h-[20rem] justify-center flex-row flex-wrap gap-1">
                         {products.length === 0 ? <span>

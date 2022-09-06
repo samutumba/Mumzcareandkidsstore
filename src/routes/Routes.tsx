@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { EmbedModal } from "../components";
 import { SignInModal } from "../components/Auth";
 import { 
   ApparelPage,
@@ -18,7 +19,7 @@ import {
 } from "../pages";
 
 export const Router = () => {
-    return(<div className="font-p">
+    return(
     <BrowserRouter>
       <Routes>
         <Route path="/">
@@ -41,7 +42,7 @@ export const Router = () => {
           <Route path="*" element={<UnknownPage />} />
         </Route>
         </Routes>
-         <SignInModal  />
-    </BrowserRouter>
-    </div>)
+        <SignInModal />
+        <EmbedModal />
+    </BrowserRouter>)
 }

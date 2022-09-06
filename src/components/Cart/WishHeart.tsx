@@ -91,7 +91,7 @@ setLoading(false)
    
   }
 
- }, [included, user, product])
+ }, [included, user, product, fetchUser])
 
  if (included) {
    return (

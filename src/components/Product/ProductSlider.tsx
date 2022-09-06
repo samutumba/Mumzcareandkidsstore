@@ -27,19 +27,19 @@ export const ProductCarousel: React.FC<IProductCarousel> = ({ title, filter, sor
   []
  }, [filter, sort, productData])
 
- return (<div className="w-full h-fit my-3 py-3 px-5 lg:px-7">
+ return (<div className="w-full h-fit my-3 py-3 px-1 lg:px-7">
   <SectionTitle title={title} />
        <Swiper
-        slidesPerView={window.innerWidth <= 896 ? 2 : 5 }
         effect={"fade"}
-        
+     slidesPerView="auto"
+     loopedSlides={25}
         navigation={true}
         loop
         pagination={{
           clickable: true,
         }}
-        modules={[ Navigation]}
-        className=" px-4 lg:px-2 flex flex-row justify-center lg:justify-evenly gap-4 w-full "
+        modules={[ Navigation ]}
+        className="lg:px-2 flex flex-row justify-center lg:justify-evenly gap-4 w-full "
       >    
          {
              products.map((product, index)=>

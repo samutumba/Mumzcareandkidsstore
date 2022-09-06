@@ -45,7 +45,7 @@ export const FullViewProduct: React.FC<IProduct> = (product) => {
  return (<div className="w-full h-full px-6 lg:mx-3 my-7">
 
   <div className=" w-full flex-col flex md:flex-row gap-3 h-full">
-   <div className="lg:w-1/3 w-full lg:sticky lg:top-0">
+   <div className="lg:w-1/3 w-full h-full max-h-[30.5rem] lg:sticky lg:top-0">
     <Swiper
         pagination={{
       dynamicBullets: true,

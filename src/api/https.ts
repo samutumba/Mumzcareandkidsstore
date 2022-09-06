@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import * as types from '../types'
 
 const api = axios.create({
-    //baseURL: `http://localhost:4000/`,
-    baseURL: `https://api.mumzcareandkidsstore.com/`,
+    baseURL: `http://localhost:4000/`,
+    //baseURL: `https://api.mumzcareandkidsstore.com/`,
     withCredentials: true
 })
 
@@ -22,6 +22,19 @@ export class API {
         } catch (err) {
             return false;
         }
+    }
+
+    static async getFacebook() {
+        return api.get('auth/facebook')
+    }
+
+    static async getPaymentLink(data: { redirect_url: string, amount: number, tx_ref: string, email?: string, phonenumber: string, name: string }) {
+        return api.post('order/link', data)
+    }
+
+
+    static async getGoogle() {
+        return api.get('auth/google')
     }
 
     static async getUser() {

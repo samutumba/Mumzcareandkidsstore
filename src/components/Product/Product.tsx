@@ -85,7 +85,7 @@ export const ProductCartPreview: FC<IOrderItem> = (item) => {
 
 export const ProductPreview: FC<IProduct> = (product) => {
     const navigate = useNavigate()
-    return (<div className="w-full lg:w-[14rem] mx-auto rounded-2xl px-4 py-3 flex flex-row lg:flex-col gap-1 font-p h-full lg:h-fit text-center my-3">
+    return (<div className="w-full lg:w-[14rem] mx-auto rounded-2xl px-4 items-center py-3 flex flex-row lg:flex-col gap-1 font-p h-full lg:h-fit text-center my-3">
         <div onDoubleClick={() => navigate(`/product/${product._id}`)} className="w-6/12 lg:w-full h-full bg-white rounded-2xl m-2 p-1 border border-1 border-base">
             {product.images ? 
            <Swiper pagination={{
@@ -106,10 +106,10 @@ export const ProductPreview: FC<IProduct> = (product) => {
            }
         </div>
         <div className="flex flex-col mt-2 lg:mt-o h-40 lg:h-full w-1/2 items-center gap-1 lg:w-full flex-wrap">
-           <div onClick={() => navigate(`/product/${product._id}`)} className="font-semibold text-sm  h-14">
+           <div onClick={() => navigate(`/product/${product._id}`)} className="font-semibold font-title text-sm h-14">
              {product.brand} {product.title} 
         </div>
-        <div onClick={() => navigate(`/product/${product._id}`)} className="font-semibold text-lg w-full text-center">
+        <div onClick={() => navigate(`/product/${product._id}`)} className="font-semibold mt-3 text-lg w-full text-center">
             {Format.currency(product.basePrice)}
         </div>
         <div className="mt-1 ml-0.5 flex flex-row w-full justify-center gap-2">
