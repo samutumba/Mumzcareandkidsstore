@@ -41,7 +41,7 @@ export const EmbedModal = () => {
               {embed.title}
             </h6>
             <Button autoFocus color="inherit" onClick={() => setEmbed({...embed, open: false})}>
-              Close
+              <p className="font-p">Close</p>
             </Button>
           </Toolbar>
         </AppBar>

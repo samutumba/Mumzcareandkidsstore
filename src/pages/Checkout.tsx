@@ -44,7 +44,7 @@ export const CheckOutPage = () => {
     }).then((res) => {
       const link = res.data.data.link 
 
-      setEmbed({...embed, title: "Pay with Flutterwave", link: link, open: true, icon: <img src="/images/Flutterwave.png" alt="flutterwave logo" className="w-auto h-6 mr-5" />})
+      setEmbed({...embed, title: "Pay with Flutterwave", link: link, open: true, icon: <img src="/images/Flutterwave.png" alt="flutterwave logo" className="w-auto h-6 mr-5 bg-white p-3 rounded-full" />, color: "#ff9b00"})
     }).finally(() => {
       setLoading(false)
     })
