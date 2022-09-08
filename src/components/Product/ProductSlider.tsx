@@ -1,7 +1,7 @@
 import { useMemo } from "react"
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-import { useProductQuery } from "../../hooks"
+import { useProductQuery, useWindowSize } from "../../hooks"
 import { ISearch, ISort } from "../../types"
 import { ProductFilter } from "../../utils/filter"
 import { SectionTitle } from "../Title"
@@ -20,6 +20,7 @@ interface IProductCarousel {
 
 export const ProductCarousel: React.FC<IProductCarousel> = ({ title, filter, sort }) => {
  const productData = useProductQuery()
+ const size = useWindowSize()
 
  const products = useMemo(() => {
   return productData.data ?
@@ -27,26 +28,22 @@ export const ProductCarousel: React.FC<IProductCarousel> = ({ title, filter, sor
   []
  }, [filter, sort, productData])
 
- return (<div className="w-full h-fit my-3 px-1 lg:px-6">
+ return (<div className="w-full h-fit mb-5 mt-9 flex flex-col gap-4 px-3 lg:px-6">
   <SectionTitle title={title} />
        <Swiper
         effect={"fade"}
-     slidesPerView="auto"
-     spaceBetween={0.5}
-  grabCursor={true}
-     slidesPerGroupAuto
-     loopedSlides={25}
+      slidesPerView={size.width <= 640 ? 2 : size.width <= 768 ? 3 : size.width <=1024 ? 4 : 5}
         navigation={true}
-        loop
+       
         pagination={{
           clickable: true,
         }}
         modules={[ Navigation ]}
-        className="lg:px-2 flex flex-row justify-center lg:justify-evenly gap-4 w-full "
+        className="mySwiper flex flex-row justify-between gap-2 w-full "
       >    
          {
              products.map((product, index)=>
-             <SwiperSlide key={index} className="block ">
+             <SwiperSlide key={index} className="mx-auto">
                  <MiniProductPreview  {...product} />
              </SwiperSlide> )
          }

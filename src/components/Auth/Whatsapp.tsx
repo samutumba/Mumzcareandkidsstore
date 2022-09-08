@@ -1,10 +1,10 @@
-import { Dialog, Transition } from '@headlessui/react'
 import { Fragment, useState } from 'react'
 import { Icon } from '@iconify/react';
 import 'react-phone-number-input/style.css'
 import { useForm } from "react-hook-form"
 import { isValidPhoneNumber } from 'react-phone-number-input'
 import PhoneInputWithCountry from "react-phone-number-input/react-hook-form"
+import PhoneInput from 'react-phone-number-input'
 import { RegisterModal } from './Register';
 import { API } from '../../api/https';
 import toast from 'react-hot-toast';
@@ -12,7 +12,7 @@ import { LoginModal } from './SignIn';
 import { Modal } from 'flowbite-react';
 
 export const WhatsAppSignIn = () => {
-  const { control,  watch, handleSubmit } = useForm<{
+  const { control,  watch, setValue, handleSubmit } = useForm<{
     number: string
   }>({
       mode: "onBlur"
@@ -90,16 +90,15 @@ export const WhatsAppSignIn = () => {
                         <form onSubmit={handleSubmit(handleSignIn)}>
                             <label className="flex flex-col text-lg my-4">
                                
-                                <span className="p-2">
-                                <PhoneInputWithCountry
-                                    international    
-                                    className="box-border appearance-none border border-gray w-full rounded-lg py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-primary mr-2 font-Poppins custom_style"
-                                    defaultCountry="UG"
-                                    name="number"
-                              control={control}
-                               rules={{ required: true }} 
-                                 
-                                 />
+                    <span className="p-2">
+                      <PhoneInput
+                        international
+                      className="box-border appearance-none border border-gray w-full rounded-lg py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-primary mr-2 font-Poppins custom_style"
+                        defaultCountry="UG"
+                        value={watch('number')}
+                        onChange={(value) => setValue('number', value?.toString() || "") }
+                      />
+                                
                                 </span>
                             </label>
                             <div className="flex justify-evenly font-semibold font-p gap-2 mt-4">

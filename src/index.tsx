@@ -8,7 +8,7 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-  <div className='w-full relative h-full flex flex-wrap font-p overflow-y-scroll overflow-x-hidden'>
+  <div className='w-full relative h-full flex flex-wrap font-p overflow-x-hidden'>
      <React.StrictMode>
     <RecoilRoot>
       <App />

@@ -150,7 +150,7 @@ export const MiniProductPreview: FC<IProduct> = (product) => {
         <div onClick={() => navigate(`/product/${product._id}`)} className="font-semibold text-md">
             {Format.currency(product.basePrice)}
         </div>
-        <div className="mt-1 flex flex-row justify-center w-full items-center flex-wrap">
+        <div className="mt-1 flex flex-row justify-center ml-4 w-full items-center flex-wrap">
             <CartUpdate product={product} quantity={1} view="sm" />
              <WishListHeart product={product} />
         </div>

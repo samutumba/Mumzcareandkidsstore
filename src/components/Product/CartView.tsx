@@ -25,13 +25,10 @@ export const CartView: FC<ICart> = (cart) => {
 
 
   }, [user])
- return (<div  className="w-full rounded-2xl px-2 py-3 flex text-md flex-row items-center gap-1 font-p h-full max-h-[12rem]  text-center my-3">
-        <div className="w-5/12 bg-white rounded-2xl m-2 p-3 border h-[12rem]  border-1 border-base flex items-center">
+ return (<div  className="w-full rounded-2xl px-2 py-3 flex text-md flex-row items-center gap-1 font-p h-full max-h-[9rem]  text-center my-3">
+        <div className="w-5/12 bg-white rounded-2xl m-2 p-3 border h-[9rem] justify-center  border-1 border-base flex items-center">
             {cart.product.images ? 
-    <div>
-     <img src={cart.product.images[0].link} alt="" className="object-center object-cover max-h-[11rem] my-auto "/>
-           </div>
-           
+     <img src={cart.product.images[0].link} alt="" className="object-center object-cover w-auto max-h-[8.5rem] mx-auto"/>
            :
                 <div className="h-20 w-full my-2">
                     <img src="/favicon.ico" alt="" className="h-40 w-auto mx-auto rounded-lg "/>
@@ -39,7 +36,7 @@ export const CartView: FC<ICart> = (cart) => {
            }
   </div>
   <div className="flex flex-col w-7/12 justify-center flex-wrap gap-2">
-    <div onClick={() => navigate(`/product/${cart.product._id}`)} className="font-semibold lg:text-lg font-title ">
+    <div onClick={() => navigate(`/product/${cart.product._id}`)} className="font-semibold lg:text-md font-title ">
        { cart.product.brand} {cart.product.title} 
         </div>
         <div className="font-semibold ">

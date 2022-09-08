@@ -2,11 +2,12 @@ import { Icon } from "@iconify/react"
 import { useForm } from "react-hook-form"
 import { useRecoilValue } from "recoil"
 import { userState } from "../../atoms"
-import { ErrorText, Layout, SectionTitle, TextInput } from "../../components"
+import { ErrorText, Layout, SectionTitle, TextInput, Map  } from "../../components"
 import { IInquiryTypes, INewInquiry } from "../../types"
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
 import PhoneInputWithCountry from "react-phone-number-input/react-hook-form"
+import PhoneInput from 'react-phone-number-input'
 import { useCallback, useEffect } from "react"
 import { API } from "../../api/https"
 import toast from "react-hot-toast"
@@ -180,16 +181,14 @@ export const InquiryForm = () => {
                         <div className="relative mb-6">
                         {
                             current === "whatsapp" ? <>
-                                 <label htmlFor="message" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Whatsapp Number:</label>
-                            <PhoneInputWithCountry
-                                    international    
-                                    className="focus:outline-none border-none appearance-none focus:border-none ring-none outline-none"
-                                    defaultCountry="UG"
-                                    name="contact"
-                              control={control}
-                               rules={{ required: true }} 
-                                 
-                                 />
+                                <label htmlFor="message" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Whatsapp Number:</label>
+                                <PhoneInput
+                        international
+                      className="box-border appearance-none border border-gray w-full rounded-lg py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-primary mr-2 font-Poppins custom_style"
+                        defaultCountry="UG"
+                        value={watch('contact')}
+                        onChange={(value) => setValue('contact', value?.toString() || "") }
+                      />
                             </> : <TextInput label="Email" type="email" register={register("contact")} />
                         }
                         {errors.contact && <ErrorText message={errors?.contact.message} />}
@@ -213,6 +212,7 @@ export const InquiryForm = () => {
                         </button>
                     </div>
 
-                </form>
+            </form>
+            <Map />
             </div>)
 }

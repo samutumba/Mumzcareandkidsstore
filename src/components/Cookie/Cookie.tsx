@@ -1,8 +1,7 @@
 import Cookies from 'js-cookie'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { Icon } from '@iconify/react';
 import { Modal } from "flowbite-react"
-import moment from 'moment';
 
 export const CookieBanner = () => {
     let [isOpen, setIsOpen] = useState(false)
@@ -16,14 +15,10 @@ export const CookieBanner = () => {
         }
     }, [isOpen])
 
-    function acceptCookies(){
+    const acceptCookies = useCallback(() => {
         setIsOpen(false);
-        Cookies.set('cookiePermission', 'true', {
-            domain: "https://www.mumzcareandkidsstore.com/",
-            sameSite: "Strict",
-            expires: moment().add(1, 'years').toDate()
-        });
-    }
+        Cookies.set('cookiePermission', 'true');
+    }, [isOpen])
 
     // function denyCookies(){
     //     setIsOpen(false);
