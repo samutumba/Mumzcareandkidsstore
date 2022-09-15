@@ -34,7 +34,7 @@ export const EmbedModal = () => {
         TransitionComponent={Transition}
       >
         <AppBar sx={{ position: 'relative' }}>
-    <Toolbar className={`bg-[${embed.color}] font-title px-6 text-xl flex flex-row justify-between items-center`}>
+    <Toolbar className={`bg-[${embed.color}] font-p px-6 text-xl flex flex-row justify-between items-center`}>
             
          <h6 className="font-bold items-center flex flex-row">
            {embed.icon}
@@ -52,7 +52,7 @@ export const EmbedModal = () => {
        height="100%" width="100%" 
        seamless
        sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
-     
+       frameBorder="0" allowFullScreen
    ></iframe>
       </Dialog>
  </>)

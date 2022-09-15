@@ -1,4 +1,4 @@
-import { IFile, IProduct } from "./product.type";
+import { IFile, IItem, IProduct } from "./product.type";
 import { ICart, IUser } from "./user.type";
 
 export interface ISales {
@@ -9,17 +9,18 @@ export interface ISales {
  isDelivery: boolean,
  delivery?: IDelivery,
  salesman?: string,
- items: ICart[],
+ items: IItem[],
+ ordered: ICart[],
+ paid: boolean
  payment: {
   mode: IPaymentType,
   amount: number,
   txt_ref?: string,
-  refund?: {
+  refund: {
    amount: number,
    createdAt: Date
   }[]
  },
- ordered: ICart[],
  createdAt: Date,
  updatedAt: Date
 }
@@ -33,7 +34,9 @@ export enum IPaymentType {
  flutterwave = "Flutterwave",
  mobileMoney = "Mobile Money",
  cash = "Cash",
- visa = "Visa"
+ credit = "Credit",
+ debit = "Debit",
+ mixed = "Mixed"
 }
 
 export interface IDelivery {
@@ -52,16 +55,19 @@ export interface IDelivery {
   note: string 
  },
  status: IDeliveryStatus,
- documents: IFile[],
+ documents: {
+  name: string,
+  file: IFile
+ }[],
  packagedBy: string,
- outTime?: Date,
+ timeOut?: Date,
  delivered?: Date,
  createdAt: Date,
  updatedAt: Date
 }
 
 export enum IService {
- courieMate = "Courie Mate",
+ courieMate = "CourieMate",
  self = "Self"
 }
 

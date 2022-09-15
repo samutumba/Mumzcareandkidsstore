@@ -8,7 +8,6 @@ import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { authModalState, userState, embedState, loadingState } from "../atoms";
 import { Format } from "../utils/formatter";
 import { Navigate } from "react-router-dom";
-import LocationPicker from 'react-location-picker';
 import toast from "react-hot-toast";
 import { API } from "../api/https";
 import { Districts } from "../data/page/Districts";
@@ -70,7 +69,7 @@ export const CheckOutPage = () => {
     }).then((res) => {
       const link = res.data.data.link 
 
-      setEmbed({...embed, title: "Pay with Flutterwave", link: link, open: true, icon: <img src="/images/Flutterwave.png" alt="flutterwave logo" className="w-auto h-6 mr-5 bg-white p-3 rounded-full" />, color: "#ff9b00"})
+      setEmbed({...embed, title: "Pay with Flutterwave", link: link, open: true, icon: <img src="/images/Flutterwave.png" alt="flutterwave logo" className="w-auto h-6 mr-5 rounded-full" />, color: "#ff9b00"})
     }).finally(() => {
       setLoading(false)
     })
@@ -146,14 +145,7 @@ export const CheckOutPage = () => {
             <Icon icon="ic:baseline-delivery-dining" inline={true} className="inline text-lg" /> Deliveries may take between 1-5 days to be delivered <br />
             <Icon icon="ic:baseline-delivery-dining" inline={true}  className="inline text-lg" /> Delivery fees are charged on arrival
              {(location === "Kampala" || location === "Wakiso" || location === "Mukono") && <>
-             <LocationPicker
-                containerElement={ <div style={ {height: '100%'} } /> }
-                mapElement={ <div className="rounded-lg" style={ {height: '400px'} } /> }
-                  defaultPosition={pin.position}
-                 onChange={({ position, address, places }: any) => {
-                  setPin({position, address})
-                }}
-              />
+             
              
              </>}
            </p>

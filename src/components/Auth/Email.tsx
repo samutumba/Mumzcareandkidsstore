@@ -50,11 +50,11 @@ export const EmailSignInButton = ()=>{
      <div className="bg-rose hover:bg-[#ab0736] text-white flex max-w-sm justify-center items-center border-2 border-base hover:border-black py-2 px-3 rounded-2xl mb-4">
          <div className="mx-5">
             <button 
-                className="font-bold flex flex-row text-md font-p w-full p-1 rounded-md"
+                className="font-bold flex items-center text-md font-p w-full p-1 rounded-md"
                 onClick={()=>setIsOpen(true)}
             >
-              <Icon icon="carbon:email" inline={true} className="mr-3 text-xl mt-0.5"/>
-              Continue with your Email
+              <Icon icon="carbon:email" inline={true} className="mr-3 lg:text-xl text-3xl mt-0.5"/>
+              Continue with Email
             </button>
           </div>
       </div>

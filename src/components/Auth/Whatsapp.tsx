@@ -67,7 +67,7 @@ export const WhatsAppSignIn = () => {
                     className=" text-white text-md flex items-center flex-row font-bold font-p w-full p-1 rounded-md"
                     onClick={openWhatsAppModal}
                 >
-                <Icon icon="akar-icons:whatsapp-fill" inline={true} className="mr-3 text-xl mt-0.5"/>
+                <Icon icon="akar-icons:whatsapp-fill" inline={true} className="mr-3 lg:text-xl text-3xl mt-0.5"/>
                 Continue with WhatsApp
                 </button>
             </div>

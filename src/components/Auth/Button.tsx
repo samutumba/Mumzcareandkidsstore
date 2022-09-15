@@ -5,13 +5,14 @@ import { useNavigate } from "react-router-dom"
 import { useRecoilState, useSetRecoilState } from "recoil"
 import { SignInForm } from "."
 import { API } from "../../api/https"
-import { authModalState, embedState, fetchUserState, loadingState, userState } from "../../atoms"
+import { authModalState, cartDrawerState, embedState, fetchUserState, loadingState, userState } from "../../atoms"
 
 export const SignInButton = () => {
  const navigate = useNavigate()
  const [user, setUser] = useRecoilState(userState)
   const [open, setOpen] = useRecoilState(authModalState)
   const [fetchUser, setFetchUser] = useRecoilState(fetchUserState)
+  const [cartopen, setCartOpen] = useRecoilState(cartDrawerState)
   const setLoading = useSetRecoilState(loadingState)
 
   const signOut = useCallback(() => {
@@ -43,7 +44,10 @@ export const SignInButton = () => {
  }
 
  return (<>
-    <button onClick={() => setOpen(true)}>
+   <button onClick={() => {
+     setCartOpen(false)
+     setOpen(true)
+   }}>
       <span className="text-rose hover:font-bold cursor-pointer font-semibold">
         SIGN IN
       </span>

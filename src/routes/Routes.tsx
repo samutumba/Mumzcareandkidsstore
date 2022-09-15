@@ -15,7 +15,10 @@ import {
   HelpPage,
   CartPage,
   WishListPage,
-  CheckOutPage
+  CheckOutPage,
+  TermsOfServicePolicy,
+  PrivacyPolicy,
+  CookiePolicy
 } from "../pages";
 
 export const Router = () => {
@@ -31,7 +34,12 @@ export const Router = () => {
             <Route path="wishlist" element={<WishListPage />} />
             <Route path="checkout" element={<CheckOutPage />} />
           <Route path="product/:id" element={<ProductPage />} />
-          <Route path="help" element={<HelpPage />} />
+            <Route path="help" element={<HelpPage />} />
+            <Route path="policy" >
+              <Route path="terms-of-service" element={<TermsOfServicePolicy />} />
+              <Route path="privacy-policy" element={<PrivacyPolicy />} />
+              <Route path="cookie-policy" element={<CookiePolicy />} />
+             </Route>
           <Route path="category" >
             <Route index element={<Navigate replace to="/" />} />
             <Route path="babies-and-kids" element={<BabiesAndKidsPage />} />

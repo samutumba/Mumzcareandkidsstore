@@ -8,21 +8,18 @@ export const FacebookButton = () => {
   const [embed, setEmbed] = useRecoilState(embedState)
   
   const faceBookSignIn = useCallback(async () => {
+    window.open(`${process.env.API_ENDPOINT}/auth/facebook`, "Connect with Facebook")
 
-    const response  = await API.getFacebook()
-
-    console.log(response.request.res.responseUrl)
-
-    setEmbed({...embed, title: "Connect with Facebook", link: response.request.res.responseUrl, icon: <BsFacebook className="mr-6 text-xl inline text-white" />, color: "#1877F2", open: true })
+    // setEmbed({...embed, title: "Connect with Facebook", link: "http://localhost:4000/auth/facebook", icon: <BsFacebook className="mr-6 text-xl inline text-white" />, color: "#1877F2", open: true })
   }, [embed]) 
     return(<>
-        <div className="flex max-w-sm justify-center hover:bg-[#0b4ca8] items-center border-2 bg-facebook-blue border-base hover:border-black py-2 px-3 rounded-2xl mb-4">
+        <div className="flex max-w-sm justify-center hover:bg-[#0b4ca8] items-center border-2 bg-facebook-blue border-base text-center hover:border-black py-2 px-3 rounded-2xl mb-4">
           <div className="mx-5">
                 <button 
-                    className="font-bold text-base-100 flex items-center text-left text-md font-p w-full p-1 rounded-md"
+                    className="font-bold text-base-100 flex items-center text-md font-p w-full p-1 rounded-md"
                     onClick={faceBookSignIn}
                 >
-                  <BsFacebook className="mr-4 text-xl mb-1 inline" />
+                  <BsFacebook className="mr-4 lg:text-xl text-3xl inline" />
                   Continue with Facebook
                 </button>
               

@@ -8,12 +8,8 @@ export const GoogleButton = () => {
     const [embed, setEmbed] = useRecoilState(embedState)
 
       const signIn = useCallback(async () => {
-
-    const response = await API.getGoogle()
-
-    console.log(response.request.res.responseUrl)
-
-        setEmbed({ ...embed, title: "Connect with Google", link: response.request.res.responseUrl, icon: <FcGoogle className="mr-6 text-xl inline " />, color: "#4285F4", open: true })
+        window.open(`${process.env.API_ENDPOINT}/auth/google`, "Connect with Google")
+        // setEmbed({ ...embed, title: "Connect with Google", link: "http://localhost:4000/auth/google", icon: <FcGoogle className="mr-6 text-xl inline " />, color: "#4285F4", open: true })
         
       }, [embed]) 
   
@@ -25,7 +21,7 @@ export const GoogleButton = () => {
                     className="font-bold bg-base-100 text-black text-md flex items-center font-p w-full p-1 rounded-md"
                     onClick={signIn}
                 >
-                  <FcGoogle className="mr-4 text-xl mb-1 inline" />
+                  <FcGoogle className="mr-4 lg:text-xl text-3xl mb-1 inline" />
                   Continue with Google
                 </button>
               
