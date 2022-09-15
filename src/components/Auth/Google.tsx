@@ -8,7 +8,7 @@ export const GoogleButton = () => {
     const [embed, setEmbed] = useRecoilState(embedState)
 
       const signIn = useCallback(async () => {
-        window.open(`${process.env.API_ENDPOINT}/auth/google`, "Connect with Google")
+        window.open(`${process.env.API_ENDPOINT}auth/google`, "Connect with Google")
         // setEmbed({ ...embed, title: "Connect with Google", link: "http://localhost:4000/auth/google", icon: <FcGoogle className="mr-6 text-xl inline " />, color: "#4285F4", open: true })
         
       }, [embed]) 
