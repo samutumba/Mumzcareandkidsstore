@@ -8,7 +8,7 @@ export interface IUser {
     password?: string,
     auth?: string,
     email?: string,
-    phone?: string,
+    phone?: [string],
     whatsAppNumber?: string,
     googleId?: string,
     facebookId?: string,
@@ -17,7 +17,9 @@ export interface IUser {
     wishList: ICart[],
     cart: ICart[],
     policyAccepted: boolean,
-    lastAccessed: Date
+    lastAccessed: Date,
+    createdAt: Date,
+    updatedAt: Date,
 }
 
 export interface ICart {
