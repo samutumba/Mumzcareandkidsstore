@@ -124,13 +124,18 @@ export interface IDetailType {
     value: number
 }
 
+
 export interface IItem {
     _id?: string,
-    productID: string,
+    productID: IProduct,
     color?: string,
     material?: string,
+    size?: string,
+    model?: string,
     sold: boolean
+
 }
+
 
 export interface IOrderItem {
     productID: string,

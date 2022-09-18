@@ -36,7 +36,7 @@ export const WishListHeart: React.FC<{
 
  const handleClick = useCallback(() => {
   if (!user) {
-    toast.error("Please Sign In To Add To WishList")
+    toast("Please Sign In To Add To WishList",{ icon: '⛔'})
    setAuthOpen(true)
    return;
   }

@@ -24,14 +24,33 @@ export class API {
         }
     }
 
+    static async getFee(amount: number){
+        return api.post('sale/fee', { amount: amount })
+    }
+
     static async getFacebook() {
         return api.get('auth/facebook')
     }
 
-    static async getPaymentLink(data: { redirect_url: string, amount: number, tx_ref: string, email?: string, phonenumber: string, name: string }) {
-        return api.post('order/link', data)
+    static async createSale(data: types.CreateSale) {
+        return api.post("sale", data)
     }
 
+    static async getMySales() {
+        return api.get('sale/self')
+    }
+
+    static async getSale(id: string) {
+        return api.get(`sale/details/${id}`)
+    }
+
+    static async createDelivery(data: { sale: string, user: types.DeliveryUser }) {
+        return api.post('sale/delivery', data) 
+    }
+
+    static async getPaymentLink(data: { amount: number, sale: string, email?: string, phonenumber: string, name: string }) {
+        return api.post('sale/link', data)
+    }
 
     static async getGoogle() {
         return api.get('auth/google')
@@ -92,4 +111,6 @@ export class API {
     }
 
 }
+
+
 

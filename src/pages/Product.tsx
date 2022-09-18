@@ -8,6 +8,7 @@ import { ProductFilter } from "../utils/filter";
 import { ISort } from "../types";
 import { useSetRecoilState } from "recoil";
 import { loadingState } from "../atoms";
+import {Helmet} from "react-helmet-async";
 
 
 export const ProductPage = () => {
@@ -37,7 +38,12 @@ export const ProductPage = () => {
   return(<></>)
  }
 
- return (<Layout>
+  return (<Layout>
+     <Helmet>
+                <meta charSet="utf-8" />
+                <title>{product?.brand} {product?.title} - Mumz Care & Kids Store</title>
+                <meta name="description" content={product?.description} />
+            </Helmet>
   {
    product && <div className="my-9 mx-9 h-full min-h-[40rem]">
     <FullViewProduct {...product} />

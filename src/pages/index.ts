@@ -12,3 +12,4 @@ export * from "./Cart";
 export * from "./Product";
 export * from "./Checkout";
 export * from "./policy";
+export * from "./Order";

@@ -44,7 +44,7 @@ export const CartUpdate: React.FC<{
 
  const handleClick = useCallback(() => {
   if (!user) {
-   toast.success("Please Sign In To Add Items To Cart")
+   toast("Please Sign In To Add Items To Cart", { icon: '⛔'})
    setAuthOpen(true)
    return;
      }

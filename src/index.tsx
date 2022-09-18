@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import { RecoilRoot } from 'recoil';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -10,9 +11,11 @@ const root = ReactDOM.createRoot(
 root.render(
   <div className='w-full relative h-full flex flex-wrap font-p overflow-x-hidden'>
      <React.StrictMode>
-    <RecoilRoot>
-      <App />
-    </RecoilRoot>
+      <HelmetProvider>
+      <RecoilRoot>
+        <App />
+      </RecoilRoot>
+    </HelmetProvider>
   </React.StrictMode>
   </div>
  

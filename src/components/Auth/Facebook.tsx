@@ -8,7 +8,7 @@ export const FacebookButton = () => {
   const [embed, setEmbed] = useRecoilState(embedState)
   
   const faceBookSignIn = useCallback(async () => {
-    window.open(`${process.env.API_ENDPOINT}auth/facebook`, "Connect with Facebook")
+    window.open(`https://api.mumzcareandkidsstore.com/auth/facebook`, "_self")
 
     // setEmbed({...embed, title: "Connect with Facebook", link: "http://localhost:4000/auth/facebook", icon: <BsFacebook className="mr-6 text-xl inline text-white" />, color: "#1877F2", open: true })
   }, [embed]) 

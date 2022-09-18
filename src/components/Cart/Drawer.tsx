@@ -1,14 +1,16 @@
 import { SwipeableDrawer } from "@mui/material"
-import { useMemo, useState } from "react"
+import { useMemo, useState,useEffect } from "react"
 import { useRecoilState, useRecoilValue } from "recoil"
 import { CartUpdate, CartView, SectionTitle } from ".."
 import { cartDrawerState, userState } from "../../atoms"
 import { Format } from "../../utils/formatter"
 import { SignInButton } from "../Auth"
+import { API } from "../../api/https"
 
 export const CartDrawer = () => {
     const [open, setOpen] = useRecoilState(cartDrawerState)
     const user = useRecoilValue(userState)
+    const [fee, setFee] = useState(0)
     
     const subtotal = useMemo(() => {
     let total = 0;
@@ -18,6 +20,14 @@ export const CartDrawer = () => {
         })
         return total;
     }, [user])
+
+    useEffect(() => {
+        API.getFee(subtotal).then((res) => {
+            setFee(parseInt(res.data.fee))
+        }).catch(err => {
+            setFee(0)
+        }) 
+    }, [subtotal])
 
 
  return(<SwipeableDrawer
@@ -49,11 +59,11 @@ export const CartDrawer = () => {
                 </tr>
                 <tr>
                     <td>TRANSACTION FEE :</td>
-                    <td>{Format.currency(1500)}</td>
+                    <td>{Format.currency(fee)}</td>
                 </tr>
                 <tr>
                     <td>TOTAL :</td>
-                    <td>{Format.currency(subtotal + 1500)}</td>
+                    <td>{Format.currency(subtotal + fee)}</td>
                      </tr>
                  </tbody>
             </table>
