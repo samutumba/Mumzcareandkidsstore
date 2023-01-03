@@ -1,12 +1,12 @@
 import moment from "moment";
-import { IProduct, ISearch, ISort } from "../../types";
+import { Product, ISearch, ISort } from "../../types";
 
-export function ProductFilter(products: IProduct[], filter: ISearch, sort?: ISort) {
- let filtered: IProduct[] = []
+export function ProductFilter(products: Product[], filter: ISearch, sort?: ISort) {
+ let filtered: Product[] = []
 
  products.forEach((pro) => {
-  if(filter._id && pro._id){
-   if (filter._id !== pro._id) {
+  if (filter.id && pro.id) {
+   if (filter.id !== pro.id) {
     return;
    }
   }
@@ -15,7 +15,7 @@ export function ProductFilter(products: IProduct[], filter: ISearch, sort?: ISor
    if (!pro.brand.toLowerCase().includes(value) && !pro.title.toLowerCase().includes(value) && !pro.description.toLowerCase().includes(value) && !pro.category.toLowerCase().includes(value) && !pro.subCategory.toLowerCase().includes(value)) {
     return;
    }
-  } 
+  }
   if (filter.category) {
    if (!filter.category.includes(pro.category)) {
     return;
@@ -43,7 +43,7 @@ export function ProductFilter(products: IProduct[], filter: ISearch, sort?: ISor
     }
    }
   }
-   if (filter.minAge || filter.maxAge) {
+  if (filter.minAge || filter.maxAge) {
    if (filter.minAge && pro.minAge) {
     if (!(pro.minAge >= filter.minAge)) {
      return;
@@ -55,17 +55,17 @@ export function ProductFilter(products: IProduct[], filter: ISearch, sort?: ISor
     }
    }
   }
-  
- filtered.push(pro)
+
+  filtered.push(pro)
  })
 
- if (sort === ISort.newest) { 
+ if (sort === ISort.newest) {
   filtered.sort((p1, p2) => moment(p2.createdAt).valueOf() - moment(p1.createdAt).valueOf())
  } else if (sort === ISort.priceHigh) {
-  filtered.sort((p1, p2) => p2.basePrice -  p1.basePrice )
+  filtered.sort((p1, p2) => p2.basePrice - p1.basePrice)
  } else if (sort === ISort.priceLow) {
   filtered.sort((p1, p2) => p1.basePrice - p2.basePrice)
- } 
- 
+ }
+
  return filtered;
 }

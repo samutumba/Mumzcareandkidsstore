@@ -3,44 +3,45 @@ import { useRecoilState } from "recoil"
 import { cartState } from "../atoms"
 import { Layout, ProductCarousel, ProductCartPreview, SectionTitle } from "../components"
 import { useProductQuery } from "../hooks"
-import { IProduct, ISort } from "../types"
+import { Product, ISort } from "../types"
 import { ProductFilter } from "../utils/filter"
 import { Format } from "../utils/formatter"
 
 export const CartPage = () => {
     const [cart, setCart] = useRecoilState(cartState)
-     const productData = useProductQuery()
+    const productData = useProductQuery()
 
     const product = useMemo(() => {
         return productData.data ?
-        ProductFilter(productData.data, { }) :
-        []
+            ProductFilter(productData.data, {}) :
+            []
 
     }, [productData])
 
     const subtotal = useMemo(() => {
         let total = 0;
-        const pro: IProduct[] = []
+        const pro: Product[] = []
         product.length > 0 &&
             cart.forEach((item) => {
-                const prod = ProductFilter(productData.data, { _id: item.productID }).at(0) 
+                const prod = ProductFilter(product, { id: item.productID }).at(0)
                 if (prod) {
-                    total = total + ( prod.basePrice * item.quantity)
+                    total = total + (prod.basePrice * item.quantity)
                 }
-               
-        })
+
+            })
 
         return total
     }, [cart, product])
 
     return (<Layout>
         <SectionTitle title="My Cart" />
+        
         <div className="flex flex-col gap-3 justify-center">
             {
-                cart.map((item, i) => 
+                cart.map((item, i) =>
                     <React.Fragment key={i}>
                         <ProductCartPreview {...item} />
-                    </React.Fragment>      
+                    </React.Fragment>
                 )
             }
         </div>
@@ -59,13 +60,13 @@ export const CartPage = () => {
                     <td>{Format.currency(subtotal + 4000)}</td>
                 </tr>
             </table>
-          
+
             <button className="py-2 rounded-xl mx-auto text-center px-10 bg-gum border-gray border text-rose">
                 CHECKOUT
             </button>
         </div>
-       
-        <ProductCarousel title="RECOMMENDED" filter={{ category: product.flatMap((p) => p.category), subCategory: product.flatMap((p) => p.subCategory)}} sort={ISort.newest} />
+
+        <ProductCarousel title="RECOMMENDED" filter={{ category: product.flatMap((p) => p.category), subCategory: product.flatMap((p) => p.subCategory) }} sort={ISort.newest} />
     </Layout>)
 }
 

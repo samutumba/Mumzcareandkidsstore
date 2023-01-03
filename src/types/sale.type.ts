@@ -2,17 +2,18 @@ import { IFile, IItem, IProduct } from "./product.type";
 import { ICart, IUser } from "./user.type";
 
 export interface ISales {
- _id: string,
- reference: string,
- user?: string,
- sale: ISaleType,
- isDelivery: boolean,
- delivery?: IDelivery[],
- salesman?: string,
- items: IItem[],
- ordered: ICart[],
- paid: boolean
- payment: {
+  _id: string,
+  reference: string,
+  user?: string,
+  sale: ISaleType,
+  isDelivery: boolean,
+  delivery?: IDelivery[],
+  salesman?: string,
+  items?: IItem[],
+  products?: IProduct[],
+  ordered: ICart[],
+  paid: boolean
+  payment: {
   mode: IPaymentType,
   amount: number,
   txt_ref?: string,
@@ -69,7 +70,21 @@ export interface DeliveryUser {
   note: string 
  }
 
- export interface CreateSale {
+
+export interface ITransaction {
+  _id?: string,
+  note: string,
+  amount: number,
+  isExpense: boolean,
+  transactionId: string,
+  currency: string,
+  avenue: IPaymentType,
+  loggedBy?: string,
+  createdAt?: Date,
+  updatedAt?: Date
+}
+
+export interface CreateSale {
   user?: string, 
   ordered: ICart[],
   items?: IItem[],

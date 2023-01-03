@@ -1,0 +1,8 @@
+// @ts-nocheck
+import * as Yup from 'yup';
+import "../helpers/oneOfSchemas.helper.ts"
+import { UserCreateNestedOneWithoutInquiriesInputObjectSchema } from '../internals';
+
+export const InquiryCreateWithoutFeedbackInputObjectSchema = Yup.object({
+    id: Yup.string(),  v: Yup.number(),  category: Yup.string().required(),  contact: Yup.string().required(),  message: Yup.string().required(),  name: Yup.string().required(),  reference: Yup.string().required(),  user: UserCreateNestedOneWithoutInquiriesInputObjectSchema,  responded: Yup.boolean(),  type: Yup.string().required(),  updatedAt: Yup.date(),  createdAt: Yup.date()
+});

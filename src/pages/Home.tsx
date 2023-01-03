@@ -2,13 +2,13 @@ import { useNavigate} from "react-router-dom"
 import { ExploreProducts, Hero, Layout, ProductCarousel, Section } from "../components"
 import { HomeExploreContent, TestBabyShowerContent } from "../data"
 import { ACategory, ISort } from "../types"
-
+import image from "../assets/images/tommee-tippee.png"
 
 export const Home = () => {
     const navigate = useNavigate()
     return (<>
         <Layout>
-            <Hero title1="For My Little" image="https://i.ibb.co/d06NwzY/tommee-tippee-closer-to-nature-complete-starter-kit-black-33.png" title2="One and Me" description="Simplifying you and your baby's needs."
+            <Hero title1="For My Little" image={image} title2="One and Me" description="Simplifying you and your baby's needs."
                 callback={() => {
                 navigate('/search')
             }}/>

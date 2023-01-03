@@ -1,17 +1,19 @@
 import { atom } from "recoil";
-import { IOrderItem, ISearch, ISort, IUser } from "../types";
+import { IOrderItem, ISearch, ISort, User } from "../types";
 import { recoilPersist } from 'recoil-persist'
 
 const { persistAtom } = recoilPersist()
 
-export const userState = atom<IUser|null>({
+
+
+export const userState = atom<User & { }|null>({
     key: 'userState', // unique ID (with respect to other atoms/selectors)
   default: null, // default value (aka initial value)
   effects_UNSTABLE: [persistAtom],
 });
   
 export const fetchUserState = atom<boolean>({
-    key: 'fetchUserState', // unique ID (with respect to other atoms/selectors)
+  key: 'fetchUserState', // unique ID (with respect to other atoms/selectors)
   default: true, // default value (aka initial value)
 });
   
@@ -49,6 +51,13 @@ export const cartDrawerState = atom({
   key: 'cartDrawerState',
   default: false,
 })
+
+export const acceptedState = atom({
+  key: 'acceptedState',
+  default: false,
+  effects_UNSTABLE: [persistAtom],
+})
+
 
 export const embedState = atom<{
   open: boolean,

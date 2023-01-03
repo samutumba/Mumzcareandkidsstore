@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import './App.css';
 import { Router } from './routes';
 import {
   RecoilRoot, useRecoilState, useRecoilValue
@@ -27,46 +26,57 @@ import "swiper/css/thumbs";
 import { API } from './api/https';
 import { Loader } from './components/Loading/Loader';
 import "react-phone-number-input/style.css";
+import { Helmet } from 'react-helmet-async';
+import { initAmplitude, sendAmplitudeData } from './utils/amplitude'
 
 
 const queryClient = new QueryClient({
-   defaultOptions: {
+  defaultOptions: {
     queries: {
       staleTime: 1000 * 60 * 15,
       refetchOnWindowFocus: false,
       refetchOnMount: false,
-      refetchOnReconnect:false,
+      refetchOnReconnect: false,
       cacheTime: 1000 * 60 * 15,
       retry: false,
     },
   },
 })
 
+initAmplitude();
+
 function App() {
   const [user, setUser] = useRecoilState(userState)
-  const fetchUser = useRecoilValue(fetchUserState) 
+  const fetchUser = useRecoilValue(fetchUserState)
 
   useEffect(() => {
+    //sendAmplitudeData('TEST')
+
+
     API.getUser().then(res => {
-        setUser(res.data.user)
-        } 
-      )
+      setUser(res.data.user)
+    }
+    )
       .catch(err => {
-       setUser(null)
+        setUser(null)
       })
 
   }, [fetchUser])
 
   return (
-      <React.Suspense fallback={<LoadingPage />}>
+    <React.Suspense fallback={<LoadingPage />}>
+      <Helmet>
+        <title>Mumz Care and Kids Store</title>
+        <meta name="description" content="One stop Centre for Mum's and Babies' located at Akamwesi Mall- Kyebando" />
+      </Helmet>
       <Toaster position="top-right" reverseOrder={false} />
-        <QueryClientProvider client={queryClient}>
+      <QueryClientProvider client={queryClient}>
         <Router />
         <ReactQueryDevtools initialIsOpen={false} />
-        </QueryClientProvider>
+      </QueryClientProvider>
       <CookieBanner />
       <Loader />
-      </React.Suspense>
+    </React.Suspense>
   );
 }
 

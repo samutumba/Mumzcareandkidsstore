@@ -10,3 +10,5 @@ export * from "./Loading";
 export * from "./Search";
 export * from "./Input";
 export * from "./Cart";
+export * from "./Review";
+export * from "./Location";

@@ -1,5 +1,5 @@
 import { Modal } from "flowbite-react"
-import { ErrorText, TextInput } from "..";
+import { ErrorText, TextInput, BasicInput } from "..";
 // "With country select" component.
 import PhoneInput from 'react-phone-number-input'
 import { useCallback, useState } from "react";
@@ -91,25 +91,23 @@ export const LoginModal: React.FC<ILogin> = (props) => {
                      value={props.username}
                      onChange={(value: any) => { }}
                    />
-                 </div> : 
-                 <TextInput
-                  label="Email: "
-                  type="text"
+               </div> : 
+               <BasicInput
+                  type="email"
+                  name="Email"
                   value={props.username}
-                   placeholder="e.g Flavia Katamba"
-                   disabled
-
-                  />
+                  callback={(e) => {}}
+                />
+                
              }
      </div>
-     <div className="my-2">
-      <TextInput
-        label="Password: "
-        type="password"
-       value={password}
-       onChange={(e: any) => setPassword(e.currentTarget.value)}
-         placeholder=""
-      />
+         <div className="my-2">
+           <BasicInput
+             type="password"
+             name="Password"
+             value={password}
+             callback={(e) => { setPassword(e) }}
+           />
      </div>
      <button 
       onClick={signIn}

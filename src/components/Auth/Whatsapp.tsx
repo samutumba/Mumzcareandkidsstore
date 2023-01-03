@@ -10,9 +10,10 @@ import { API } from '../../api/https';
 import toast from 'react-hot-toast';
 import { LoginModal } from './SignIn';
 import { Modal } from 'flowbite-react';
+import { MobileInput } from '..';
 
 export const WhatsAppSignIn = () => {
-  const { control,  watch, setValue, handleSubmit } = useForm<{
+  const { control, clearErrors, setError, watch, setValue, handleSubmit,  formState: { errors } } = useForm<{
     number: string
   }>({
       mode: "onBlur"
@@ -31,7 +32,16 @@ export const WhatsAppSignIn = () => {
   
     function openWhatsAppModal() {
       setIsOpen(true)
+  }
+  
+  const handlePhoneInput = (data: string) => {
+    if (!isValidPhoneNumber(data)) {
+      setError('number', { type: 'onBlur', message: "Enter a valid phone number"})
+    } else {
+      clearErrors('number');
+      setValue('number', data)
     }
+  }
 
     const handleSignIn = (data: {
     number: string
@@ -81,7 +91,7 @@ export const WhatsAppSignIn = () => {
     <Modal.Header />
     <Modal.Body>
             <div className="text-center">
-              <h3 className="text-xl text-center flex items-center gap-4 justify-center w-full font-medium leading-6 text-gray-900">
+              <h3 className="text-xl text-center font-title flex items-center gap-4 justify-center w-full font-medium leading-6 text-gray-900">
                  <Icon icon="akar-icons:whatsapp-fill" inline={true} />
                       Sign In With WhatsApp
               </h3>
@@ -91,14 +101,12 @@ export const WhatsAppSignIn = () => {
                             <label className="flex flex-col text-lg my-4">
                                
                     <span className="p-2">
-                      <PhoneInput
-                        international
-                      className="box-border appearance-none border border-gray w-full rounded-lg py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-primary mr-2 font-Poppins custom_style"
-                        defaultCountry="UG"
+                      <MobileInput
+                        name="WhatsApp Number"
                         value={watch('number')}
-                        onChange={(value) => setValue('number', value?.toString() || "") }
+                        callback={handlePhoneInput}
+                        error={errors.number}
                       />
-                                
                                 </span>
                             </label>
                             <div className="flex justify-evenly font-semibold font-p gap-2 mt-4">
@@ -110,7 +118,7 @@ export const WhatsAppSignIn = () => {
                                 </button>
                                 <button
                                     type="button"
-                                    className="inline-flex justify-center w-48 text-rose rounded-md border-2 border-rose bg-white px-4 py-2 text-sm  "
+                                    className="inline-flex justify-center w-48 text-rose rounded-md border-2 border-rose bg-white px-4 py-2 text-sm hover:bg-rose hover:text-white "
                                     onClick={closeWhatsAppModal}
                                 >
                                     Cancel

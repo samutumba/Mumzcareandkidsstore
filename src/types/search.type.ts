@@ -1,5 +1,5 @@
 export interface ISearch {
- _id?: string,
+ id?: string,
  text?: string,
  minAge?: number,
  maxAge?: number,

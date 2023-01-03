@@ -1,3 +1,4 @@
+import { Product } from "./db";
 import { IProduct } from "./product.type";
 
 export interface IUser {
@@ -24,7 +25,7 @@ export interface IUser {
 
 export interface ICart {
     _id?: string,
-    product: IProduct,
+    product: Product,
     color?: string,
     material?: string,
     size?: string,

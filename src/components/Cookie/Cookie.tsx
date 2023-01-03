@@ -2,23 +2,30 @@ import Cookies from 'js-cookie'
 import { useCallback, useEffect, useState } from 'react'
 import { Icon } from '@iconify/react';
 import { Modal } from "flowbite-react"
+import { useRecoilState } from 'recoil';
+import { acceptedState } from '../../atoms';
+import { Link } from "react-router-dom";
+
 
 export const CookieBanner = () => {
-    let [isOpen, setIsOpen] = useState(false)
-
+    const [isOpen, setIsOpen] = useState(false)
+    const [accepted, setAccepted] = useRecoilState(acceptedState)
     
 
     useEffect(() => {
-        const acceptedCookies = Cookies.get('cookiePermission');
-        if (!acceptedCookies) {
+        //const acceptedCookies = Cookies.get('cookiePermission');
+        if (!accepted) {
             setIsOpen(true)
+        } else {
+            setIsOpen(false);
         }
-    }, [isOpen])
+    }, [accepted])
 
-    const acceptCookies = useCallback(() => {
+    const acceptCookies = () => {
         setIsOpen(false);
-        Cookies.set('cookiePermission', 'true');
-    }, [isOpen])
+        setAccepted(true);
+        //Cookies.set('cookiePermission', 'true');
+    }
 
     // function denyCookies(){
     //     setIsOpen(false);
@@ -41,7 +48,7 @@ export const CookieBanner = () => {
                             </h2>
                             <p className="font-p text-md mx-2">
                             By continuing on this platform, you agree to our use of cookies to provide a highly individualized user experience. <br/>
-                            For more information be sure to check out our <a href="/help/privacy-policy" className='underline'>privacy policy</a>, <a href="/help/cookie-policy" className='underline'>cookie policy</a> and just for good measure our <a href="/help/terms-of-service" className='underline'>terms of service</a> as well <br/>
+                            For more information be sure to check out our <Link to="/help/privacy-policy" className='underline'>privacy policy</Link>, <Link to="/help/cookie-policy" className='underline'>cookie policy</Link> and just for good measure our <Link to="/help/terms-of-service" className='underline'>terms of service</Link> as well <br/>
                             </p>
                         </div>
                         <button 

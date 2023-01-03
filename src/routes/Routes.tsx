@@ -21,6 +21,7 @@ import {
   CookiePolicy,
   OrderPage
 } from "../pages";
+import { TestPage } from "../pages/Test";
 
 export const Router = () => {
     return(
@@ -48,7 +49,8 @@ export const Router = () => {
             <Route path="apparel" element={<ApparelPage />} />
             <Route path="motherhood" element={<MotherHoodPage />} />
             <Route path="youth" element={<YouthPage />} />
-          </Route>
+            </Route>
+            <Route path="/test" element={<TestPage />} />
           <Route path="*" element={<UnknownPage />} />
         </Route>
         </Routes>
