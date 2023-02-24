@@ -60,7 +60,7 @@ export const CheckOutPage = () => {
     return `${Date.now().toString()}-${user?.username}`;
   }, [])
 
-  const handleDeliveryClick =  (selection: "pickUp" | "delivery") => {
+  const handleDeliveryClick = (selection: "pickUp" | "delivery") => {
     if (selection === 'delivery')
     {
       (user && (((subtotal + fee) || 0) < 300000)) ? toast.error("Please add more items to cart to reach shs. 300,000") : setDelivery(true)
@@ -212,7 +212,7 @@ export const CheckOutPage = () => {
       toast.error('Check your information')
     }
 
-    
+
   }
 
   const handlePickUpSubmit = () => {
@@ -220,7 +220,7 @@ export const CheckOutPage = () => {
 
     if (pickupForm.formState.isValid)
     {
-      
+
       handleFlutterPayment({
         callback: (response) => {
           closePaymentModal()
@@ -234,7 +234,7 @@ export const CheckOutPage = () => {
               transaction_id: `${response.transaction_id}`,
               payment_fee: fee
             }
-            
+
             const data = {
               cartItem: user?.Cart?.items,
               payment
@@ -242,7 +242,7 @@ export const CheckOutPage = () => {
 
             API.createSale(data).then(res => {
               pickupForm.setValue('saleId', res.data.sale.id)
-              
+
               pickupForm.handleSubmit((data) =>
                 API.createPickUp(data).then(res => {
                   toast.success("Order Complete")
@@ -282,15 +282,15 @@ export const CheckOutPage = () => {
   }, [subtotal])
 
 
-  const getCurrentLocation = () => {
-    navigator.geolocation.getCurrentPosition(function (position) {
-      setPin({
-        lgt: `${position.coords.longitude}`,
-        lat: `${position.coords.latitude}`,
-        zoom: 10
-      })
-    });
-  }
+  // const getCurrentLocation = () => {
+  //   navigator.geolocation.getCurrentPosition(function (position) {
+  //     setPin({
+  //       lgt: `${position.coords.longitude}`,
+  //       lat: `${position.coords.latitude}`,
+  //       zoom: 10
+  //     })
+  //   });
+  // }
 
   if (!user)
   {
@@ -324,11 +324,11 @@ export const CheckOutPage = () => {
                   </span>
                   {' '} Orders above <span className="font-semibold">{Format.currency(300000)}</span> get free shipping within Kampala, Wakiso and Mukono! Don't Miss Out
                 </span>
-              </Alert> 
+              </Alert>
             </> :
               <Alert
                 color="success"
-                onDismiss={function onDismiss () {  }}
+                onDismiss={function onDismiss () { }}
               >
                 <span>
                   <span className="font-medium">
@@ -344,10 +344,10 @@ export const CheckOutPage = () => {
           </label>
           <span className="grid grid-cols-2 gap-4 w-full"
           >
-            <button onClick={() => handleDeliveryClick('pickUp')} className="flex flex-row gap-4 font-semibold items-center justify-center bg-gold text-white rounded-lg py-2 px-4">
-              <Icon icon="icon-park-outline:delivery" className="inline text-3xl"/> Pick up
+            <button title="button" onClick={() => handleDeliveryClick('pickUp')} className="flex flex-row gap-4 font-semibold items-center justify-center bg-gold text-white rounded-lg py-2 px-4">
+              <Icon icon="icon-park-outline:delivery" className="inline text-3xl" /> Pick up
             </button>
-            <button onClick={() => handleDeliveryClick('delivery')} className="flex flex-row gap-4 font-semibold rounded-lg py-2 px-4 items-center justify-center bg-rose text-white">
+            <button title="button" onClick={() => handleDeliveryClick('delivery')} className="flex flex-row gap-4 font-semibold rounded-lg py-2 px-4 items-center justify-center bg-rose text-white">
               <Icon icon="ic:outline-delivery-dining" className="inline text-3xl" /> Delivery
             </button>
             <p className="text-xs">Collect your order from one of our locations once it is ready!</p>
@@ -355,7 +355,7 @@ export const CheckOutPage = () => {
           </span>
         </div>
         {
-          typeof delivery !== "undefined" && 
+          typeof delivery !== "undefined" &&
 
             delivery == true ?
             <>
@@ -366,44 +366,44 @@ export const CheckOutPage = () => {
                 </label>
                 <SelectInput
                   name="District"
-                  options={['Wakiso', 'Kampala', 'Mukono'].flatMap((d) => { return { label: d, value: d }})}
+                  options={['Wakiso', 'Kampala', 'Mukono'].flatMap((d) => { return { label: d, value: d } })}
                   callback={(loc) => {
                     deliveryForm.setValue('location.district', loc)
                     deliveryForm.trigger("location.district")
                   }}
                   error={deliveryForm.formState.errors.location?.district}
                 />
-                  <label>
-                    Town/City
-                  </label>
-                  <CreatableSelect
-                    placeholder="e.g Ntinda, Gayaza"
-                    theme={(theme) => ({
-                      ...theme,
-                      borderRadius: 10,
-                      colors: {
-                        ...theme.colors,
-                        primary25: '#c6e6e6',
-                        primary: '#d80945',
-                      },
-                    })}
-                    styles={{
-                      control: base => ({
-                        ...base,
-                        fontFamily: "Quicksand"
+                <label>
+                  Town/City
+                </label>
+                <CreatableSelect
+                  placeholder="e.g Ntinda, Gayaza"
+                  theme={(theme) => ({
+                    ...theme,
+                    borderRadius: 10,
+                    colors: {
+                      ...theme.colors,
+                      primary25: '#c6e6e6',
+                      primary: '#d80945',
+                    },
+                  })}
+                  styles={{
+                    control: base => ({
+                      ...base,
+                      fontFamily: "Quicksand"
 
-                      }),
-                      menu: base => ({
-                        ...base,
-                        fontFamily: "Quicksand"
+                    }),
+                    menu: base => ({
+                      ...base,
+                      fontFamily: "Quicksand"
 
-                      })
+                    })
                   }}
-                 
-                    options={getTowns()}
-                    onChange={(value, action) => {
-                      value && deliveryForm.setValue('location.town', value.value)
-                    }}
+
+                  options={getTowns()}
+                  onChange={(value, action) => {
+                    value && deliveryForm.setValue('location.town', value.value)
+                  }}
                 />
                 <ErrorMessage data={deliveryForm.formState.errors.location?.town} />
                 <BasicInput
@@ -425,7 +425,7 @@ export const CheckOutPage = () => {
                   }}
                   error={deliveryForm.formState.errors.note}
                 />
-            </div>
+              </div>
             </>
             :
             <>
@@ -453,39 +453,35 @@ export const CheckOutPage = () => {
                   />
                   <PhoneInput
                     international
-                    containerClass={pickupForm.formState.errors.contact ? 'input-error' : 'input-okay max-w-lg'}
+
                     defaultCountry="UG"
                     onBlur={() => pickupForm.trigger('contact')}
                     value={pickupForm.getValues('contact')}
-                    inputStyle={{
-                      border: '0px',
-                      ring: 'none'
-                    }}
-                    onChange={(p) => p && pickupForm.setValue("contact" ,p.toString())}
+                    onChange={(p) => p && pickupForm.setValue("contact", p.toString())}
                   />
                 </div>
                 <ErrorMessage data={pickupForm.formState.errors.contact} />
-                <TextAreaInput 
+                <TextAreaInput
                   name="Note"
                   defaultValue={pickupForm.getValues('note')}
                   callback={(p) => {
-                    
+
                     pickupForm.setValue("note", p.toString())
                     pickupForm.trigger('note')
                   }}
                   error={pickupForm.formState.errors.note}
                 />
-                <SelectInput 
+                <SelectInput
                   name="Pick Up Location"
                   options={locations.data ? locations.data?.flatMap((l) => { return { label: `${l.name} - ${l.address}`, value: l.id } }) : []}
                   callback={(loc) => {
-                   
+
                     pickupForm.setValue('location', loc)
                     pickupForm.trigger('location')
                   }}
                   error={pickupForm.formState.errors.location}
                 />
-            </div>
+              </div>
             </>
         }
         {
@@ -528,11 +524,11 @@ export const CheckOutPage = () => {
                 className="block mb-2 text-sm w-full font-medium text-gray-900 dark:text-gray-300">
                 Use Current Location:
               </label>
-              <button onClick={getCurrentLocation} className="border border-1 flex flex-row gap-4 items-center py-3 px-9 rounded-lg">
+              <button title="button" onClick={getCurrentLocation} className="border border-1 flex flex-row gap-4 items-center py-3 px-9 rounded-lg">
                 <Icon icon="iconoir:maps-arrow-diagonal" className="inline" inline={true} /> Get current location
               </button>
               {pin && <>
-                <button className="py-3 mt-3 px-9 bg-[#4285F4] rounded-lg text-sm font-semibold text-white" onClick={() => {
+                <button title="button" className="py-3 mt-3 px-9 bg-[#4285F4] rounded-lg text-sm font-semibold text-white" onClick={() => {
                   window.open(`https://www.google.pl/maps/search/?api=1&query=${pin?.lat},${pin?.lgt}`, '_blank')
                 }}>
                   <Icon icon="logos:google-maps" className="inline text-lg mr-3 " /> View Est. Location
@@ -629,7 +625,7 @@ export const CheckOutPage = () => {
           </tr>
         </tbody>
       </table>
-      <button onClick={() => { 
+      <button title="button" onClick={() => {
         typeof delivery !== "undefined" &&
           delivery == true ?
           handleDeliverySubmit()

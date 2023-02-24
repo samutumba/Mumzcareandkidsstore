@@ -33,7 +33,8 @@ export const CartUpdate: React.FC<{
     const setLoading = useSetRecoilState(loadingState)
 
     const included = useMemo(() => {
-        if (!user) {
+        if (!user)
+        {
             return false
         }
         const cart = user?.Cart
@@ -42,16 +43,19 @@ export const CartUpdate: React.FC<{
             return it.product.id == product.id
         }).at(0)
 
-        if (filter) {
+        if (filter)
+        {
             return true
-        } else {
+        } else
+        {
             return false
         }
 
     }, [user])
 
     const handleClick = useCallback(() => {
-        if (!user) {
+        if (!user)
+        {
             toast("Please Sign In To Add Items To Cart", { icon: '⛔' })
             setAuthOpen(true)
             return;
@@ -76,7 +80,8 @@ export const CartUpdate: React.FC<{
                 setLoading(false)
             })
 
-        } else {
+        } else
+        {
             API.updateCart({
                 command: "UPDATE",
                 quantity: quantity || amount,
@@ -115,7 +120,7 @@ export const CartUpdate: React.FC<{
                             </div>
                         </div>
                         <div className="flex border-l border-gray-200">
-                            <button
+                            <button title="button"
                                 onClick={() => toast.dismiss(t.id)}
                                 className="w-full border border-transparent rounded-none rounded-r-lg p-4 flex items-center justify-center text-sm font-medium text-rose hover:text-gum focus:outline-none focus:ring-2 focus:ring-rose"
                             >
@@ -137,7 +142,8 @@ export const CartUpdate: React.FC<{
     }, [included, user, product, amount, fetchUser])
 
     useEffect(() => {
-        if (user && included && (quantity !== amount)) {
+        if (user && included && (quantity !== amount))
+        {
             API.updateCart({
                 command: "UPDATE",
                 productID: product.id,
@@ -147,29 +153,30 @@ export const CartUpdate: React.FC<{
             }).catch(err => {
                 toast.error(err.respsonse.data.message)
             })
-         }
+        }
     }, [amount])
 
 
 
 
-    if (included) {
+    if (included)
+    {
         return (<div className="flex flex-row gap-2 items-center">
-            <button onClick={handleClick} className="p-3 text-md text-black text-center">
+            <button title="button" onClick={handleClick} className="p-3 text-md text-black text-center">
                 <Icon icon="fluent:delete-24-regular" inline />
             </button>
             <div className="flex flex-row font-bold">
-                <button onClick={() => setAmount(amount + 1)} className="bg-base font-bold w-5 ">+</button><p className="flex border-y-2 border-base justify-center items-center p-1 w-6">{amount}</p><button onClick={() => setAmount(amount - 1)} disabled={amount <= 1} className="bg-base w-5 font-bold"> - </button>
+                <button title="button" onClick={() => setAmount(amount + 1)} className="bg-base font-bold w-5 ">+</button><p className="flex border-y-2 border-base justify-center items-center p-1 w-6">{amount}</p><button title="button" onClick={() => setAmount(amount - 1)} disabled={amount <= 1} className="bg-base w-5 font-bold"> - </button>
             </div>
         </div>)
     }
 
-    return (<> <button onClick={handleClick} className={`bg-gum border border-base font-semibold border-1 rounded-full  px-5 ${view == "xl" ? "py-4 text-md" : "py-1 text-xs"} max-w-sm`}>
+    return (<> <button title="button" onClick={handleClick} className={`bg-gum border border-base font-semibold border-1 rounded-full  px-5 ${view == "xl" ? "py-4 text-md" : "py-1 text-xs"} max-w-sm`}>
         ADD TO CART
     </button>
         {
             showQuantity && <div className="flex flex-row font-bold">
-                <button onClick={() => setAmount(amount + 1)} className="bg-base font-bold w-5 ">+</button><p className="flex border-y-2 border-base justify-center items-center p-1 w-6">{amount}</p><button onClick={() => setAmount(amount - 1)} disabled={amount <= 1} className="bg-base w-5 font-bold"> - </button>
+                <button title="button" onClick={() => setAmount(amount + 1)} className="bg-base font-bold w-5 ">+</button><p className="flex border-y-2 border-base justify-center items-center p-1 w-6">{amount}</p><button title="button" onClick={() => setAmount(amount - 1)} disabled={amount <= 1} className="bg-base w-5 font-bold"> - </button>
             </div>
         }
     </>)

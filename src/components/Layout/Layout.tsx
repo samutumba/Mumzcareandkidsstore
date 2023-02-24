@@ -43,7 +43,7 @@ export const Layout: React.FC<ILayoutProps> = ({
                   <div className="flex flex-row my-auto mr-3 h-full gap-2 justify-end">
                     <CgProfile className="my-auto" />
                     <Link className="my-auto" to="/wishlist"><BsHeart /></Link>
-                    <button onClick={() => setCartOpen(true)} className="relative my-auto h-10 w-fit">
+                    <button title="button" onClick={() => setCartOpen(true)} className="relative my-auto h-10 w-fit">
                       <RiShoppingBagLine className="mr-2 hover:text-2xl text-xl mb-1" />
                       {/* {(user && user?.cart?.at(0)?.items && user?.cart?.at(0)?.items?.length > 0 && (user?.cart?.at(0)?.items?.length > 0))  && <div className="rounded-full bg-rose justify-center text-white absolute top-0 right-0 w-4 h-4 text-center flex items-center text-xs">
                 {user?.cart?.length}

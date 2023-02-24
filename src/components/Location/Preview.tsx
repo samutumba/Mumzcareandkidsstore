@@ -10,8 +10,8 @@ export const PreviewLocations = () => {
       const locations = useLocationQuery()
 
       return (<div className="font-p">
-            <button onClick={() => setOpen(true)} className="text-md font-medium flex gap-2 items-center hover:underline ">
-                  <Icon icon="ph:globe-simple" className="text-lg"/> FIND US
+            <button title="button" onClick={() => setOpen(true)} className="text-md font-medium flex gap-2 items-center hover:underline ">
+                  <Icon icon="ph:globe-simple" className="text-lg" /> FIND US
             </button>
             <Dialog
                   fullWidth={true}

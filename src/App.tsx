@@ -13,7 +13,7 @@ import "swiper/css/navigation";
 // eslint-disable-next-line
 import "swiper/css/bundle";
 import toast, { Toaster } from 'react-hot-toast';
-import { CookieBanner } from './components';
+
 import { LoadingPage } from './pages';
 import axios from 'axios';
 import { fetchUserState, userState } from './atoms';
@@ -51,13 +51,10 @@ function App() {
 
   useEffect(() => {
     //sendAmplitudeData('TEST')
-
-
     API.getUser().then(res => {
       setUser(res.data.user)
     }
-    )
-      .catch(err => {
+    ).catch(err => {
         setUser(null)
       })
 
@@ -65,16 +62,12 @@ function App() {
 
   return (
     <React.Suspense fallback={<LoadingPage />}>
-      <Helmet>
-        <title>Mumz Care and Kids Store</title>
-        <meta name="description" content="One stop Centre for Mum's and Babies' located at Akamwesi Mall- Kyebando" />
-      </Helmet>
       <Toaster position="top-right" reverseOrder={false} />
       <QueryClientProvider client={queryClient}>
         <Router />
         <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
-      <CookieBanner />
+
       <Loader />
     </React.Suspense>
   );

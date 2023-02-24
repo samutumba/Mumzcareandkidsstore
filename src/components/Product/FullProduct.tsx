@@ -6,7 +6,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 // import required modules
 import { Pagination, Autoplay } from "swiper";
 import { Icon } from '@iconify/react';
-import { useMemo, useState } from "react";
+import React, { useMemo, useState } from "react";
 import { useRecoilValue } from "recoil";
 import { userState } from "../../atoms";
 import { CartUpdate } from "../Cart/AddToCart";
@@ -20,16 +20,19 @@ export const FullViewProduct: React.FC<{ product: Product, items?: IItem[] }> = 
   const location = useLocation()
 
   const price = useMemo(() => {
-    if (!user) {
+    if (!user)
+    {
       return product.basePrice
     }
     const cart = user?.Cart
 
     const filtered = cart?.items?.filter((list) => list.product.id === product.id).at(0)
 
-    if (!filtered) {
+    if (!filtered)
+    {
       return product.basePrice
-    } else {
+    } else
+    {
       return product.basePrice * filtered.quantity
     }
 
@@ -76,7 +79,7 @@ export const FullViewProduct: React.FC<{ product: Product, items?: IItem[] }> = 
             <h2 className="font-semibold text-2xl font-title mb-2">{product.title} </h2>
           </div>
           <div>
-            <button
+            <button title="button"
               onClick={async () => await navigator.share({
                 url: `https:\\www.mumzcareandkidsstore.com${location.pathname}`,
                 title: `${product.brand} ${product.title} - Mumz Care and Kids Store`,
@@ -117,7 +120,7 @@ export const FullViewProduct: React.FC<{ product: Product, items?: IItem[] }> = 
         </div>
         <div className="prose-sm leading-tight list-disc mt-4"><h3><b>Description</b></h3> {Format.quill(product.description)}</div>
         <span className="grid grid-cols-2 justify-center mt-8">
-          {/* <button onClick={addToCart} className="bg-rose text-center rounded-lg w-fit py-3 px-5 text-white capitalize text-lg">
+          {/* <button title="button" onClick={addToCart} className="bg-rose text-center rounded-lg w-fit py-3 px-5 text-white capitalize text-lg">
         <BsBag className="inline"/> Add to cart
        </button> */}
 

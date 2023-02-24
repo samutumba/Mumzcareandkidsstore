@@ -360,7 +360,7 @@ export const OrderPage = () => {
                         Pay:
                       </Table.Cell>
                       <Table.Cell>
-                        <button onClick={completePayment} className="py-2 px-9 rounded-lg bg-rose text-white uppercase animate-pulse">
+                        <button title="button" onClick={completePayment} className="py-2 px-9 rounded-lg bg-rose text-white uppercase animate-pulse">
                           Complete payment
                         </button>
                       </Table.Cell>
@@ -425,7 +425,7 @@ export const OrderPage = () => {
                                 Location
                               </Table.Cell>
                               <Table.Cell>
-                                <button className="py-3 opacity-75 px-9 bg-[#4285F4] rounded-lg text-sm font-semibold text-white" onClick={() => {
+                                <button title="button" className="py-3 opacity-75 px-9 bg-[#4285F4] rounded-lg text-sm font-semibold text-white" onClick={() => {
                                   window.open(`https://www.google.pl/maps/search/?api=1&query=${delivery.user.pin?.lat},${delivery.user.pin?.lgt}`, '_blank')
                                 }}>
                                   <Icon icon="logos:google-maps" className="inline text-lg mr-3 " /> Est. Location

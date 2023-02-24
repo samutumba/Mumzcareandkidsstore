@@ -57,13 +57,8 @@ export const MobileInput = ({ name, value, error, callback }: {
     <label>{name}</label>
     <PhoneInput
       international
-      containerClass={error ? 'input-error' : 'input-okay'}
       defaultCountry="UG"
       value={value}
-      inputStyle={{
-        border: '0px',
-        ring: 'none'
-      }}
       onChange={(p) => p && callback(p.toString())}
     />
     <ErrorMessage data={error} />

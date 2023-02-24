@@ -24,7 +24,8 @@ export const CartPage = () => {
         product.length > 0 &&
             cart.forEach((item) => {
                 const prod = ProductFilter(product, { id: item.productID }).at(0)
-                if (prod) {
+                if (prod)
+                {
                     total = total + (prod.basePrice * item.quantity)
                 }
 
@@ -35,7 +36,7 @@ export const CartPage = () => {
 
     return (<Layout>
         <SectionTitle title="My Cart" />
-        
+
         <div className="flex flex-col gap-3 justify-center">
             {
                 cart.map((item, i) =>
@@ -61,7 +62,7 @@ export const CartPage = () => {
                 </tr>
             </table>
 
-            <button className="py-2 rounded-xl mx-auto text-center px-10 bg-gum border-gray border text-rose">
+            <button title="button" className="py-2 rounded-xl mx-auto text-center px-10 bg-gum border-gray border text-rose">
                 CHECKOUT
             </button>
         </div>

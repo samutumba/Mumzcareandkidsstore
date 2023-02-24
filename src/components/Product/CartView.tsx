@@ -14,7 +14,8 @@ export const CartView: FC<CartItem> = (cart) => {
   const navigate = useNavigate()
   const user = useRecoilValue(userState)
   const price = useMemo(() => {
-    if (!user) {
+    if (!user)
+    {
       return cart.product.basePrice
     }
     return cart.product.basePrice * cart.quantity
@@ -70,7 +71,7 @@ export const OrderedCartView: FC<CartItem> = (cart) => {
         {Format.currency(price)}
       </div>
       <div>
-        <button onClick={() => navigate(`/product/${cart.product.id}`)} className="lg:px-5 lg:my-3 hover:underline hover:text-rose"> View Product</button>
+        <button title="button" onClick={() => navigate(`/product/${cart.product.id}`)} className="lg:px-5 lg:my-3 hover:underline hover:text-rose"> View Product</button>
       </div>
     </div>
   </div>)

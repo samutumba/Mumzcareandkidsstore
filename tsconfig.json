@@ -19,20 +19,40 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "typeRoots": ["./src/types/db"]
+    "typeRoots": [
+      "./src/types/db"
+    ]
   },
   "include": [
     "src/**/**/*"
   ],
   "paths": {
-    "@routes": ["./src/routes"],
-    "@atoms": ["./src/atoms"],
-    "@views": ["./src/views"],
-    "@api": ["./src/api"],
-    "@hooks": ["./src/hooks"],
-    "@components": ["./src/components"],
-    "@utils": ["./src/utils"],
-    "@pages": ["./src/pages"],
-    "@types": ["./src/types"],
+    "@routes": [
+      "./src/routes"
+    ],
+    "@atoms": [
+      "./src/atoms"
+    ],
+    "@views": [
+      "./src/views"
+    ],
+    "@api": [
+      "./src/api"
+    ],
+    "@hooks": [
+      "./src/hooks"
+    ],
+    "@components": [
+      "./src/components"
+    ],
+    "@utils": [
+      "./src/utils"
+    ],
+    "@pages": [
+      "./src/pages"
+    ],
+    "@types": [
+      "./src/types"
+    ]
   }
 }

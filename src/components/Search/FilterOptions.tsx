@@ -255,11 +255,9 @@ export const EditPrice = () => {
   });
   
   const handleCreate = (inputValue: string) => {
-    
-    setTimeout(() => {
       const newOption = createOption(inputValue);
-    }, 500);
   };
+  
   return (<div>
      Minimum Price
       <div className="flex items-center w-full gap-2">

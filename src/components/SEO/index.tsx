@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom"
 export const SEO = ({ title, description, image, keywords }: { title: string, description?: string, image?: string , keywords?: string[] }) => {
 
  const location = useLocation()
+ 
  return (<Helmet>
   <title>{title}</title>
   {

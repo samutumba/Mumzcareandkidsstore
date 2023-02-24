@@ -28,7 +28,7 @@ interface IRegister {
 }
 
 export const RegisterModal: React.FC<IRegister> = (props) => {
-  const { register, handleSubmit, control,  setValue, formState: { errors } } = useForm<{
+  const { register, handleSubmit, control, setValue, formState: { errors } } = useForm<{
     username: string,
     name: string,
     auth: string,
@@ -46,7 +46,8 @@ export const RegisterModal: React.FC<IRegister> = (props) => {
     password: string,
     confirmPassword: string
   }) => {
-    if (props.type === "whatsapp") {
+    if (props.type === "whatsapp")
+    {
       API.registerWhatsapp(
         data.name,
         data.username,
@@ -59,7 +60,8 @@ export const RegisterModal: React.FC<IRegister> = (props) => {
         toast.error('Something went wrong')
       })
     }
-    else {
+    else
+    {
       API.registerEmail(
         data.name,
         data.username,
@@ -67,11 +69,11 @@ export const RegisterModal: React.FC<IRegister> = (props) => {
           toast.success(res.data.message)
           props.setOpen(false)
           props.setLogin(true)
-      }).catch(err => {
-        toast.error('Something went wrong')
-      })
+        }).catch(err => {
+          toast.error('Something went wrong')
+        })
     }
-     
+
     console.log(data)
   }
 
@@ -79,81 +81,81 @@ export const RegisterModal: React.FC<IRegister> = (props) => {
     setValue("username", props.username)
     setValue("auth", props.type)
   }, [props])
- 
- return (
-  <React.Fragment>
-  <Modal
-    show={props.open}
-       popup={true}
+
+  return (
+    <React.Fragment>
+      <Modal
+        show={props.open}
+        popup={true}
         size="md"
-    onClose={() => props.setOpen(false)}
-  >
-    <Modal.Header />
-    <Modal.Body>
-         <form onSubmit={handleSubmit(onSubmit)} className="h-fit flex flex-col w-full">
-           <div className="">
-             <h2 className="text-3xl font-title font-bold ">Register Account</h2>
-           </div>
-           <div className="my-2">
-             {
-               props.type === "whatsapp" ? 
-                 <div>
-                   <label 
+        onClose={() => props.setOpen(false)}
+      >
+        <Modal.Header />
+        <Modal.Body>
+          <form onSubmit={handleSubmit(onSubmit)} className="h-fit flex flex-col w-full">
+            <div className="">
+              <h2 className="text-3xl font-title font-bold ">Register Account</h2>
+            </div>
+            <div className="my-2">
+              {
+                props.type === "whatsapp" ?
+                  <div>
+                    <label
                       className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                          WhatsApp Number: 
-                  </label> 
-                   <PhoneInput 
-                    
-                     international
-                     className="focus:outline-none border-none appearance-none focus:border-none ring-none outline-none"
-                     defaultCountry="UG"
-                     value={props.username}
-                     onChange={(value: any) => { }}
-                   />
-                 </div> : 
-                 <TextInput
-                  label="Email: "
-                  type="text"
-                  value={props.username}
-                   placeholder="e.g Flavia Katamba"
-                   disabled
+                      WhatsApp Number:
+                    </label>
+                    <PhoneInput
+
+                      international
+                      className="focus:outline-none border-none appearance-none focus:border-none ring-none outline-none"
+                      defaultCountry="UG"
+                      value={props.username}
+                      onChange={(value: any) => { }}
+                    />
+                  </div> :
+                  <TextInput
+                    label="Email: "
+                    type="text"
+                    value={props.username}
+                    placeholder="e.g Flavia Katamba"
+                    disabled
 
                   />
-             }
-           </div>
-          <div className="my-2">
-            <TextInput
-            label="Name: "
-            type="text"
-            register={register('name')}
-            placeholder="e.g Flavia Katamba"
-             />
-             {errors.name && <ErrorText message={errors?.name.message} />}
-          </div>
-          <div className="my-2">
-            <TextInput
-            label="Password: "
-            type="password"
-            register={register('password')}
-                />
-            {errors.password && <ErrorText message={errors?.password.message} />}
-          </div>
-          <div className="my-2">
-          <TextInput
-            label="Confirm Password: "
-            type="password"
-            register={register('confirmPassword')}
-                />
-          {errors.confirmPassword && <ErrorText message={errors?.confirmPassword.message} />}
-          </div>
+              }
+            </div>
+            <div className="my-2">
+              <TextInput
+                label="Name: "
+                type="text"
+                register={register('name')}
+                placeholder="e.g Flavia Katamba"
+              />
+              {errors.name && <ErrorText message={errors?.name.message} />}
+            </div>
+            <div className="my-2">
+              <TextInput
+                label="Password: "
+                type="password"
+                register={register('password')}
+              />
+              {errors.password && <ErrorText message={errors?.password.message} />}
+            </div>
+            <div className="my-2">
+              <TextInput
+                label="Confirm Password: "
+                type="password"
+                register={register('confirmPassword')}
+              />
+              {errors.confirmPassword && <ErrorText message={errors?.confirmPassword.message} />}
+            </div>
 
-         <button 
-         className="px-4 self-center py-2 bg-rose my-4 rounded-lg text-white">
-               Submit
-          </button>
+            <button title="button"
+              className="px-4 self-center py-2 bg-rose my-4 rounded-lg text-white">
+              Submit
+            </button>
           </form>
-    </Modal.Body>
-  </Modal>
-</React.Fragment>
- )
+        </Modal.Body>
+      </Modal>
+    </React.Fragment>
+  )
 }

@@ -1,6 +1,8 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { EmbedModal } from "../components";
 import { SignInModal } from "../components/Auth";
+import { CookieBanner } from '../components';
+
 import { 
   ApparelPage,
   BabiesAndKidsPage, 
@@ -52,8 +54,10 @@ export const Router = () => {
             </Route>
             <Route path="/test" element={<TestPage />} />
           <Route path="*" element={<UnknownPage />} />
-        </Route>
+          </Route>
+
         </Routes>
+        <CookieBanner />
         <SignInModal />
         <EmbedModal />
     </BrowserRouter>)

@@ -1,7 +1,6 @@
 import axios from "axios";
-import { useNavigate } from 'react-router-dom';
 import * as types from '../types'
-import { CartDetail, Detail } from "../types";
+import { CartDetail } from "../types";
 import { Transaction } from "../types/create";
 
 const api = axios.create({

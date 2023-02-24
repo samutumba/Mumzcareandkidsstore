@@ -32,7 +32,7 @@ export const Hero: React.FC<IHeroProps> = ({ products, image, description, title
                         {description}
                     </p>
 
-                    <button onClick={callback} className="text-white mt-4 py-1 px-4 bg-rose font-semibold uppercase rounded-2xl" >
+                    <button title="button" onClick={callback} className="text-white mt-4 py-1 px-4 bg-rose font-semibold uppercase rounded-2xl" >
                         Shop Now
                     </button>
                 </div>
